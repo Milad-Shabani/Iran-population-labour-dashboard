@@ -1,0 +1,2853 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unemployment fell, employment didn't rise — Iran's population and labour market, a data story</title>
+<meta name="description" content="An analytical dashboard on Iran's population and labour market, 1395–1405 (2016–2026), built on data from the Statistical Center of Iran, the National Organization for Civil Registration, the Ministry of Education and the Ministry of Science.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+
+
+.twin{display:grid; grid-template-columns:1fr 1fr; gap:8px 26px; margin-top:6px}
+.twin-h{font-size:12px; font-weight:800; color:var(--ink-2); letter-spacing:-.01em;
+  padding-bottom:4px; border-bottom:1px solid var(--line); margin-bottom:6px}
+@media (max-width:820px){ .twin{grid-template-columns:1fr; gap:22px} }
+.lg-in{display:inline-flex; align-items:center; gap:6px; margin-inline-start:14px;
+  font-size:12px; font-weight:700; color:var(--ink-2); white-space:nowrap}
+.lg-in i{width:10px; height:10px; border-radius:2px; display:inline-block}
+.pc{direction:ltr; unicode-bidi:isolate; white-space:nowrap; display:inline-block;
+  font-variant-numeric:tabular-nums; letter-spacing:0}
+.signed-percent{direction:ltr; unicode-bidi:isolate; white-space:nowrap; display:inline-block; font-variant-numeric:tabular-nums; letter-spacing:0}
+
+.signed-number, .sg, .trend-good, .trend-bad, output {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+  text-align:left;
+  font-variant-numeric:tabular-nums;
+}
+
+:root{
+  --stone:#EDEFF3; --stone-2:#E3E7EE; --panel:#FFFFFF;
+  --ink:#131F33; --ink-2:#33455E; --muted:#6B7C93; --faint:#93A2B5;
+  --line:#D8DEE7; --line-2:#C3CCDA;
+  --lapis:#1F3D73; --lapis-l:#3C63A8;
+  --turq:#0F7F87; --turq-l:#5FB3B8;
+  --saff:#C98A0E; --saff-l:#E9C877;
+  --pom:#A3242F; --pom-l:#D97A82;
+  --moss:#4A7A4E;
+  --r:4px; --maxw:1180px; --gut:22px;
+  
+  --f: 'Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+  --f-disp: 'Source Serif 4','Iowan Old Style','Palatino Linotype',Georgia,serif;
+  
+  --f-num: 'Inter','Segoe UI',system-ui,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important; transition:none!important} }
+body{
+  margin:0; background:var(--stone); color:var(--ink); font-family:var(--f);
+  font-size:16px; line-height:1.85; font-weight:400;
+  font-variant-numeric:tabular-nums; text-rendering:optimizeLegibility;
+}
+h1,h2,h3,h4{margin:0; line-height:1.4; font-weight:800; letter-spacing:-.01em;
+  font-family:var(--f-disp); font-feature-settings:"ss01" 1}
+h1,h2{line-height:1.28; letter-spacing:-.02em}
+.k-val,.v,.rv{font-family:var(--f-num); font-variant-numeric:tabular-nums;
+  letter-spacing:-.015em}
+p{margin:0 0 .9em}
+a{color:var(--lapis); text-decoration-thickness:1px; text-underline-offset:3px}
+:focus-visible{outline:2.5px solid var(--saff); outline-offset:3px; border-radius:2px}
+
+
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 var(--gut)}
+.narrow{max-width:760px}
+
+
+#progress{position:fixed; inset-block-start:0; inset-inline:0; height:3px; background:transparent; z-index:60}
+#progress > i{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--turq),var(--saff)); transition:width .08s linear}
+#topbar{
+  position:sticky; top:0; z-index:50; background:rgba(237,239,243,.93);
+  backdrop-filter:saturate(1.4) blur(10px); border-bottom:1px solid var(--line);
+}
+#topbar .inner{display:flex; align-items:center; gap:12px; height:52px}
+#topbar .brand{font-weight:800; font-size:13.5px; white-space:nowrap; color:var(--ink); letter-spacing:-.02em; flex:0 0 auto}
+#topbar .brand b{color:var(--pom)}
+
+
+.navwrap{position:relative; flex:1 1 auto; min-width:0; display:flex; align-items:center}
+#navchips{display:flex; gap:5px; overflow-x:auto; scrollbar-width:none;
+  flex:1 1 auto; min-width:0; scroll-behavior:smooth; padding:2px 30px}
+#navchips::-webkit-scrollbar{display:none}
+.navwrap::before,.navwrap::after{
+  content:""; position:absolute; top:0; bottom:0; width:44px; pointer-events:none;
+  z-index:2; opacity:0; transition:opacity .18s}
+.navwrap::before{right:0; background:linear-gradient(to left, rgba(237,239,243,.98), rgba(237,239,243,0))}
+.navwrap::after{left:0;  background:linear-gradient(to right, rgba(237,239,243,.98), rgba(237,239,243,0))}
+.navwrap.can-start::before{opacity:1}
+.navwrap.can-end::after{opacity:1}
+.navbtn{
+  position:absolute; z-index:3; top:50%; transform:translateY(-50%);
+  width:26px; height:26px; border-radius:50%; border:1px solid var(--line-2);
+  background:var(--panel); color:var(--ink-2); cursor:pointer; display:none;
+  align-items:center; justify-content:center; padding:0; line-height:1;
+  font-size:15px; font-weight:800; box-shadow:0 1px 4px rgba(19,31,51,.12)}
+.navbtn:hover{border-color:var(--lapis); color:var(--lapis)}
+.navbtn.nb-start{right:0}
+.navbtn.nb-end{left:0}
+.navwrap.can-start .nb-start,.navwrap.can-end .nb-end{display:flex}
+
+@media (max-width:820px){
+  #topbar .brand{font-size:12px}
+  #topbar .brand .long{display:none}
+}
+@media (max-width:600px){
+  #topbar .inner{gap:8px}
+  #topbar .brand{display:none}
+}
+#navchips a{
+  white-space:nowrap; font-size:12.5px; font-weight:600; color:var(--ink-2);
+  padding:5px 11px; border:1px solid var(--line-2); border-radius:100px; text-decoration:none;
+  background:var(--panel); transition:.15s;
+}
+#navchips a:hover{border-color:var(--lapis); color:var(--lapis)}
+#navchips a.on{background:var(--lapis); border-color:var(--lapis); color:#fff}
+
+
+.cover{
+  position:relative; background:
+    radial-gradient(circle at 92% 8%, rgba(31,61,115,.055), transparent 28%),
+    linear-gradient(180deg,#fff 0%,#fbfcfd 100%);
+  color:var(--ink); border-bottom:1px solid var(--line);
+}
+.cover .wrap{position:relative; z-index:1}
+
+.hero{padding:42px 0 0}
+.eyebrow{
+  font-size:10.5px; font-weight:800; letter-spacing:.12em; color:var(--muted);
+  display:flex; align-items:center; gap:10px; margin-bottom:18px;
+}
+.eyebrow::after{content:""; flex:1; height:1px; background:var(--line-2)}
+.hero .eyebrow::before{
+  content:""; width:7px; height:7px; border-radius:50%; background:#E1382C;
+  flex:0 0 auto; box-shadow:0 0 0 4px rgba(225,56,44,.08)
+}
+
+
+.hero .hero-top{
+  display:grid; grid-template-columns:minmax(0,1.18fr) minmax(260px,.82fr);
+  gap:28px; align-items:end;
+}
+.hero h1{
+  font-size:clamp(38px,5.3vw,64px); font-weight:900; letter-spacing:-.045em;
+  line-height:1.28; color:var(--ink); max-width:15ch; text-wrap:balance;
+}
+.hero h1 .hl2{color:#5E6877}
+.hero h1 .hl{color:#E1382C; font-weight:900}
+
+.hero-signal{
+  border-inline-start:4px solid #E1382C; padding:5px 0 5px 22px; padding-inline-start:12px;
+  margin-bottom:5px;
+}
+.hero-signal .signal-kicker{
+  font-size:10.5px; font-weight:800; color:var(--muted); margin-bottom:4px;
+}
+.hero-signal .signal-main{
+  display:flex; align-items:baseline; gap:7px; font-family:var(--f-num);
+}
+.hero-signal .signal-main strong{
+  font-size:clamp(38px,4.5vw,55px); line-height:1; letter-spacing:-.05em; color:#E1382C;
+}
+.hero-signal .signal-main span{
+  font-size:14px; font-weight:700; color:var(--ink-2);
+}
+.hero-signal .signal-note{
+  font-size:11.5px; color:var(--muted); line-height:1.7; margin-top:7px;
+}
+
+
+.hero .grid{
+  display:grid; grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);
+  gap:14px; align-items:stretch; margin-top:25px; padding-bottom:18px;
+}
+.hero .lede{
+  font-size:clamp(14px,1.45vw,16px); color:var(--ink-2); font-weight:400; line-height:1.95;
+  background:#F5F7F9; border:1px solid #EDF0F4; border-radius:18px; padding:22px 24px; margin:0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8);
+}
+.hero .lede b{color:var(--ink); font-weight:800}
+.hero .lede .lede-em{
+  display:block; margin-top:13px; padding-top:11px; border-top:1px dashed var(--line-2);
+  color:var(--ink); font-weight:800; font-size:12.5px;
+}
+.hero .lede .lede-em span{color:#E1382C}
+
+
+.thesis{
+  position:relative; overflow:hidden; background:#fff; border:1px solid var(--line);
+  border-radius:18px; padding:20px 22px 19px;
+  box-shadow:0 8px 28px -22px rgba(19,31,51,.28);
+}
+
+.thesis::before{display:none}
+.thesis .ratio{display:flex; align-items:baseline; gap:4px; font-family:var(--f-num)}
+.thesis .a{font-size:clamp(48px,5.3vw,62px); font-weight:900; color:#E1382C;
+  letter-spacing:-.05em; line-height:.9}
+.thesis .sl{font-size:25px; font-weight:300; color:var(--line-2); line-height:1; margin:0 1px}
+.thesis .b{font-size:22px; font-weight:700; color:var(--faint); letter-spacing:-.03em; line-height:1}
+.thesis .cap{font-size:10px; font-weight:800; letter-spacing:.08em; color:var(--muted);
+  margin-top:10px}
+.thesis p{font-size:12.8px; color:var(--ink-2); line-height:1.85; margin:8px 0 0}
+.thesis p b{color:var(--ink); font-weight:800}
+.thesis .bar{
+  display:flex; height:7px; margin-top:15px; border-radius:100px; overflow:hidden;
+  background:var(--stone-2)
+}
+.thesis .bar i{
+  display:block; height:100%; background:#E1382C; border-radius:100px;
+  width:0; animation:grow 1s .45s forwards cubic-bezier(.2,.7,.3,1)
+}
+.thesis .bar::after{
+  content:"83% outside the labour force"; position:absolute; inset-inline-start:22px;
+  bottom:17px; font-size:9.5px; font-weight:700; color:var(--faint);
+}
+@keyframes grow{to{width:17%}}
+@media (prefers-reduced-motion:reduce){ .thesis .bar i{animation:none; width:17%} }
+
+
+
+.hero-top-with-thesis{align-items:center!important; grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr)!important; gap:34px!important;}
+.hero-top-with-thesis h1{line-height:1.48!important; row-gap:14px;}
+.thesis{animation:thesisIn .7s cubic-bezier(.2,.75,.25,1) both; transform-origin:center;}
+.thesis .ratio{animation:thesisRatio .8s .12s cubic-bezier(.2,.75,.25,1) both;}
+.thesis-explain{animation:thesisText .7s .24s ease both;}
+@keyframes thesisIn{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes thesisRatio{from{opacity:0;transform:translateY(8px) scale(.92)}to{opacity:1;transform:none}}
+@keyframes thesisText{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.hero-top-with-thesis .thesis{height:100%; display:flex; flex-direction:column; justify-content:center;}
+.hero-story{margin-top:20px;}
+.lede-wrap{display:flex;flex-direction:column;align-items:stretch;width:100%;border:1px solid #E1E6EC;border-radius:18px;overflow:hidden;background:#F5F7F9;box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+.hero-story .lede{font-size:clamp(14px,1.45vw,16px); color:var(--ink-2); font-weight:400; line-height:2.05; background:#F5F7F9; border:0; border-radius:0; padding:26px 34px 22px; margin:0; box-shadow:none; text-align:right;}
+.hero-story .lede b{color:var(--ink);font-weight:800}
+.hero-story .lede-em{display:flex;align-items:center;justify-content:flex-start;margin:0 34px;padding:14px 0 15px;border:0;border-top:1px dashed #CBD4DE;border-radius:0;background:transparent;color:var(--ink);font-weight:900;font-size:15px;line-height:1.7;text-align:right;box-shadow:none;}
+.hero-story .lede-em span{color:#E1382C;display:inline-block;}
+@media(max-width:760px){.hero-top-with-thesis{grid-template-columns:1fr!important;gap:18px!important}.hero-top-with-thesis .thesis{height:auto}.hero-story{margin-top:16px}.lede-wrap{width:100%}.hero-story .lede{padding:20px 18px 16px;line-height:1.9}.hero-story .lede-em{margin:0 18px;padding:12px 0 13px;font-size:13px}}
+
+
+.thesis{
+  position:relative; background:linear-gradient(180deg,#fff 0%,#F8FAFC 100%);
+  border:1px solid var(--line); border-radius:16px; padding:18px 20px 17px;
+  box-shadow:0 8px 24px -18px rgba(19,31,51,.22);
+}
+.thesis-kicker{font-size:10.5px;font-weight:800;color:var(--muted);letter-spacing:.04em;margin-bottom:3px}
+.thesis-explain{font-size:14px;line-height:1.85;color:var(--ink-2);margin-top:4px}
+.thesis-explain b{color:var(--ink);font-weight:900}
+.thesis .bar{display:none!important}
+
+.hero .srcline{
+  padding:13px 0 14px; border-top:1px solid var(--line);
+  font-size:11px; color:var(--muted); font-weight:400; line-height:1.8;
+}
+.hero .srcline a{color:var(--ink); text-decoration:none; font-weight:700;
+  border-bottom:1px solid var(--line-2)}
+.hero .srcline a:hover{border-color:#E1382C; color:#E1382C}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+
+
+.kpis{
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px;
+  padding:16px 0 30px;
+}
+.kpi{
+  position:relative; display:flex; flex-direction:column;
+  padding:16px 18px 14px; background:#fff;
+  border:1px solid var(--line); border-top:2px solid var(--line-2); border-radius:14px;
+  box-shadow:0 1px 2px rgba(20,20,20,.03);
+  transition:box-shadow .2s, transform .2s, border-color .2s;
+}
+.kpi:hover{box-shadow:0 12px 26px -16px rgba(20,20,20,.28); transform:translateY(-2px)}
+.kpi.semantic-good{border-top-color:#2F7D4A}
+.kpi.semantic-bad{border-top-color:#B33A3A}
+.kpi.semantic-neutral{border-top-color:#9AA3AE}
+
+
+.kpi .k-lab{
+  font-size:11.5px; color:var(--ink-2); font-weight:600; line-height:1.55;
+  min-height:2.5em; display:flex; align-items:flex-start;
+}
+.kpi .k-val{
+  font-family:var(--f-num); font-size:clamp(24px,2.4vw,30px); font-weight:800;
+  letter-spacing:-.035em; line-height:1.05; margin-top:6px; white-space:nowrap;
+  color:var(--ink);
+}
+.kpi .k-un{font-size:.44em; font-weight:700; letter-spacing:0;
+  margin-inline-start:.32em; opacity:.6}
+.kpi .k-sub{font-size:11px; color:var(--faint); margin-top:5px; font-weight:400;
+  line-height:1.75; min-height:2.6em}
+.kpi .k-sub .trend-good{color:#2F7D4A; font-weight:800}
+.kpi .k-sub .trend-bad{color:#B33A3A; font-weight:800}
+.kpi .k-sub .trend-neutral{color:#687383; font-weight:700}
+.kpi .k-spark{margin-top:auto; padding-top:10px; height:66px}
+.kpi .k-spark svg{display:block; width:100%; height:62px!important; overflow:visible; opacity:.9}
+
+.twin{display:grid; grid-template-columns:1fr 1fr; gap:8px 26px; margin-top:6px}
+.twin-h{font-size:12px; font-weight:800; color:var(--ink-2); letter-spacing:-.01em;
+  padding-bottom:4px; border-bottom:1px solid var(--line); margin-bottom:6px}
+@media (max-width:820px){ .twin{grid-template-columns:1fr; gap:22px} }
+.lg-in{display:inline-flex; align-items:center; gap:6px; margin-inline-start:14px;
+  font-size:12px; font-weight:700; color:var(--ink-2); white-space:nowrap}
+.lg-in i{width:10px; height:10px; border-radius:2px; display:inline-block}
+.pc{direction:ltr; unicode-bidi:isolate; white-space:nowrap; display:inline-block;
+  font-variant-numeric:tabular-nums; letter-spacing:0}
+.signed-percent,.signed-number{direction:ltr; unicode-bidi:isolate; white-space:nowrap;
+  display:inline-block; font-variant-numeric:tabular-nums}
+@media (max-width:900px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){
+  .kpis{grid-template-columns:1fr}
+  .kpi .k-lab,.kpi .k-sub{min-height:0}
+  .kpi .k-spark{height:58px} .kpi .k-spark svg{height:54px!important}
+}
+
+
+.hero .hero-top{grid-template-columns:1fr;gap:22px;align-items:stretch}
+.thesis{min-height:220px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:28px 30px}
+.thesis .ratio{justify-content:center;margin:7px 0 10px}
+.thesis-kicker{font-size:12px;margin-bottom:6px}
+.thesis-explain{max-width:620px;font-size:15px;line-height:1.9}
+
+
+.findlead{
+  display:flex; align-items:baseline; gap:14px; margin:46px 0 4px;
+  font-size:11px; font-weight:700; letter-spacing:.2em; color:var(--muted);
+}
+.findlead::after{content:""; flex:1; height:1px; background:var(--line)}
+.findings{margin:0 0 46px; border-top:2px solid var(--ink)}
+.finding{
+  position:relative; display:grid; grid-template-columns:54px minmax(0,1fr) auto;
+  grid-template-areas:"n t g" "n d d";
+  gap:0 20px; align-items:baseline; padding:20px 10px 18px 6px;
+  border-bottom:1px solid var(--line); text-decoration:none; color:inherit;
+  transition:background .18s, padding .18s;
+}
+.finding:hover{background:linear-gradient(to left, rgba(31,61,115,.055), transparent 70%)}
+.finding:focus-visible{outline:2px solid var(--lapis); outline-offset:-2px}
+.finding .n{grid-area:n;
+  font-family:var(--f-num); font-size:27px; font-weight:300; line-height:1;
+  color:var(--line-2); letter-spacing:-.03em; transition:color .22s;
+  font-variant-numeric:tabular-nums; position:relative;
+}
+.finding .n::after{
+  content:""; position:absolute; inset-inline-start:-14px; top:.24em;
+  width:1px; height:1.5em; background:var(--line); transition:background .22s;
+}
+.finding:hover .n::after{background:var(--pom)}
+.finding:hover .n{color:var(--pom)}
+.finding .t{grid-area:t; font-weight:700; font-size:16px; line-height:1.68; display:block;
+  letter-spacing:-.012em}
+.finding .t em{font-style:normal; color:var(--pom); font-weight:800}
+.finding .d{grid-area:d; font-size:13px; color:var(--muted); font-weight:400; margin-top:6px;
+  line-height:1.85; display:block; max-width:78ch; justify-self:stretch}
+.finding .go{grid-area:g;
+  font-size:11px; color:var(--lapis); font-weight:700; white-space:nowrap;
+  opacity:0; transform:translateX(6px); transition:opacity .18s, transform .18s;
+}
+.finding:hover .go{opacity:1; transform:none}
+
+@media (max-width:1080px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .hero{padding:32px 0 0}
+  .hero .hero-top{grid-template-columns:1fr; gap:18px}
+  .hero h1{font-size:clamp(36px,10vw,48px)}
+  .hero-signal{border-inline-start-width:3px; padding-inline-start:16px}
+  .hero .grid{grid-template-columns:1fr; gap:12px; padding-bottom:20px}
+  .thesis{padding:19px 20px}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; padding:18px 0 24px}
+  .kpi{padding:16px 14px 13px}
+  .kpi .k-lab{min-height:0}
+  .finding{grid-template-columns:38px minmax(0,1fr);
+    grid-template-areas:"n t" "n d"; gap:0 12px; padding:16px 4px}
+  .finding .go{display:none}
+}
+
+
+.act{padding:56px var(--gut) 10px; border-top:1px solid var(--line-2); scroll-margin-top:64px}
+.act:first-of-type{border-top:none}
+.act-num{
+  font-size:11.5px; font-weight:800; letter-spacing:.14em; color:var(--panel);
+  background:var(--ink); padding:4px 11px; display:inline-block; border-radius:100px;
+}
+.act h2{font-size:clamp(23px,3.6vw,36px); font-weight:900; letter-spacing:-.03em; margin:16px 0 0; max-width:900px}
+.act .lede{font-size:clamp(14.5px,1.7vw,17.5px); color:var(--ink-2); max-width:760px; margin-top:14px}
+
+
+.statstrip{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:var(--line-2); border:1px solid var(--line-2); margin:28px 0}
+.statstrip > div{background:var(--panel); padding:14px 15px}
+.statstrip .v{font-size:26px; font-weight:900; letter-spacing:-.04em; line-height:1.2}
+.statstrip .l{font-size:11.5px; color:var(--muted); font-weight:600; margin-top:5px; line-height:1.6}
+.v.pom{color:var(--pom)} .v.turq{color:var(--turq)} .v.saff{color:var(--saff)} .v.lapis{color:var(--lapis)} .v.moss{color:var(--moss)}
+
+
+.panel{background:var(--panel); border:1px solid var(--line); margin:26px 0; padding:20px 20px 16px}
+.panel > h3{font-size:16.5px; font-weight:800; letter-spacing:-.02em}
+.panel > .sub{font-size:12.5px; color:var(--muted); margin:6px 0 0; font-weight:500; line-height:1.7}
+.chartbox{position:relative; width:100%; margin-top:16px}
+.chartbox svg{display:block; width:100%; height:auto; overflow:visible}
+figcaption, .srcline{
+  font-size:11.5px; color:var(--faint); margin-top:12px; padding-top:10px; border-top:1px dashed var(--line-2); line-height:1.75; font-weight:500;
+}
+.legend{display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:12px; font-size:12.5px; font-weight:600; color:var(--ink-2)}
+.legend i{width:13px; height:3px; border-radius:2px; display:inline-block; margin-inline-end:6px; vertical-align:middle}
+.legend .sq{width:12px;height:12px;border-radius:2px}
+.tip{
+  position:absolute; pointer-events:none; background:var(--ink); color:#fff; font-size:12px; font-weight:600;
+  padding:8px 11px; border-radius:var(--r); white-space:nowrap; opacity:0; transition:opacity .12s; z-index:9;
+  box-shadow:0 6px 22px rgba(19,31,51,.28); line-height:1.75;
+}
+.tip b{font-weight:800}
+.tip .r{display:flex; gap:10px; justify-content:space-between}
+.tip .r i{width:8px;height:8px;border-radius:50%;display:inline-block;margin-inline-end:5px}
+
+
+.blocks{display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:14px; margin:28px 0 8px}
+.blk{background:var(--panel); border:1px solid var(--line); border-top:3px solid; padding:16px 17px 6px}
+.blk h4{
+  font-size:11.5px; letter-spacing:.13em; font-weight:800; margin-bottom:10px;
+  display:flex; align-items:center; gap:7px;
+}
+.blk p{font-size:13.8px; line-height:1.9; color:var(--ink-2)}
+.blk p:last-child{margin-bottom:14px}
+.blk-data{border-top-color:var(--turq)} .blk-data h4{color:var(--turq)}
+.blk-analysis{border-top-color:var(--lapis)} .blk-analysis h4{color:var(--lapis)}
+.blk-concl{border-top-color:var(--pom); background:#FBF7F3} .blk-concl h4{color:var(--pom)}
+.blk h4::before{content:""; width:9px; height:9px; background:currentColor; display:inline-block; border-radius:1px}
+
+
+.control{
+  background:linear-gradient(180deg,#132443,#1C3358); color:#EAF0F8; border:1px solid #0C1A31;
+  padding:20px 22px; margin:26px 0;
+}
+.control h4{font-size:14px; font-weight:800; color:#fff; margin-bottom:4px}
+.control .hint{font-size:12.5px; color:#A9BEDB; margin-bottom:16px; line-height:1.75}
+.ctl-row{display:flex; flex-wrap:wrap; align-items:center; gap:14px 22px}
+.ctl-row label{font-size:13px; font-weight:700; color:#CFDDF0; white-space:nowrap}
+input[type=range]{
+  -webkit-appearance:none; appearance:none; background:transparent; height:26px; flex:1; min-width:190px; cursor:pointer; direction:rtl;
+}
+input[type=range]::-webkit-slider-runnable-track{height:5px; background:#3B5480; border-radius:100px}
+input[type=range]::-moz-range-track{height:5px; background:#3B5480; border-radius:100px}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none; width:20px; height:20px; border-radius:50%; background:var(--saff);
+  border:3px solid #0F1E38; margin-top:-7.5px; box-shadow:0 0 0 1px var(--saff);
+}
+input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:var(--saff);border:3px solid #0F1E38}
+.readout{display:flex; flex-wrap:wrap; gap:1px; background:#31486E; margin-top:18px; border:1px solid #31486E}
+.readout > div{background:#0F1E38; padding:12px 15px; flex:1; min-width:130px}
+.readout .rv.lapis{color:#8FB2E8}
+.readout .rv{font-size:25px; font-weight:900; letter-spacing:-.04em; line-height:1.2}
+.readout .rl{font-size:11px; color:#9FB4D2; font-weight:600; margin-top:4px; line-height:1.6}
+.rv.saff{color:var(--saff-l)} .rv.turq{color:var(--turq-l)} .rv.pom{color:var(--pom-l)} .rv.w{color:#fff}
+.seg{display:inline-flex; background:#0F1E38; border:1px solid #31486E; border-radius:100px; padding:3px}
+.seg button{
+  background:transparent; border:0; color:#A9BEDB; font-family:var(--f); font-size:12.5px; font-weight:700;
+  padding:5px 13px; border-radius:100px; cursor:pointer; transition:.15s;
+  white-space:nowrap;
+}
+.seg button.on{background:var(--saff); color:#12203A}
+.seg.light{background:var(--stone-2); border-color:var(--line-2)}
+.seg.light button{color:var(--ink-2)}
+.seg.light button.on{background:var(--lapis); color:#fff}
+
+
+.tblwrap{overflow-x:auto; margin:20px 0; border:1px solid var(--line); background:var(--panel)}
+table{border-collapse:collapse; width:100%; font-size:13px; min-width:540px}
+th,td{padding:9px 12px; text-align:right; border-bottom:1px solid var(--line)}
+thead th{background:var(--stone-2); font-weight:800; font-size:11.5px; color:var(--ink-2); letter-spacing:.02em; white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#F7F9FC}
+td.num{font-weight:600}
+.chip{display:inline-block; font-size:10.5px; font-weight:800; padding:2px 8px; border-radius:100px; white-space:nowrap}
+.chip.fix{background:#E6F2F1; color:var(--turq)}
+.chip.warn{background:#FBF0DC; color:#8A5E05}
+.chip.note{background:#E8ECF4; color:var(--lapis)}
+
+
+.callout{
+  border-inline-start:4px solid var(--saff); background:#FCF8EF; padding:16px 20px; margin:24px 0;
+  font-size:14.5px; line-height:1.9; color:var(--ink-2);
+}
+.callout.pom{border-inline-start-color:var(--pom); background:#FCF3F3}
+.callout.turq{border-inline-start-color:var(--turq); background:#F0F7F7}
+.callout b{color:var(--ink)}
+.pull{
+  font-size:clamp(18px,2.7vw,26px); font-weight:800; line-height:1.6; letter-spacing:-.025em;
+  color:var(--ink); margin:34px 0; padding-inline-start:20px; border-inline-start:3px solid var(--pom); max-width:820px;
+}
+.pull span{color:var(--pom)}
+
+
+.finale{background:var(--ink); color:#E8EDF5; padding:52px 0 44px; margin-top:60px}
+.finale h2{color:#fff; font-size:clamp(24px,3.6vw,38px)}
+.finale .lede{color:#B6C4D8}
+.finale .fgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1px; background:#2A3B55; border:1px solid #2A3B55; margin-top:32px}
+.finale .fgrid > div{background:#182740; padding:20px 18px}
+.finale .fgrid h4{font-size:14px; color:var(--saff-l); margin-bottom:9px}
+.finale .fgrid p{font-size:13.5px; color:#AFC0D6; line-height:1.9; margin:0}
+
+
+.appendix{background:var(--stone-2); padding:52px 0 60px}
+.appendix h2{font-size:26px} 
+.appendix h3{font-size:16px; margin:32px 0 10px; color:var(--lapis); font-weight:800}
+.appendix p, .appendix li{font-size:13.8px; line-height:1.95; color:var(--ink-2)}
+.appendix ul{padding-inline-start:20px; margin:0 0 14px}
+.appendix li{margin-bottom:7px}
+.formula{
+  background:var(--panel); border:1px solid var(--line); padding:12px 15px; margin:10px 0 16px;
+  font-size:13px; direction:ltr; text-align:left; overflow-x:auto; line-height:2; font-weight:600; color:var(--ink);
+}
+.formula span{color:var(--muted); font-weight:500}
+details{background:var(--panel); border:1px solid var(--line); margin:10px 0; padding:0}
+summary{padding:12px 16px; font-weight:700; font-size:13.5px; cursor:pointer; list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+ "; color:var(--saff); font-weight:900}
+details[open] summary::before{content:"− "}
+details > div{padding:0 16px 14px; font-size:13.5px; line-height:1.9; color:var(--ink-2)}
+.btn{
+  display:inline-flex; align-items:center; gap:8px; background:var(--lapis); color:#fff; border:0;
+  font-family:var(--f); font-size:13px; font-weight:700; padding:10px 18px; cursor:pointer; text-decoration:none; transition:.15s;
+}
+.btn:hover{background:#16305C}
+.btn.ghost{background:transparent; color:var(--lapis); border:1px solid var(--line-2)}
+.btn.ghost:hover{background:var(--panel)}
+footer.f{padding:34px 0 44px; font-size:12px; color:var(--muted); text-align:center; line-height:2}
+.byline{
+  display:flex; align-items:center; gap:20px; text-align:start;
+  max-width:540px; margin:0 auto 24px; padding:22px 26px;
+  background:#fff; border:1px solid var(--line); border-radius:8px;
+  box-shadow:0 14px 34px -26px rgba(19,31,51,.55);
+  position:relative; overflow:hidden;
+}
+.byline::after{
+  content:""; position:absolute; inset-inline-start:0; inset-block:0; width:3px;
+  background:linear-gradient(to bottom, var(--turq), var(--saff));
+}
+.byline .ava{
+  width:78px; height:78px; border-radius:50%; object-fit:cover; flex:0 0 auto;
+  box-shadow:0 0 0 2px #fff, 0 0 0 3.5px var(--turq-l);
+}
+.byline .kick{font-size:9.5px; font-weight:800; letter-spacing:.18em;
+  color:var(--turq); margin-bottom:5px}
+.byline .nm{font-family:var(--f-disp); font-size:21px; font-weight:900;
+  color:var(--ink); line-height:1.4; letter-spacing:-.02em}
+.byline .rl{font-size:11.5px; color:var(--muted); line-height:1.85; margin-top:4px}
+.byline .site{
+  display:inline-block; margin-top:11px; font-size:12.5px; font-weight:800;
+  color:#fff; background:var(--turq); border-radius:100px; padding:5px 15px;
+  text-decoration:none; transition:background .18s, transform .18s;
+}
+.byline .site:hover{background:var(--lapis); transform:translateY(-1px)}
+@media (max-width:520px){
+  :root{--gut:16px}
+  .byline{flex-direction:column; text-align:center; gap:14px; padding:20px}
+  .byline::after{inset-inline:0; inset-block:auto; top:0; width:auto; height:3px;
+    background:linear-gradient(to left, var(--turq), var(--saff))}
+}
+.fnote{font-size:12px; line-height:2}
+
+
+.srclist{list-style:none; padding:0; margin:14px 0}
+.srclist li{padding:10px 14px; margin-bottom:8px; background:var(--panel);
+  border:1px solid var(--line); border-inline-start:3px solid var(--turq);
+  border-radius:var(--r); font-size:13.5px; line-height:1.9}
+.srclist b a{color:var(--lapis); text-decoration:none; border-bottom:1.5px solid var(--lapis-l)}
+.srclist b a:hover{color:var(--turq); border-color:var(--turq)}
+.srclist .u{display:inline-block; font-size:11.5px; color:var(--faint); font-weight:600;
+  direction:ltr; unicode-bidi:isolate}
+.srcnote{font-size:12.5px; color:var(--muted); border-inline-start:3px solid var(--line-2);
+  padding-inline-start:12px}
+
+
+.sg{unicode-bidi:isolate; direction:ltr; display:inline-block}
+
+
+.chead{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:10px 0 2px}
+.chead .spacer{flex:1}
+.modes{display:inline-flex; border:1px solid var(--line-2); border-radius:999px;
+  overflow:hidden; background:#fff}
+.modes button{font:inherit; font-size:12px; font-weight:700; color:var(--muted);
+  background:none; border:0; padding:5px 13px; cursor:pointer; white-space:nowrap;
+  border-inline-start:1px solid var(--line); transition:background .15s,color .15s}
+.modes button:first-child{border-inline-start:0}
+.modes button[aria-pressed="true"]{background:var(--lapis); color:#fff}
+.modes button:hover:not([aria-pressed="true"]){background:var(--stone-2); color:var(--ink)}
+.iconbtn{font:inherit; font-size:11.5px; font-weight:700; color:var(--muted);
+  background:#fff; border:1px solid var(--line-2); border-radius:999px;
+  padding:5px 11px; cursor:pointer}
+.iconbtn:hover{color:var(--ink); border-color:var(--faint)}
+.legend button{font:inherit; font-size:12.5px; font-weight:600; color:var(--ink-2);
+  background:none; border:0; padding:2px 0; cursor:pointer; border-radius:3px;
+  display:inline-flex; align-items:center; transition:opacity .15s}
+.legend button:hover{opacity:.62}
+.legend button[aria-pressed="false"]{opacity:.34; text-decoration:line-through}
+.legend button:focus-visible,.modes button:focus-visible,.iconbtn:focus-visible,
+.chartbox:focus-visible{outline:2px solid var(--lapis); outline-offset:2px}
+.chartbox{position:relative}
+.chartbox:focus{outline:none}
+.lghint{font-size:11.5px; color:var(--faint); font-weight:600}
+.pinned .tip{box-shadow:0 6px 22px rgba(19,31,51,.22); border-color:var(--lapis)}
+.mini{display:flex; flex-wrap:wrap; gap:14px 20px; align-items:flex-end;
+  margin:12px 0 4px; padding:12px 14px; background:var(--stone);
+  border:1px solid var(--line); border-radius:var(--r)}
+.mini .fld{display:flex; flex-direction:column; gap:5px; min-width:186px; flex:1}
+.mini label{font-size:12px; font-weight:700; color:var(--ink-2)}
+.mini output{font-family:var(--f-num); font-weight:800; color:var(--lapis)}
+.mini input[type=range]{direction:rtl; width:100%; cursor:pointer}
+.hidden{display:none !important}
+.nowrap{white-space:nowrap}
+.mono{font-variant-numeric:tabular-nums}
+sup.ref{font-size:10px; color:var(--turq); font-weight:800; cursor:help}
+.reveal{opacity:0; transform:translateY(14px); transition:opacity .55s ease, transform .55s ease}
+.reveal.in{opacity:1; transform:none}
+@media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none} }
+@media (max-width:640px){
+  :root{--gut:18px}
+  body{font-size:15px}
+  .panel{padding:15px 13px 12px}
+  .kpi .k-val{font-size:26px}
+  .act{padding:40px var(--gut) 6px}
+  .findings{grid-template-columns:1fr}
+  .finding{padding:13px 13px 12px; gap:2px 11px}
+  .hero{padding:34px 0 22px}
+}
+@media print{
+  @page{margin:12mm 10mm}
+  
+  *{-webkit-print-color-adjust:exact !important; print-color-adjust:exact !important}
+  
+  #topbar,#progress,.control,.btn,.chead,.mini,.lghint,.navwrap,.finding .go{
+    display:none !important}
+  
+  .reveal,body.printing .reveal{opacity:1 !important; transform:none !important}
+  .hero h1 .hl,.hero h1 .hl2{background-size:100% 2px !important; animation:none !important}
+  .thesis .bar i{animation:none !important; width:17% !important}
+  details{display:block !important}
+  details > *{display:revert !important}
+  details > div{display:block !important}
+  
+  .panel,.blk,.kpi,.finding,.byline,.srclist li,.blocks,.statstrip,.tblwrap,figure{
+    break-inside:avoid; page-break-inside:avoid}
+  h2,h3{break-after:avoid; page-break-after:avoid}
+  .act{break-before:auto}
+  
+  .srclist a[href^="http"]::after{content:" (" attr(href) ")"; font-size:9.5px; color:#666}
+  body{background:#fff}
+}
+
+
+.num, .k-val, .v, .rv, .sg, .trend-good, .trend-bad, .signed-percent, .signed-number, .pct-inline {
+  direction:ltr !important;
+  unicode-bidi:isolate !important;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.hero-story .lede-em{direction:rtl; justify-content:flex-start; gap:7px;}
+.hero-story .lede-em b{color:var(--ink) !important; font-weight:900;}
+.hero-story .lede-em span{color:#E1382C !important;}
+
+/* ---- left-to-right overrides ---- */
+body,.wrap,.act,p,li,td,th,figcaption,.lede,.sub,.k-lab,.k-sub,.blk,.callout,
+.finding .t,.finding .d,.srclist li,.srcnote,.fnote,.thesis p{text-align:left}
+.hero h1{max-width:none; font-size:clamp(34px,5vw,56px); line-height:1.16}
+.lede{text-align:left}
+.hero .lede{text-justify:auto}
+.hero .lede-em,.hero-story .lede-em{direction:ltr; justify-content:flex-start}
+.byline{text-align:left}
+.byline::after{inset-inline-start:0; inset-inline-end:auto}
+.statstrip .l,.readout .rl,.kpi .k-lab{text-align:left}
+th,td{text-align:left}
+td.num,th.num{text-align:right}
+.tblwrap{overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%}
+main,body{overflow-x:hidden}
+.tblwrap table{min-width:640px}
+@media (max-width:640px){ #gaptable,table{font-size:12px} }
+.legend,.legendbar,.chead{justify-content:flex-start}
+.eyebrow::after{margin-left:0}
+h1,h2,h3,h4{text-align:left}
+.finale h2,.finale .lede{text-align:left}
+
+.langsw{display:inline-flex; flex:0 0 auto; margin-inline-start:auto; align-items:center;
+  border:1px solid var(--line-2); border-radius:100px; overflow:hidden; background:var(--panel)}
+.langsw a{font-size:11.5px; font-weight:800; letter-spacing:.04em; padding:5px 11px;
+  color:var(--muted); text-decoration:none; line-height:1.4; transition:.15s}
+.langsw a+a{border-inline-start:1px solid var(--line)}
+.langsw a.on{background:var(--lapis); color:#fff}
+.langsw a:not(.on):hover{color:var(--ink); background:var(--stone-2)}
+@media (max-width:520px){ .langsw a{padding:4px 9px; font-size:11px} }
+</style>
+</head>
+<body>
+<div id="progress"><i></i></div>
+<header id="topbar">
+  <div class="wrap inner">
+    <div class="brand"><span class="long">Iran · Population &amp; Labour</span>&nbsp;<b>1395–1405</b></div>
+    <div class="navwrap">
+      <button type="button" class="navbtn nb-start" aria-label="Previous acts">›</button>
+      <nav id="navchips">
+      <a href="#summary">Summary</a>
+      <a href="#act1">1 · The single-digit illusion</a>
+      <a href="#act2">2 · The absent half</a>
+      <a href="#act3">3 · The 1405 shock</a>
+      <a href="#act4">4 · The empty cradle</a>
+      <a href="#act5">5 · The school queue</a>
+      <a href="#act6">6 · Projections under strain</a>
+      <a href="#finale">Conclusions</a>
+      <a href="#method">Method &amp; data</a>
+      </nav>
+      <button type="button" class="navbtn nb-end" aria-label="Next acts">‹</button>
+    </div>
+    <div class="langsw" role="group" aria-label="Language"><a class="on" href="index.html" aria-current="page" hreflang="en">EN</a><a href="index.fa.html" hreflang="fa" title="نسخهٔ فارسی">فا</a></div>
+  </div>
+</header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <pattern id="hatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <rect width="7" height="7" fill="#C98A0E" fill-opacity=".10"/>
+    <line x1="0" y1="0" x2="0" y2="7" stroke="#C98A0E" stroke-width="2.2" stroke-opacity=".38"/>
+  </pattern>
+  <pattern id="hatchPom" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <rect width="7" height="7" fill="#A3242F" fill-opacity=".08"/>
+    <line x1="0" y1="0" x2="0" y2="7" stroke="#A3242F" stroke-width="2.2" stroke-opacity=".32"/>
+  </pattern>
+</defs></svg>
+
+<main>
+<div class="cover">
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">A data story on Iran's population and labour market · 1395 to 1405 (2016–2026)</div>
+
+    <div class="hero-top hero-top-with-thesis">
+      <h1>Unemployment <span class="hl2">fell</span>,<br>but employment <span class="hl">did not rise</span>.</h1>
+
+      <div class="thesis">
+        <div class="thesis-kicker">NEW ENTRANTS TO THE LABOUR FORCE</div>
+        <div class="ratio">
+          <span class="a">17</span><span class="sl">/</span><span class="b">100</span>
+        </div>
+        <div class="thesis-explain">
+          Of every 100 people who reached working age, only <b>17</b> entered the labour force.
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-story">
+      <div class="lede-wrap">
+        <div class="lede">
+          Iran's unemployment rate fell from 12.4% in 1395 to 7.5% in 1404 — the lowest figure in two decades. Yet the <b>employment-to-population ratio</b> — the share of the working-age population actually in work — moved from 37.8% to 37.5% over the same nine years. The economy did not create jobs in proportion to the growth of the working-age population. Most of the apparent improvement comes from people <b>leaving</b> the labour market, not from people entering work.
+        </div>
+        <div class="lede-em"><b>The core gap:</b><span>falling unemployment ≠ rising employment</span></div>
+      </div>
+    </div>
+
+    <div class="srcline">
+      Sources: Iran's official statistical and civil-registration agencies — full source list and methodology in the
+      <a href="#method">technical appendix</a>.
+    </div>
+  </div>
+</section>
+
+<div class="wrap" id="summary" style="scroll-margin-top:64px">
+  <div class="kpis">
+    <div class="kpi semantic-good" data-spark="ur">
+      <div class="k-lab">Official unemployment rate, 1404</div>
+      <div class="k-val"><span class="pc">7.5%</span></div>
+      <div class="k-sub">from <span class="pc">12.4%</span> in 1395 ·
+        <span class="trend-good"><span class="pc">−4.9</span> pp</span></div>
+      <div class="k-spark"></div>
+    </div>
+
+    <div class="kpi semantic-bad" data-spark="part">
+      <div class="k-lab">Labour force participation rate, 1404</div>
+      <div class="k-val"><span class="pc">40.6%</span></div>
+      <div class="k-sub">from <span class="pc">43.2%</span> in 1395 ·
+        <span class="trend-bad"><span class="pc">−2.6</span> pp</span></div>
+      <div class="k-spark"></div>
+    </div>
+
+    <div class="kpi semantic-neutral" data-spark="er">
+      <div class="k-lab">Employment-to-population ratio, aged 15+</div>
+      <div class="k-val"><span class="pc">37.5%</span></div>
+      <div class="k-sub">from <span class="pc">37.8%</span> in 1395 ·
+        <span class="trend-neutral">essentially unchanged</span></div>
+      <div class="k-spark"></div>
+    </div>
+
+    <div class="kpi semantic-bad" data-spark="adj">
+      <div class="k-lab">Unemployment adjusted to 1395 participation</div>
+      <div class="k-val"><span class="pc">13.1%</span></div>
+      <div class="k-sub">Had participation not fallen, the official <span class="pc">7.5%</span>
+        would not hold</div>
+      <div class="k-spark"></div>
+    </div>
+
+    <div class="kpi semantic-bad" data-spark="inact">
+      <div class="k-lab">The absent half: economically inactive population, 15+</div>
+      <div class="k-val"><span class="pc">+5.5</span><span class="k-un">million</span></div>
+      <div class="k-sub">added over nine years ·
+        <span class="trend-bad">neither employed nor unemployed</span></div>
+      <div class="k-spark"></div>
+    </div>
+
+    <div class="kpi semantic-bad" data-spark="u24">
+      <div class="k-lab">Youth unemployment, aged 15–24, spring 1405</div>
+      <div class="k-val"><span class="pc">23.4%</span></div>
+      <div class="k-sub">Spring 1404: <span class="pc">19.7%</span> ·
+        <span class="trend-bad"><span class="pc">+3.7</span> pp</span></div>
+      <div class="k-spark"></div>
+    </div>
+
+    <div class="kpi semantic-bad" data-spark="births">
+      <div class="k-lab">Registered births, 1404</div>
+      <div class="k-val">892<span class="k-un">thousand</span></div>
+      <div class="k-sub">from 1,528 thousand in 1395 ·
+        <span class="trend-bad"><span class="pc">−41.6%</span></span></div>
+      <div class="k-spark"></div>
+    </div>
+
+    <div class="kpi semantic-bad" data-spark="erf">
+      <div class="k-lab">Women's share of total employment, 1404</div>
+      <div class="k-val"><span class="pc">15.2%</span></div>
+      <div class="k-sub">while <span class="pc">51.9%</span> of university students are women</div>
+      <div class="k-spark"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<section class="wrap">
+  <div class="findlead">SEVEN KEY FINDINGS, IN ORDER OF WEIGHT</div>
+  <div class="findings">
+    <a class="finding" href="#act1"><span class="n">01</span><span class="t">Of every 100 people who reached working age, only <em>17</em> entered the labour force.</span><span class="go">Act 1 ↘</span><span class="d">The working-age population grew by 6.62 million, but the labour force by only 1.11 million.</span></a>
+    <a class="finding" href="#act1"><span class="n">02</span><span class="t">Holding participation constant, 1404 unemployment would be <span class="pc">7.5%</span> rather than <em><span class="pc">13.1%</span></em> .</span><span class="go">Act 1 ↘</span><span class="d">Equivalent to 1.74 million hidden unemployed, who fall outside the official definition.</span></a>
+    <a class="finding" href="#act2"><span class="n">03</span><span class="t">Women are the majority of university students (<span class="pc">51.9%</span>) but only about <em><span class="pc">15%</span></em> of the employed.</span><span class="go">Act 2 ↘</span><span class="d">86.6% of women aged 15+ are outside the labour force, against 32.1% of men.</span></a>
+    <a class="finding" href="#act3"><span class="n">04</span><span class="t">Spring 1405 is the first break in the trend: <em>451 thousand fewer jobs</em> than spring 1404.</span><span class="go">Act 3 ↘</span><span class="d">Unemployment jumped in a single year from <span class="pc">7.3%</span> to <span class="pc">9.1%</span> — the largest quarterly jump in the period studied.</span></a>
+    <a class="finding" href="#act4"><span class="n">05</span><span class="t">Natural population increase shrank <em><span class="pc">62.7%</span></em> ; the birth-to-death ratio went from <span class="pc">4.1</span> to <span class="pc">1.9</span> .</span><span class="go">Act 4 ↘</span><span class="d">Marriages fell <span class="pc">38.7%</span> while divorces stayed nearly flat: 42 divorces per 100 marriages.</span></a>
+    <a class="finding" href="#act5"><span class="n">06</span><span class="t">The school-entry cohort has shrunk <em><span class="pc">20%</span></em> in a single decade.</span><span class="go">Act 5 ↘</span><span class="d">A child born in 1404 belongs to a cohort <span class="pc">41.6%</span> smaller than the one born in 1395.</span></a>
+    <a class="finding" href="#act6"><span class="n">07</span><span class="t">The official population projection ran about <em>169 thousand</em> ahead of reality in 1404.</span><span class="go">Act 6 ↘</span><span class="d">If the decade-long birth and death trends hold, natural increase reaches zero somewhere between 1412 and 1415.</span></a>
+  </div>
+</section>
+
+<section class="act wrap" id="act1">
+  <span class="act-num">ACT 1</span>
+  <h2>The single-digit illusion: unemployment fell because the labour market emptied out</h2>
+  <p class="lede">
+    The unemployment rate is a fraction with a moving denominator. When people stop looking for work they drop out of that denominator, and the rate falls without a single job being created. To measure how much of the improvement is real, we recompute the rate holding the <b>participation rate constant</b> .
+  </p>
+
+  <div class="statstrip">
+    <div><div class="v lapis"><span class="sg">+6.62</span><span class="k-un">million</span></div><div class="l">Growth in population aged 15+, 1395 to 1404</div></div>
+    <div><div class="v turq"><span class="sg">+1.11</span><span class="k-un">million</span></div><div class="l">Growth in the labour force (employed + unemployed)</div></div>
+    <div><div class="v pom"><span class="sg">+5.51</span><span class="k-un">million</span></div><div class="l">Growth in the inactive population</div></div>
+    <div><div class="v saff"><span class="pc">16.8%</span></div><div class="l">Share of new working-age entrants absorbed by the labour market</div></div>
+  </div>
+
+  <figure class="panel">
+    <h3>Official unemployment against the participation-adjusted rate</h3>
+    <p class="sub">
+      The hatched area is hidden unemployment: the difference between the official figure and what would be reported if participation had stayed at its base-year level. Change the base year with the slider below.
+    </p>
+    <div class="chartbox" id="c-hero"></div>
+    <div class="legend">
+      <span><i style="background:var(--turq)"></i>Official unemployment rate</span>
+      <span><i style="background:var(--saff)"></i>Rate adjusted to base-year participation</span>
+      <span><i class="sq" style="background:var(--saff-l);opacity:.55"></i>Hidden unemployment (adjusted rate higher)</span>
+      <span><i class="sq" style="background:var(--turq-l);opacity:.45"></i>Genuine improvement (adjusted rate lower)</span>
+    </div>
+    <figcaption>Data: Statistical Center of Iran, "Population aged 15+ by economic activity status" and "Labour force participation rate". The adjusted rate is derived in the methodology section.</figcaption>
+  </figure>
+
+  <div class="control">
+    <h4>Choose the participation base year</h4>
+    <p class="hint">
+      The question is simple: if the share of people entering the labour market had stayed at its base-year level, what would unemployment be today? Employment counts stay exactly as published and are never touched; only the size of the labour force is recomputed.
+    </p>
+    <div class="ctl-row">
+      <label for="baseyear">Base year</label>
+      <input type="range" id="baseyear" min="1395" max="1403" step="1" value="1395" aria-label="Select the participation base year">
+      <span class="seg light"><button id="lbl-baseyear" class="on" style="pointer-events:none">1395 — participation <span class="pc">43.2%</span></button></span>
+    </div>
+    <div class="readout">
+      <div><div class="rv turq" id="r-off"><span class="pc">7.5%</span></div><div class="rl">Official rate, 1404</div></div>
+      <div><div class="rv saff" id="r-adj"><span class="pc">13.1%</span></div><div class="rl">Adjusted rate, 1404</div></div>
+      <div><div class="rv pom" id="r-hid">1,740</div><div class="rl">Hidden unemployed (thousands)</div></div>
+      <div><div class="rv w" id="r-gap"><span class="sg">+5.6</span></div><div class="rl">Gap (pp)</div></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>What became of the 6.62 million who reached working age in nine years</h3>
+    <p class="sub">Each square is one percent of the net addition to the population aged 15+ between 1395 and 1404.</p>
+    <div class="chartbox" id="c-dots"></div>
+    <div class="legend">
+      <span><i class="sq" style="background:var(--turq)"></i>Entered the labour force — <span class="pc">17%</span></span>
+      <span><i class="sq" style="background:var(--stone-2);border:1px solid var(--line-2)"></i>Stayed inactive — <span class="pc">83%</span></span>
+    </div>
+    <figcaption>Calculation: growth in the labour force over these nine years (1,114 thousand) divided by growth in the population aged 15+ (6,620 thousand) equals 16.8%. Squares are rounded.</figcaption>
+  </div>
+
+  <figure class="panel">
+    <h3>Three rates, three different stories</h3>
+    <p class="sub">Unemployment collapsed, participation declined, and the employment ratio — which is insensitive to both — barely moved.</p>
+    <div class="chartbox" id="c-three"></div>
+    <div class="legend">
+      <span><i style="background:var(--pom)"></i>Unemployment rate</span>
+      <span><i style="background:var(--lapis)"></i>Participation rate</span>
+      <span><i style="background:var(--moss)"></i>employment-to-population ratio</span>
+    </div>
+    <figcaption>All three indicators are for the population aged 15+, nationwide. Source: Statistical Center of Iran.</figcaption>
+  </figure>
+
+  <figure class="panel">
+    <h3>The same pattern everywhere: urban and rural, women and men</h3>
+    <p class="sub">
+      If the fall in unemployment were real, different groups would show different patterns. Instead, all four repeat the same thing: <b>the unemployment line falls and the participation line falls with it</b>. Both charts show the same four groups over the same years.
+    </p>
+    <div class="twin">
+      <div>
+        <div class="twin-h">Unemployment rate</div>
+        <div class="chartbox" id="c-groups-ur"></div>
+      </div>
+      <div>
+        <div class="twin-h">Participation rate</div>
+        <div class="chartbox" id="c-groups-part"></div>
+      </div>
+    </div>
+    <figcaption>
+      Rural areas record lower unemployment than urban ones, but their participation fell faster: <span class="pc">−3.8</span>
+      pp against <span class="pc">−2.2</span> pp in cities. Women have the worst combination — unemployment two and a half times that of men, participation one-fifth of theirs.
+    </figcaption>
+  </figure>
+
+  <div class="callout">
+    <b>Why this chart matters:</b> A simultaneous fall in unemployment and participation across four independent groups is not coincidence. It is the same effect seen at national level, which means the phenomenon is structural rather than specific to any one group.
+  </div>
+
+  <div class="blocks">
+    <div class="blk blk-data">
+      <h4>DATA</h4>
+      <p>Between 1395 and 1404 the population aged 15+ went from 59.5 to 66.1 million (<span class="sg">+11.1%</span>). Over the same period the employed rose by 2.30 million, the unemployed fell by 1.18 million, and the inactive population grew by 5.51 million.</p>
+      <p>Participation went from <span class="pc">43.2%</span> to <span class="pc">40.6%</span> and the employment ratio from <span class="pc">37.8%</span> to <span class="pc">37.5%</span> .</p>
+    </div>
+    <div class="blk blk-analysis">
+      <h4>ANALYSIS</h4>
+      <p>The adjusted rate shows two distinct phases. Between 1395 and 1398 the improvement was <em>real</em> : the adjusted rate also fell from <span class="pc">12.4%</span> to <span class="pc">8.9%</span> . From 1399 onward the two diverge; the official rate reaches <span class="pc">7.5%</span> while the adjusted rate locks into a 12–14% band.</p>
+      <p>In other words, almost all of the reported improvement after 1399 is explained by the relative shrinking of the labour market, not by job creation.</p>
+    </div>
+    <div class="blk blk-concl">
+      <h4>CONCLUSION</h4>
+      <p>The unemployment rate has become a misleading indicator for this economy. The alternative proposed here is the <b>employment-to-population ratio</b> , which fell 0.3 pp in nine years and tells the truer story: Iran's economy has not created jobs in proportion to its growing working-age population.</p>
+      <p>Any policy that measures its own success by the unemployment rate is exposed to this error.</p>
+    </div>
+  </div>
+</section>
+<section class="act wrap" id="act2">
+  <span class="act-num">ACT 2</span>
+  <h2>The absent half: the country invests in women and then does not use them</h2>
+  <p class="lede">
+    For the first time in the available statistics, women form the majority of Iran's university students. In the very same year, women's labour force participation hit its lowest level of the decade. The two lines move in opposite directions.
+  </p>
+
+  <div class="statstrip">
+    <div><div class="v lapis"><span class="pc">51.9%</span></div><div class="l">Women's share of university students, 1403–1404</div></div>
+    <div><div class="v pom"><span class="pc">13.4%</span></div><div class="l">Women's participation rate, 1404</div></div>
+    <div><div class="v saff"><span class="sg">15.2%</span></div><div class="l">Estimated share of women in total employment</div></div>
+    <div><div class="v pom"><span class="pc">86.6%</span></div><div class="l">Women aged 15+ outside the labour force</div></div>
+  </div>
+
+  <figure class="panel">
+    <h3>The human-capital scissors</h3>
+    <p class="sub">Women's share of higher-education enrolment against women's labour force participation. Both as percentages, on one axis.</p>
+    <div class="chartbox" id="c-scissors"></div>
+    <div class="legend">
+      <span><i style="background:var(--lapis)"></i>Women's share of students</span>
+      <span><i style="background:var(--pom)"></i>Women's participation rate</span>
+      <span><i style="background:var(--turq)"></i>Women's employment ratio</span>
+    </div>
+    <figcaption>
+      The 1394–1395 academic year is aligned with calendar year 1395 (each academic year is assigned to the calendar year of its second half). Sources: Ministry of Science, Research and Technology; Statistical Center of Iran.
+    </figcaption>
+  </figure>
+
+  <p class="pull">In 1403–1404, 52 of every 100 university students were women. In 1404, of every 100 employed people only about <span>15</span> were women.</p>
+
+  <div class="panel">
+    <h3>The gender gap in the labour market, 1404</h3>
+    <p class="sub">Three key labour market indicators by gender. The length of each bar is the size of the gap.</p>
+    <div class="chartbox" id="c-gendergap"></div>
+    <div class="legend">
+      <span><i class="sq" style="background:var(--lapis)"></i>Men</span>
+      <span><i class="sq" style="background:var(--pom)"></i>Women</span>
+    </div>
+    <figcaption>Source: Statistical Center of Iran, labour force indicators for 1404.</figcaption>
+  </div>
+
+  <figure class="panel">
+    <h3>Where do women study?</h3>
+    <p class="sub">Gender composition of students by major field of study, 1403–1404. The figure beside each bar is the total enrolment in that field.</p>
+    <div class="chartbox" id="c-fields"></div>
+    <figcaption>Source: Ministry of Science, Research and Technology. Total enrolment: 3,503,179.</figcaption>
+  </figure>
+
+  <div class="blocks">
+    <div class="blk blk-data">
+      <h4>DATA</h4>
+      <p>Women's share of students rose from <span class="pc">46.1%</span> in 1394–1395 to <span class="pc">51.9%</span> in 1403–1404. Over the same period women's participation fell from <span class="pc">16.3%</span> to <span class="pc">13.4%</span> and their employment ratio from <span class="pc">12.9%</span> to <span class="pc">11.4%</span> .</p>
+      <p>Women are the majority in art (<span class="pc">69.5%</span>), basic sciences (<span class="pc">68.7%</span>), medicine (<span class="pc">58.8%</span>) and humanities (<span class="pc">57.8%</span>), and a minority in engineering (<span class="pc">24.8%</span>).</p>
+    </div>
+    <div class="blk blk-analysis">
+      <h4>ANALYSIS</h4>
+      <p>The fall in women's unemployment from <span class="pc">20.7%</span> to <span class="pc">15.0%</span> looks positive at first glance, but it happened alongside a fall in their employment ratio — the Act 1 pattern, only sharper. The official definition does not count an educated woman who has stopped actively searching as unemployed.</p>
+      <p>The mix of fields matters too: industry — which provides <span class="pc">32.8%</span> of national employment — draws on a field where only a quarter of students are women.</p>
+    </div>
+    <div class="blk blk-concl">
+      <h4>CONCLUSION</h4>
+      <p>Iran's largest untapped human resource is 28.7 million economically inactive women aged 15+ — a population larger than everyone currently employed in the country.</p>
+      <p>If women's participation returned merely to its 1397 level (<span class="pc">17.6%</span>), roughly 1.4 million people would join the labour force. That is the return on an investment the country has already made in educating them.</p>
+    </div>
+  </div>
+</section>
+
+<section class="act wrap" id="act3">
+  <span class="act-num">ACT 3</span>
+  <h2>Warning bell, spring 1405: where the decade-long trend broke</h2>
+  <p class="lede">
+    The most recent quarterly data in this dataset marks the first serious reversal. Comparing spring 1405 with spring 1404 — like-for-like quarters, which cancels out seasonality — unemployment did not merely rise; <b>the absolute number of employed people fell</b>.
+  </p>
+
+  <div class="statstrip">
+    <div><div class="v pom"><span class="sg">−451</span> thousand</div><div class="l">Change in employment, spring 1405 against spring 1404 (thousands)</div></div>
+    <div><div class="v pom"><span class="sg">+483</span> thousand</div><div class="l">Change in the number of unemployed (thousands)</div></div>
+    <div><div class="v pom"><span class="pc">9.1%</span></div><div class="l">Unemployment rate, spring 1405 (spring 1404: <span class="pc">7.3%</span>)</div></div>
+    <div><div class="v pom"><span class="pc">23.4%</span></div><div class="l">Unemployment rate, aged 15–24</div></div>
+  </div>
+
+  <figure class="panel">
+    <h3>The last five quarters: total, youth and women's unemployment</h3>
+    <p class="sub">All three series jumped together in spring 1405 — the signature of a general shock rather than noise in one group.</p>
+    <div class="chartbox" id="c-q"></div>
+    <div class="legend">
+      <span><i style="background:var(--pom)"></i>All aged 15+</span>
+      <span><i style="background:var(--saff)"></i>Aged 15–24</span>
+      <span><i style="background:var(--lapis)"></i>Aged 18–35</span>
+      <span><i style="background:var(--turq)"></i>Women aged 15+</span>
+    </div>
+    <figcaption>Source: Statistical Center of Iran, Labour Force Survey, spring 1404 to spring 1405.</figcaption>
+  </figure>
+
+  <figure class="panel">
+    <h3>Where did the shock come from? Sector employment change, spring 1405 against spring 1404</h3>
+    <p class="sub">Sector headcounts are estimated by multiplying each sector's share by total employment in that quarter, then differenced.</p>
+    <div class="chartbox" id="c-sectorshock"></div>
+    <figcaption>
+      Author's estimate based on the Statistical Center's "Share of employment in major economic sectors" and "Employed population". Because shares are published to one decimal place, the rounding error per sector is about <span class="sg">±12</span> thousand — far smaller than the change observed in industry.
+    </figcaption>
+  </figure>
+
+  <figure class="panel">
+    <h3>Where did the new jobs come from? Nine years, three sectors</h3>
+    <p class="sub">
+      Official data publish each sector's share as a <b>percentage</b> , and percentages can deceive: agriculture's share fell, but did it lose jobs or merely grow more slowly? Switch to "Headcount" to see the same data in people. The answer is unambiguous.
+    </p>
+    <div class="chartbox" id="c-sector9"></div>
+    <div class="statstrip">
+      <div><div class="v pom"><span class="pc">−582</span></div><div class="l">Change in agricultural employment, 1395 to 1404 (thousands)</div></div>
+      <div><div class="v lapis"><span class="pc">+956</span></div><div class="l">Change in industrial employment (thousands)</div></div>
+      <div><div class="v turq"><span class="pc">+1,897</span></div><div class="l">Change in services employment (thousands)</div></div>
+      <div><div class="v saff"><span class="pc">83%</span></div><div class="l">Services' share of all net jobs added</div></div>
+    </div>
+    <figcaption>
+      Author's calculation: each sector's percentage share multiplied by that year's employed population. Total net employment growth over these nine years comes to 2,271 thousand, matching the independent figure of 2,297 thousand (the difference in employed population) to within rounding error.
+    </figcaption>
+  </figure>
+
+  <div class="callout">
+    <b>What this chart shows:</b> Over these nine years agriculture lost not just share but <b>jobs</b> — nearly 582 thousand of them. Almost all net national employment growth came from services, a sector with lower average productivity and job stability than industry. The composition of employment is as much a concern as its volume.
+  </div>
+
+  <div class="callout pom">
+    <b>Why this quarter matters:</b> Throughout 1395–1404, falling unemployment came alongside stable or slowly rising employment. Spring 1405 is the first quarter where both deteriorate at once: <b>fewer jobs and more unemployed</b>. This pattern cannot be explained by people leaving the labour market — the labour force stayed almost flat (<span class="sg">+32</span> thousand). What changed is that 451 thousand people moved from the employed column to the unemployed one.
+  </div>
+
+  <div class="blocks">
+    <div class="blk blk-data">
+      <h4>DATA</h4>
+      <p>Spring 1405: population 15+ at 66,671 thousand (<span class="sg">+828</span> thousand against spring 1404), labour force 27,136 (<span class="sg">+32</span>), employed 24,672 (<span class="sg">−451</span>), unemployed 2,464 (<span class="sg">+483</span>).</p>
+      <p>Industry's share of employment fell from <span class="pc">33.0%</span> to <span class="pc">31.0%</span> ; services rose from <span class="pc">52.4%</span> to <span class="pc">53.8%</span> and agriculture from <span class="pc">14.6%</span> to <span class="pc">15.1%</span> .</p>
+    </div>
+    <div class="blk blk-analysis">
+      <h4>ANALYSIS</h4>
+      <p>Translating shares into headcounts shows industry lost about 643 thousand jobs, while services added only 110 thousand and agriculture 58 thousand. The shock originates almost entirely in industry.</p>
+      <p>The simultaneous rise in agriculture's share — a sector shrinking throughout the decade — is the classic signature of labour <em>taking refuge</em> in informal, low-productivity work during a contraction.</p>
+    </div>
+    <div class="blk blk-concl">
+      <h4>CONCLUSION</h4>
+      <p>This is a turning point, not noise. For the first time in the period studied, growth in the working-age population has coincided with an absolute <em>decline</em> in employment.</p>
+      <p>Methodological caveat: this finding rests on a single quarter and should be checked against summer and autumn 1405. That said, the size of the move (1.8 pp on the unemployment rate) exceeds any seasonal fluctuation recorded in this dataset.</p>
+    </div>
+  </div>
+</section>
+<section class="act wrap" id="act4">
+  <span class="act-num">ACT 4</span>
+  <h2>The empty cradle: the demographic engine is shutting down</h2>
+  <p class="lede">
+    So far we have talked about the people who <b>exist</b>. This act is about those who <b>do not</b>. Registered births fell 41.6% in nine years — and the decline accelerated in the last two.
+  </p>
+
+  <div class="statstrip">
+    <div><div class="v pom"><span class="sg">−41.6%</span></div><div class="l">Change in registered births, 1395 to 1404</div></div>
+    <div><div class="v saff"><span class="sg">+24.4%</span></div><div class="l">Change in registered deaths over the same period</div></div>
+    <div><div class="v pom"><span class="sg">−62.7%</span></div><div class="l">Change in natural increase (births minus deaths)</div></div>
+    <div><div class="v lapis"><span class="pc">4.1</span> ← <span class="pc">1.9</span></div><div class="l">Birth-to-death ratio</div></div>
+  </div>
+
+  <figure class="panel">
+    <h3>The vital scissors: births and deaths on a collision course</h3>
+    <p class="sub">The hatched area is natural population increase. In 1395 there were 4.1 births for every death; by 1404 that ratio had fallen to 1.9.</p>
+    <div class="chartbox" id="c-vital"></div>
+    <div class="legend">
+      <span><i style="background:var(--turq)"></i>Registered births</span>
+      <span><i style="background:var(--pom)"></i>Registered deaths</span>
+      <span><i class="sq" style="background:var(--saff-l);opacity:.5"></i>Natural population increase</span>
+    </div>
+    <figcaption>
+      Source: National Organization for Civil Registration. The male birth figure for 1395 has been corrected (see the data-cleaning section); the correction does not affect total births. The 1399 and 1400 spike in deaths reflects the COVID-19 pandemic.
+    </figcaption>
+  </figure>
+
+  <figure class="panel">
+    <h3>Marriages fell 39%, divorces did not budge</h3>
+    <p class="sub">Bars are event counts; the dashed line is divorces per 100 marriages in the same year.</p>
+    <div class="chartbox" id="c-marr"></div>
+    <div class="legend">
+      <span><i class="sq" style="background:var(--lapis)"></i>Marriages fell</span>
+      <span><i class="sq" style="background:var(--pom)"></i>Divorces</span>
+      <span><i style="background:var(--saff)"></i>Divorces per 100 marriages (right axis)</span>
+    </div>
+    <figcaption>Source: National Organization for Civil Registration. The ratio is computed within the same calendar year and is not a measure of divorce within a marriage cohort.</figcaption>
+  </figure>
+
+  <div class="callout">
+    <b>A dependable relationship:</b> the correlation between marriages in a given year and births in the <em>following year</em> is
+    <b>0.95</b> over this period (same-year correlation: 0.89). Because marriage is a time-lagged driver of births, the fall in marriages to 432 thousand in 1404 — the lowest of the period — means <b>the decline in births continues at least through 1405 and is already locked into today's data</b>.
+  </div>
+
+  <figure class="panel">
+    <h3>Households keep shrinking</h3>
+    <p class="sub">Average household size from the 1335 census to 1400. The urban–rural difference has all but disappeared.</p>
+    <div class="chartbox" id="c-hh"></div>
+    <div class="legend">
+      <span><i style="background:var(--ink)"></i>National</span>
+      <span><i style="background:var(--lapis)"></i>Urban</span>
+      <span><i style="background:var(--moss)"></i>Rural</span>
+    </div>
+    <figcaption>Source: Statistical Center of Iran. Census intervals are uneven; the horizontal axis is scaled to actual years.</figcaption>
+  </figure>
+
+  <div class="blocks">
+    <div class="blk blk-data">
+      <h4>DATA</h4>
+      <p>Births: 1,528,053 in 1395 to 892,278 in 1404 (compound annual growth rate <span class="sg">−5.8%</span>). Deaths: 369,751 to 459,984 (<span class="sg">+2.5%</span> per year). Natural increase: 1,158,302 down to 432,294.</p>
+      <p>Winter 1404, with 207,578 births, is the lowest-birth quarter recorded in this dataset.</p>
+    </div>
+    <div class="blk blk-analysis">
+      <h4>ANALYSIS</h4>
+      <p>Two forces are at work at once: falling births, rooted in fewer marriages and smaller households, and rising deaths, which are largely a product of population <em>ageing</em> rather than deteriorating health. 1399 and 1400 are the COVID exception; after that, deaths returned to their long-run trend.</p>
+      <p>The fall in rural births (<span class="sg">−43.5%</span>) is slightly steeper than in cities (<span class="sg">−41.0%</span>), meaning the rural fertility advantage is also disappearing.</p>
+    </div>
+    <div class="blk blk-concl">
+      <h4>CONCLUSION</h4>
+      <p>Iran's natural population increase has shrunk by nearly two-thirds in nine years. This is no longer a slow trend; it accelerated in 1403 and 1404.</p>
+      <p>Because marriage leads births and marriages hit a period low in 1404, a continued near-term decline is close to certain. Pro-natalist policies, if they are having an effect, are not yet visible in the available data.</p>
+    </div>
+  </div>
+</section>
+
+<section class="act wrap" id="act5">
+  <span class="act-num">ACT 5</span>
+  <h2>The school queue is getting shorter: a wave already on its way</h2>
+  <p class="lede">
+    School enrolment peaked at 16.97 million in 1401–1402, an echo of the 1393–1396 birth wave. That wave is over, and what follows is far smaller — something we know not from any forecast but from <b>the number of children already born</b> .
+  </p>
+
+  <div class="statstrip">
+    <div><div class="v lapis">16.86<span class="k-un">million</span></div><div class="l">School enrolment, 1403–1404 (millions)</div></div>
+    <div><div class="v pom"><span class="sg">−20.1%</span></div><div class="l">Shrinkage of the six-year school-entry cohort</div></div>
+    <div><div class="v pom"><span class="sg">−43.0%</span></div><div class="l">Fall in higher-education graduates, 1394–95 to 1402–03</div></div>
+    <div><div class="v saff">9.28<span class="k-un">million</span></div><div class="l">Primary school pupils today (millions)</div></div>
+  </div>
+
+  <figure class="panel">
+    <h3>The peak has passed</h3>
+    <p class="sub">
+      The line is registered school enrolment by academic year. It peaks in 1401–1402, echoing the birth wave of 1393 to 1396.
+    </p>
+    <div class="chartbox" id="c-school"></div>
+    <div class="legend"><span><i style="background:var(--lapis)"></i>Total registered enrolment, by academic year</span></div>
+    <h3 style="margin-top:26px; font-size:14.5px">And the size of the cohorts still to come</h3>
+    <p class="sub">Each bar is the sum of six consecutive years of births — the population that fills the whole of primary school about seven years later. The percentage under each bar is the change from the first window.</p>
+    <div class="chartbox" id="c-cohort"></div>
+    <figcaption>
+      Assumptions: near-universal enrolment, negligible child mortality, zero net migration. The bars do not forecast the level of future enrolment — they measure the
+      <em>relative</em> shrinkage of cohorts, which is highly insensitive to those assumptions. The level difference between bars and line partly reflects foreign-national pupils and the absence of birth data before 1395.
+    </figcaption>
+  </figure>
+
+  <div class="callout turq">
+    <b>A rare certainty in forecasting:</b> a child born in 1404 starts primary school around 1410 and enters the labour market around 1422. The number of those children <b>is already known</b>: 892,278, against 1,528,053 in the 1395 cohort. This is the one part of the demographic future that requires no assumptions at all.
+  </div>
+
+  <figure class="panel">
+    <h3>Higher education: students came back, graduates did not</h3>
+    <p class="sub">Enrolment is recovering after the sharp 1394–1399 decline, but the number of graduates is still falling.</p>
+    <div class="chartbox" id="c-uni"></div>
+    <div class="legend">
+      <span><i style="background:var(--lapis)"></i>Students</span>
+      <span><i style="background:var(--pom)"></i>Graduates</span>
+    </div>
+    <figcaption>Source: Ministry of Science, Research and Technology. Graduate data are published through the 1402–1403 academic year.</figcaption>
+  </figure>
+
+  <div class="blocks">
+    <div class="blk blk-data">
+      <h4>DATA</h4>
+      <p>School enrolment: 17.88 million (1380–81) → trough of 13.23 million (1391–92) → peak of 16.97 million (1401–02) → 16.86 million (1403–04).</p>
+      <p>Total births from 1395 to 1400 come to 7,808,954; from 1399 to 1404, 6,235,729.</p>
+    </div>
+    <div class="blk blk-analysis">
+      <h4>ANALYSIS</h4>
+      <p>School enrolment mirrors the birth wave with a six-to-seven-year lag. Since births have fallen continuously from 1395, enrolment enters a sustained decline from around 1405–1406: first in primary, then with a lag in secondary and higher education.</p>
+      <p>The 43% drop in graduates happened while enrolment has been rising since 1400 — pointing to a mix of weak intakes in the intervening years and, plausibly, more dropouts or longer time-to-degree.</p>
+    </div>
+    <div class="blk blk-concl">
+      <h4>CONCLUSION</h4>
+      <p>The country is on the verge of a major reorganisation of educational infrastructure: surplus capacity in primary schools within a few years, then in secondary schools and universities.</p>
+      <p>On the other side, the flow of young workers into the economy will be markedly thinner after about 1415. Iran's demographic window — the period when the working-age share is high — is closing, while (per Act 1) it has yet to be fully used.</p>
+    </div>
+  </div>
+</section>
+
+<section class="act wrap" id="act6">
+  <span class="act-num">ACT 6</span>
+  <h2>Official projections under strain</h2>
+  <p class="lede">
+    The "Population and Human Resources" sheet places two things side by side that are rarely compared:
+    <b>the population projection to 1415</b> and <b>actual birth and death statistics</b>. Put them together and a gap appears — one that has widened rapidly in the last two years.
+  </p>
+
+  <figure class="panel">
+    <h3>The gap between projected growth and actual natural increase</h3>
+    <p class="sub">
+      Each bar shows how far <b>actual natural increase</b> (births minus deaths) ran ahead of or behind
+      <b>the population growth the official projection expected</b> .
+      <span class="lg-in"><i style="background:#2E7D4F"></i>Green: reality ahead of projection</span>
+      <span class="lg-in"><i style="background:#C4342E"></i>Red: reality behind projection</span>
+    </p>
+    <div class="chartbox" id="c-gap"></div>
+    <figcaption>
+      The two red waves have different causes: 1399 and 1400 are excess COVID deaths, while 1403 and 1404 are the accelerating fall in births. The gap could also be explained by net migration, differing fertility assumptions, or both; this sheet cannot separate them and we make no claim about which dominates.
+    </figcaption>
+  </figure>
+
+  <div class="tblwrap">
+    <table>
+      <caption class="hidden">Projected population increase against actual natural increase</caption>
+      <thead><tr><th>Year</th><th>Projected population increase (thousands)</th><th>Actual natural increase (thousands)</th><th>Gap (actual minus projected)</th><th>Dominant explanation</th></tr></thead>
+      <tbody id="gaptable"></tbody>
+    </table>
+  </div>
+
+  <figure class="panel">
+    <h3>A live population model to 1415 — change the assumptions yourself</h3>
+    <p class="sub">
+      The teal line is the official projection and stays fixed. The crimson line is this project's model: it starts from the actual 1404 figure and moves forward on births, deaths and migration alone. Move the three sliders below to see how sensitive the result is to those assumptions.
+    </p>
+
+    <div class="mini" id="projctl">
+      <div class="fld">
+        <label for="p-birth">Annual growth in births: <output id="o-birth"><span class="pc">−5.8%</span></output></label>
+        <input type="range" id="p-birth" min="-90" max="40" step="1" value="-58"
+               aria-label="Annual growth in births, in tenths of a percent">
+      </div>
+      <div class="fld">
+        <label for="p-death">Annual growth in deaths: <output id="o-death"><span class="pc">+2.5%</span></output></label>
+        <input type="range" id="p-death" min="0" max="60" step="1" value="25"
+               aria-label="Annual growth in deaths, in tenths of a percent">
+      </div>
+      <div class="fld">
+        <label for="p-mig">Annual net migration: <output id="o-mig">0</output> thousand</label>
+        <input type="range" id="p-mig" min="-400" max="200" step="10" value="0"
+               aria-label="Annual net migration, in thousands">
+      </div>
+      <div class="fld" style="flex:0 0 auto; min-width:0">
+        <label>&nbsp;</label>
+        <button type="button" class="iconbtn" id="p-reset">Reset to baseline</button>
+      </div>
+    </div>
+
+    <div class="readout" id="projout">
+      <div><div class="rv turq" id="p-off">91,446</div><div class="rl">Official projection for 1415 (thousands)</div></div>
+      <div><div class="rv pom"  id="p-mod">87,657</div><div class="rl">Your model for 1415</div></div>
+      <div><div class="rv saff" id="p-dif">3,789−</div><div class="rl">Difference from the official figure</div></div>
+      <div><div class="rv lapis" id="p-cross">1412</div><div class="rl">The year deaths overtake births</div></div>
+    </div>
+
+    <div class="chartbox" id="c-proj"></div>
+    <div class="legend">
+      <span><i style="background:var(--turq)"></i>Official projection</span>
+      <span><i style="background:var(--saff)"></i>Moderated scenario: births falling <span class="sg">−3.5%</span> per year</span>
+      <span><i style="background:var(--pom)"></i>Your model</span>
+    </div>
+    <figcaption>
+      The <span class="sg">−5.8%</span> figure is the actual compound growth rate of births from 1395 to 1404. The <span class="sg">+2.5%</span> rate for deaths comes from the same period, and is consistent with the 1398–1404 rate of <span class="pc">2.56%</span> , so it is not sensitive to the COVID years. These scenarios are <b>not forecasts</b>; they are sensitivity tests, and they show that the official projection holds only if the trend of the last decade stops.
+    </figcaption>
+  </figure>
+
+  <figure class="panel">
+    <h3>Iran grows more urban because the countryside empties</h3>
+    <p class="sub">In the official projection, the rural and non-settled population declines in <em>every single one</em> of the years from 1396 to 1415.</p>
+    <div class="chartbox" id="c-urban"></div>
+    <div class="legend">
+      <span><i class="sq" style="background:var(--lapis)"></i>Urban areas</span>
+      <span><i class="sq" style="background:var(--moss)"></i>Rural and non-settled areas</span>
+      <span><i style="background:var(--saff)"></i>Urbanisation rate (right axis)</span>
+    </div>
+    <figcaption>Source: Statistical Center of Iran, national population projection. Figures in thousands.</figcaption>
+  </figure>
+
+  <div class="blocks">
+    <div class="blk blk-data">
+      <h4>DATA</h4>
+      <p>The official projection implies a population increase of 601 thousand for 1404, while actual natural increase that year was 432 thousand — a gap of 169 thousand. In 1403 the gap was 111 thousand.</p>
+      <p>The projected annual population growth rate falls from <span class="pc">1.12%</span> in 1397 to <span class="pc">0.36%</span> in 1415. The rural population goes from 20.75 to 18.20 million (<span class="sg">−12.3%</span>).</p>
+    </div>
+    <div class="blk blk-analysis">
+      <h4>ANALYSIS</h4>
+      <p>The gap has two distinct origins and should not be read as one. The 1399 and 1400 gaps (<span class="sg">+97</span> and <span class="sg">+74</span> thousand) come from excess COVID deaths, an event no projection anticipated. The 1403 and 1404 gaps (<span class="sg">+111</span> and <span class="sg">+169</span> thousand) have a different source: births falling faster than the model assumed.</p>
+      <p>The scenarios show that if the current trend continues, natural increase reaches zero somewhere between 1412 (trend continuation) and 1415 (moderated scenario), and turns negative thereafter.</p>
+    </div>
+    <div class="blk blk-concl">
+      <h4>CONCLUSION</h4>
+      <p>This is not a criticism of the Statistical Center's model; every demographic projection rests on assumptions and must be revised when reality moves. Our finding is that <b>that moment has arrived</b>: the gap has doubled in two years, and the cause is identifiable.</p>
+      <p>Practical implication: planning that relies on 91.4 million people in 1415 — from subsidy and water allocation to school capacity and pension funds — should also accommodate a lower scenario of roughly 88 to 89 million.</p>
+    </div>
+  </div>
+</section>
+<section class="finale" id="finale" style="scroll-margin-top:56px">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--saff-l)">Conclusions</div>
+    <h2>Two hourglasses emptying at once</h2>
+    <p class="lede" style="max-width:820px; font-size:17px; margin-top:16px">
+      This dashboard's argument is one sentence: <b style="color:#fff">Iran faces two constraints at the same time, and each makes the other worse.</b>
+      On one side the demographic engine is shutting down, and the inflow of workers will be smaller in the decades ahead. On the other, right now — while the working-age population is still growing — the economy has failed to absorb it, and the official unemployment rate has concealed that failure. The demographic window is closing before it was ever really opened.
+    </p>
+
+    <div class="fgrid">
+      <div>
+        <h4>1 · Change the indicator</h4>
+        <p>In an economy with falling participation, the unemployment rate is a misleading measure. <b>employment-to-population ratio</b> and <b>the absolute number of employed people</b> should be the primary yardstick for employment policy. The former fell 0.3 pp in nine years.</p>
+      </div>
+      <div>
+        <h4>2 · The largest reserve is women</h4>
+        <p>28.7 million women aged 15+ are outside the labour force, even though women are the majority of university students. Returning women's participation merely to its 1397 level would add around 1.4 million people to the labour force.</p>
+      </div>
+      <div>
+        <h4>3 · Take spring 1405 seriously</h4>
+        <p>The first quarter in which jobs fell and unemployment rose together, with a clear origin in industry (<span class="sg">−643</span> thousand jobs, estimated). It needs checking against the next two quarters, but its magnitude is unprecedented.</p>
+      </div>
+      <div>
+        <h4>4 · Revise the projections</h4>
+        <p>The gap between the official projection and actual natural increase has more than doubled in two years. Long-term planning should cover a scenario of 88 to 89 million in 1415, not only 91.4 million.</p>
+      </div>
+      <div>
+        <h4>5 · The education clock rings first</h4>
+        <p>The decline in school enrolment begins around 1405–1406 and, unlike the labour market, is close to certain — the children are already born. Surplus school capacity is an opportunity for reallocation, not a crisis.</p>
+      </div>
+      <div>
+        <h4>6 · Where the two crises meet</h4>
+        <p>Unless productivity and participation rise, a shrinking future workforce means lower output and compounding pressure on pension funds. The time to use the young population that already exists is now.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="appendix" id="method" style="scroll-margin-top:56px">
+  <div class="wrap">
+    <div class="eyebrow">technical appendix</div>
+    <h2>Data, method, corrections and transparency</h2>
+    <p class="narrow" style="margin-top:14px">
+      Every figure presented here as a derived indicator appears in this section with its formula, assumptions and source. The aim is that any reader can reproduce each calculation independently.
+    </p>
+
+    <h3>1 · Data sources</h3>
+    <p>
+      All figures are extracted from the "Population and Human Resources" sheet of the <b>Macroeconomic and Social Indicators of Iran</b> workbook. The raw file is published alongside this project and can be downloaded <a href="data/raw/iran-macro-indicators.xlsx">here</a>
+      . No external data has been added. The agency responsible for each table, as stated in the file itself, is listed below with a link to its official site:
+    </p>
+    <ul class="srclist">
+      <li>
+        <b><a href="https://www.amar.org.ir/" target="_blank" rel="noopener noreferrer">Statistical Center of Iran</a></b>
+        <span class="u">amar.org.ir</span> — national population projection to 1415; average household size; population aged 15+ by activity status; participation rate; unemployment for all ages, 15–24 and 18–35; employment ratio; share of major economic sectors in employment.
+        <span class="u">Labour data come from the Center's Labour Force Survey.</span>
+      </li>
+      <li>
+        <b><a href="https://www.sabteahval.ir/" target="_blank" rel="noopener noreferrer">National Organization for Civil Registration</a></b>
+        <span class="u">sabteahval.ir</span> — registered births and deaths by sex and by urban/rural area; registered marriages and divorces, annual and quarterly.
+      </li>
+      <li>
+        <b><a href="https://www.medu.ir/" target="_blank" rel="noopener noreferrer">Ministry of Education</a></b>
+        <span class="u">medu.ir</span> — school enrolment by gender and educational stage.
+      </li>
+      <li>
+        <b><a href="https://www.msrt.ir/" target="_blank" rel="noopener noreferrer">Ministry of Science, Research and Technology</a></b>
+        <span class="u">msrt.ir</span> — higher-education students and graduates by field of study and gender.
+        <span class="u">Institutions under the Ministry of Health are included in these same tables.</span>
+      </li>
+    </ul>
+    <p class="srcnote">
+      The cleaned dataset this dashboard runs on can be downloaded from the buttons at the foot of this page as
+      <span dir="ltr" class="mono">JSON</span> and <span dir="ltr" class="mono">CSV</span> , so that every figure here can be checked independently.
+    </p>
+
+    <h3>2 · Data cleaning and corrections</h3>
+    <p>
+      Before any analysis, every table with a "total = male + female" or "total = urban + rural" structure was tested automatically for consistency. The test found nine inconsistencies. Five were corrected on conclusive internal evidence; the rest were flagged and left untouched.
+      <b>No correction affects any national total</b>; all of them concern internal components.
+    </p>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>#</th><th>Series and item</th><th>Value in file</th><th>Corrected value</th><th>Evidence</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>1</td><td>Births 1395 — male, national</td>
+            <td class="num">766,142</td><td class="num">786,142</td>
+            <td>Urban male + rural male = 605,523 + 180,619 = 786,142. The corrected value also moves the sex ratio at birth from 103.3 (outside the natural range) to 106.0, consistent with 106.1 in 1396.</td>
+            <td><span class="chip fix">Corrected</span></td>
+          </tr>
+          <tr>
+            <td>2</td><td>Births 1396 — rural total</td>
+            <td class="num">344,355</td><td class="num">344,365</td>
+            <td>Rural male + rural female = 177,029 + 167,336 = 344,365; urban + rural then matches the national total exactly.</td>
+            <td><span class="chip fix">Corrected</span></td>
+          </tr>
+          <tr>
+            <td>3</td><td>Deaths, winter 1404 — urban total</td>
+            <td class="num">908,866</td><td class="num">90,866</td>
+            <td>One extra digit; urban male + female = 53,410 + 37,456 = 90,866. The published value is eight times the entire quarter's deaths.</td>
+            <td><span class="chip fix">Corrected</span></td>
+          </tr>
+          <tr>
+            <td>4</td><td>Deaths, winter 1404 — rural total</td>
+            <td class="num">23,805</td><td class="num">22,805</td>
+            <td>Rural male + female = 12,093 + 10,712 = 22,805. After this correction, 90,866 + 22,805 = 113,671, exactly the quarter's total.</td>
+            <td><span class="chip fix">Corrected</span></td>
+          </tr>
+          <tr>
+            <td>5</td><td>Deaths, summer 1404 — rural total</td>
+            <td class="num">25,531</td><td class="num">23,531</td>
+            <td>Rural male + female = 12,403 + 11,128 = 23,531; and 91,141 + 23,531 = 114,672, the quarter's total.</td>
+            <td><span class="chip fix">Corrected</span></td>
+          </tr>
+          <tr>
+            <td>6</td><td>Deaths 1395 — breakdown by sex (all three areas)</td>
+            <td class="num">Male 161,774<br>Female 207,884</td><td class="num">—</td>
+            <td>The male-to-female death ratio in 1395 is 0.78, whereas from 1396 to 1404 it stays between 1.20 and 1.30. The inversion occurs simultaneously in the national, urban and rural rows — the clear signature of two transposed columns. Lacking conclusive evidence, we did not correct it.</td>
+            <td><span class="chip warn">Flagged</span></td>
+          </tr>
+          <tr>
+            <td>7</td><td>Unemployment rate, aged 18–35, 1395</td>
+            <td class="num"><span class="pc">26.8%</span></td><td class="num">—</td>
+            <td>A 7.1 pp fall in a single year (to <span class="pc">19.7%</span> in 1396), while the 15–24 group fell only 1.0 pp and the whole population only 0.3 pp. A sign of a definitional break or recording error rather than real change.</td>
+            <td><span class="chip warn">Excluded from trend analysis</span></td>
+          </tr>
+          <tr>
+            <td>8</td><td>Death totals by sex, 1395 to 1401</td>
+            <td class="num">Discrepancy of 12 to 93</td><td class="num">—</td>
+            <td>Male + female always falls slightly short of the total. Our reading: records of unknown sex. The discrepancy is under <span class="pc">0.03%</span> and reaches zero from 1402 onward.</td>
+            <td><span class="chip note">Left as published</span></td>
+          </tr>
+          <tr>
+            <td>9</td><td>Population projection — sum of components</td>
+            <td class="num">Discrepancy <span class="sg">±1</span> thousand</td><td class="num">—</td>
+            <td>In 16 rows the components sum to one thousand more or less than the total. This is rounding to the nearest thousand, not an error.</td>
+            <td><span class="chip note">Left as published</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px">
+      Some quarterly row labels in the file carried a trailing space (for example "Spring 1404 "), which was normalised before joining tables. The "pre-primary" row in the enrolment table is recorded as "000", read as "not available" and excluded from the calculations.
+    </p>
+
+    <h3>3 · Derived indicators and how they are computed</h3>
+
+    <details open><summary>a) Participation-adjusted unemployment — this project's central indicator</summary>
+      <div>
+        <p>The question: if the participation rate had stayed at its base-year level (<span dir="ltr">base</span>), with the same actual number of employed people, what would the unemployment rate be?</p>
+        <div class="formula">
+          A*<sub>t</sub> = P<sub>t</sub> × r<sub>base</sub> &nbsp;&nbsp;<span>← counterfactual labour force</span><br>
+          U*<sub>t</sub> = ( A*<sub>t</sub> − E<sub>t</sub> ) / A*<sub>t</sub> = 1 − E<sub>t</sub> / ( P<sub>t</sub> × r<sub>base</sub> )<br>
+          H<sub>t</sub> = A*<sub>t</sub> − A<sub>t</sub> &nbsp;&nbsp;<span>← hidden unemployed</span>
+        </div>
+        <p>
+          where P is the population aged 15+, E the employed population, A the published labour force and r the participation rate. Worked example for 1404 with a 1395 base (<span class="pc">43.2%</span>): <span dir="ltr" class="mono">A* = 66,148 × 0.432 = 28,576</span> thousand;
+          <span dir="ltr" class="mono">U* = 1 − 24,822 / 28,576 = 13.14%</span>; hidden unemployed <span dir="ltr" class="mono">= 28,576 − 26,837 = 1,739</span> thousand.
+        </p>
+        <p><b>Limitation:</b> this indicator does not assume everyone who left is truly unemployed. Part of the fall in participation may reflect more education, retirement, or an ageing population structure. U* should therefore be read as an <em>upper bound on</em> true unemployment and U as a lower bound. The analytical message is the distance between them.</p>
+      </div>
+    </details>
+
+    <details><summary>b) Gender breakdown of the 15+ population and employment (analytical estimate)</summary>
+      <div>
+        <p>The file does not publish the 15+ population by gender, but it does give men's and women's employment ratios. The breakdown can be reconstructed by solving a single-unknown equation:</p>
+        <div class="formula">
+          r<sub>m</sub>·P<sub>m</sub> + r<sub>f</sub>·(P − P<sub>m</sub>) = E &nbsp;&nbsp;⟹&nbsp;&nbsp; P<sub>m</sub> = ( E − r<sub>f</sub>·P ) / ( r<sub>m</sub> − r<sub>f</sub> )
+        </div>
+        <p>For 1404 with <span dir="ltr" class="mono">P = 66,148</span>, <span dir="ltr" class="mono">E = 24,822</span>, <span dir="ltr" class="mono">r<sub>m</sub> = 63.8%</span>, <span dir="ltr" class="mono">r<sub>f</sub> = 11.4%</span>: 32,979 thousand men and 33,169 thousand women; 21,041 thousand employed men and 3,781 thousand employed women ⟹ women's share of employment <span class="pc">15.2%</span>.</p>
+        <p>
+          <b>Independent validation:</b> the breakdown was reconstructed using the gender-specific <em>participation rates</em> and <em>Unemployment rate</em> — which were not used in the calculation: the reconstructed labour force comes to 26,837.5 against a published 26,837 (error <span class="pc">0.002%</span>) and reconstructed unemployment to 2,010 against 2,014 (error <span class="pc">0.19%</span>). This agreement indicates the estimated breakdown is reliable.
+        </p>
+      </div>
+    </details>
+
+    <details><summary>c) Sector employment and the spring 1405 shock</summary>
+      <div>
+        <div class="formula">E<sub>s,t</sub> = share<sub>s,t</sub> × E<sub>t</sub></div>
+        <p>Spring 1404: <span dir="ltr" class="mono">33.0% × 25,123 = 8,291</span>; spring 1405: <span dir="ltr" class="mono">31.0% × 24,672 = 7,648</span> ⟹ change <span class="sg">−643</span> thousand.</p>
+        <p><b>Rounding error:</b> shares are published to one decimal place (<span class="sg">±0.05</span> ), equivalent to roughly <span class="sg">±12</span> thousand people. The change observed in industry is 50 times that error, but smaller changes (agriculture <span class="sg">+58</span> thousand) should be read cautiously.</p>
+      </div>
+    </details>
+
+    <details><summary>d) Potential primary-school entry cohort</summary>
+      <div>
+        <div class="formula">C<sub>t</sub> = Σ<sub>i=0..5</sub> B<sub>t+i</sub> &nbsp;&nbsp;<span>← sum of six consecutive years of births</span></div>
+        <p>Comparing <span dir="ltr" class="mono">C(1395) = 7,808,954</span> with <span dir="ltr" class="mono">C(1399) = 6,235,729</span> ⟹ <span class="sg">−20.1%</span> across a four-year shift of the window.</p>
+        <p><b>Assumptions:</b> near-universal enrolment, negligible child mortality, zero net migration. This calculation does not forecast the <em>level</em> of future enrolment — only the <em>relative</em> shrinkage of cohorts, which is highly insensitive to those assumptions.</p>
+      </div>
+    </details>
+
+    <details><summary>e) Population scenarios and the birth–death crossover</summary>
+      <div>
+        <div class="formula">
+          B<sub>t+1</sub> = B<sub>t</sub>·(1+g<sub>b</sub>) &nbsp;·&nbsp; D<sub>t+1</sub> = D<sub>t</sub>·(1+g<sub>d</sub>) &nbsp;·&nbsp; P<sub>t+1</sub> = P<sub>t</sub> + B<sub>t+1</sub> − D<sub>t+1</sub><br>
+          t* = ln(B<sub>0</sub>/D<sub>0</sub>) / ln( (1+g<sub>d</sub>) / (1+g<sub>b</sub>) ) &nbsp;&nbsp;<span>← crossover year</span>
+        </div>
+        <p>
+          <span dir="ltr" class="mono">g<sub>b</sub> = −5.80%</span> is the actual compound growth rate of births over 1395–1404, and
+          <span dir="ltr" class="mono">g<sub>d</sub> = +2.46%</span> the equivalent for deaths; the death figure is confirmed by computing the post-COVID period (1398–1404: <span class="pc">2.56%</span>). The moderated scenario halves the fall in births (<span class="sg">−3.5%</span>) to allow for the possible effect of support policies and a floor on fertility. Crossover: 1412 (trend continuation) to 1415 (moderated). Net migration is assumed zero in both scenarios.
+        </p>
+      </div>
+    </details>
+
+    <h3>4 · What we do not claim</h3>
+    <ul>
+      <li>We do not claim the official statistics are wrong. The Statistical Center's definition of unemployment is the ILO international standard. Our critique concerns the <em>adequacy</em> of that indicator for this economy, not its correctness.</li>
+      <li>We do not claim all 5.5 million who stayed inactive want work. Some are certainly students, elderly or retired.</li>
+      <li>We do not claim the Statistical Center's projection is wrong. We say its assumptions have drifted from the last two years of data and warrant revision.</li>
+      <li>The extrapolated scenarios are not forecasts; they are sensitivity tests and are highly sensitive to the assumption that the trend continues.</li>
+      <li>The spring 1405 analysis rests on a single quarter. It is a solid finding but needs confirmation from subsequent quarters.</li>
+      <li>No causal relationship is claimed; the marriage–birth correlation is a time-lagged association, not proof of causation.</li>
+    </ul>
+
+    <h3>5 · Tools and workflow</h3>
+    <ul>
+      <li><b>Extraction and testing:</b> a Python script using <span dir="ltr">openpyxl</span> read the sheet, and an automated consistency test was run over every table with a "total = components" structure. The nine inconsistencies reported in section 2 are the output of that test.</li>
+      <li><b>Calculations:</b> every derived indicator was computed in code and checked by cross-validation (section 3b). No figure is quoted from memory; all are computed from the file itself.</li>
+      <li><b>Implementation:</b> the charts are drawn as raw <span dir="ltr">SVG</span> with no external library, so the file works fully offline.</li>
+    </ul>
+    <p>
+      <b>Responsibility for the accuracy of the data, calculations and inferences rests with the author,
+      <a href="https://MiladShabani.ir" target="_blank" rel="noopener noreferrer">Milad Shabani</a>.</b>
+      That is why every key figure in section 3 is shown with its formula and inputs, so it can be audited.
+    </p>
+
+    <h3>6 · Reproducibility</h3>
+    <p>The cleaned dataset this dashboard runs on is embedded in this very file. You can extract it:</p>
+    <p style="display:flex; gap:10px; flex-wrap:wrap">
+      <button class="btn" id="dl-json" type="button">Download cleaned data (JSON)</button>
+      <button class="btn ghost" id="dl-csv" type="button">Download key series (CSV)</button>
+      <button class="btn ghost" id="print-dashboard" type="button">Print / save as PDF</button>
+    </p>
+    <p style="font-size:12.5px; color:var(--muted)">
+      This page is a self-contained HTML file: no external library for the charts, no software to install, and mobile-friendly. The only external resource is the web font, which falls back to a system font offline with nothing breaking.
+    </p>
+  </div>
+</section>
+
+<footer class="f">
+  <div class="wrap">
+    <div class="byline">
+      <img class="ava" alt="Milad Shabani"
+           src="data:image/jpeg;base64,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">
+      <div class="who">
+        <div class="kick">RESEARCH, ANALYSIS AND DESIGN</div>
+        <div class="nm">Milad Shabani</div>
+        <div class="rl">Data extraction and cleaning · derived analytical indicators · dashboard design and implementation</div>
+        <a class="site" href="https://MiladShabani.ir" target="_blank" rel="noopener noreferrer" dir="ltr">MiladShabani.ir</a>
+      </div>
+    </div>
+    <div class="fnote">
+      An open-source data analysis project on Iran's population and labour market, 1395 to 1405<br>
+      Base data: the "Population and Human Resources" sheet of the Macroeconomic and Social Indicators of Iran workbook ·
+      <a href="https://www.amar.org.ir/" target="_blank" rel="noopener noreferrer">Statistical Center of Iran</a>
+    </div>
+  </div>
+</footer>
+</main>
+<script>
+
+
+"use strict";
+const NS = "http://www.w3.org/2000/svg";
+const C = { ink:"#131F33", ink2:"#33455E", muted:"#6B7C93", faint:"#93A2B5",
+            line:"#D8DEE7", line2:"#C3CCDA", lapis:"#1F3D73", lapisL:"#3C63A8",
+            turq:"#0F7F87", turqL:"#5FB3B8", saff:"#C98A0E", saffL:"#E9C877",
+            pom:"#A3242F", pomL:"#D97A82", moss:"#4A7A4E", stone2:"#E3E7EE",
+            gain:"#2E7D4F", gainL:"#7FBF97", loss:"#C4342E" };
+
+const FA = "0123456789";
+
+const fa = v => String(v);
+const num = (n, dec=0) => fa(Number(n).toLocaleString("en-US",
+              {minimumFractionDigits:dec, maximumFractionDigits:dec})).replace(/,/g,",");
+const pct = (n, dec=1) => iso(num(n, dec) + "%");
+
+const LRI = "\u2066", RLI = "\u2067", PDI = "\u2069";
+const iso  = s => LRI + s + PDI;
+const sgnRaw = (n, dec=0, suf="") => (n>0?"+":n<0?"−":"") + num(Math.abs(n), dec) + suf;
+const sgn = (n, dec=0, suf="") => iso(sgnRaw(n, dec, suf));
+const rng = (a, b) => iso(fa(a) + "–" + fa(b));
+const FALETTER = /[\u0621-\u064A\u066E-\u06D5\u06E5-\u06EF\u06FA-\u06FF]/;
+
+
+const CH = new WeakMap();
+function chState(box){
+  if (!CH.has(box)) CH.set(box, {off:new Set(), mode:0, pin:false, at:null});
+  return CH.get(box);
+}
+
+
+function legendFor(box, series0, note, redraw){
+  const series = series0;
+  let lg = box.nextElementSibling;
+  if (!lg || !lg.classList.contains("legend")){
+    lg = document.createElement("div"); lg.className = "legend";
+    box.parentNode.insertBefore(lg, box.nextSibling);
+  }
+  if (!lg.dataset.gen){
+    
+    
+    const notes = [...lg.children]
+                    .filter(x=>x.tagName==="SPAN" && !x.querySelector("i")
+                               && !x.classList.contains("lghint"))
+                    .map(x=>x.textContent.trim()).filter(Boolean);
+    if (notes.length) lg.dataset.note = notes.join(" · ");
+    lg.dataset.gen = "1";
+  }
+  if (note===undefined && lg.dataset.note) note = lg.dataset.note;
+  const st = chState(box);
+  lg.innerHTML = "";
+  series.forEach((s,i)=>{
+    if (!s.name) return;
+    if (s.static){          
+      const sp = document.createElement("span");
+      sp.innerHTML = `<i class="sq" style="background:${s.color};opacity:${s.opacity||.5}"></i>${s.name}`;
+      lg.appendChild(sp); return;
+    }
+    const b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("aria-pressed", String(!st.off.has(i)));
+    b.title = st.off.has(i) ? "Show again" : "Hide this series";
+    b.innerHTML = `<i class="${s.sq?"sq":""}" style="background:${s.color}${
+        s.dash?";background-image:repeating-linear-gradient(90deg,"+s.color+" 0 4px,transparent 4px 7px)":""
+      }"></i>${s.name}`;
+    b.onclick = ()=>{ st.off.has(i) ? st.off.delete(i) : st.off.add(i);
+                      if (st.off.size >= series.filter(x=>x.name).length) st.off.delete(i);
+                      redraw(); };
+    lg.appendChild(b);
+  });
+  if (note){
+    const sp = document.createElement("span");
+    sp.style.color = "var(--faint)"; sp.textContent = note;
+    lg.dataset.note = note; lg.appendChild(sp);
+  }
+  if (!legendFor.hinted){          
+    legendFor.hinted = true;
+    const k = document.createElement("span");
+    k.className = "lghint";
+    k.textContent = "Click a series name to hide it · click the chart to pin a value";
+    lg.appendChild(k);
+    lg.dataset.hint = "1";
+  } else if (lg.dataset.hint){
+    const k = document.createElement("span");
+    k.className = "lghint";
+    k.textContent = "Click a series name to hide it · click the chart to pin a value";
+    lg.appendChild(k);
+  }
+}
+
+
+function chartHead(box, modes, redraw, title){
+  let hd = box.previousElementSibling;
+  if (!hd || !hd.classList.contains("chead")){
+    hd = document.createElement("div"); hd.className = "chead";
+    box.parentNode.insertBefore(hd, box);
+  }
+  const st = chState(box);
+  hd.innerHTML = "";
+  if (modes && modes.length > 1){
+    const g = document.createElement("div"); g.className = "modes";
+    modes.forEach((m,i)=>{
+      const b = document.createElement("button");
+      b.type="button"; b.textContent = m.label;
+      b.setAttribute("aria-pressed", String(st.mode===i));
+      b.onclick = ()=>{ st.mode = i; st.pin=false; st.at=null; redraw(); };
+      g.appendChild(b);
+    });
+    hd.appendChild(g);
+  }
+  const sp = document.createElement("div"); sp.className="spacer"; hd.appendChild(sp);
+  const dl = document.createElement("button");
+  dl.type="button"; dl.className="iconbtn"; dl.textContent="Export image";
+  dl.onclick = ()=>svgToPng(box, title || (box.id||"chart"));
+  hd.appendChild(dl);
+}
+
+
+function svgToPng(box, name){
+  const svg = box.querySelector("svg");
+  if (!svg) return;
+  const clone = svg.cloneNode(true);
+  const vb = svg.viewBox.baseVal;
+  const w = vb.width || svg.clientWidth, h = vb.height || svg.clientHeight;
+  const cs = getComputedStyle(document.body);
+  clone.setAttribute("width", w); clone.setAttribute("height", h);
+  clone.setAttribute("xmlns", NS);
+  
+  const shared = document.querySelector("svg[aria-hidden='true'] defs");
+  if (shared) clone.insertBefore(shared.cloneNode(true), clone.firstChild);
+  clone.insertBefore(
+    E("style", {}, `text{font-family:${cs.fontFamily.replace(/"/g,"'")}}`), clone.firstChild);
+  clone.insertBefore(E("rect",{x:vb.x||0, y:0, width:w, height:h, fill:"#FFFFFF"}),
+                     clone.firstChild.nextSibling);
+  const s = new XMLSerializer().serializeToString(clone);
+  const img = new Image();
+  img.onload = ()=>{
+    const sc = 2, cv = document.createElement("canvas");
+    cv.width = w*sc; cv.height = h*sc;
+    const ctx = cv.getContext("2d");
+    ctx.fillStyle = "#fff"; ctx.fillRect(0,0,cv.width,cv.height);
+    ctx.drawImage(img, 0, 0, cv.width, cv.height);
+    cv.toBlob(bl=>{
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(bl); a.download = name + ".png";
+      a.click(); URL.revokeObjectURL(a.href);
+    });
+  };
+  img.onerror = ()=>alert("Image export is not supported in this browser.");
+  img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(s);
+}
+
+function E(tag, attrs, txt){
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (txt !== undefined) e.textContent = txt;
+  return e;
+}
+function T(x, y, txt, o={}){
+  txt = String(txt);
+  if (FALETTER.test(txt)) txt = RLI + txt + PDI;   
+  return E("text", Object.assign({
+    x, y, "font-size": o.size||11, "font-weight": o.w||600,
+    fill: o.fill||C.muted, "text-anchor": o.anchor||"middle",
+    "font-family":"inherit", "dominant-baseline": o.base||"auto"
+  }, o.extra||{}), txt);
+}
+function niceTicks(min, max, n){
+  const span = max-min || 1, raw = span/n, mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  const norm = raw/mag, step = (norm<1.5?1: norm<3?2: norm<7?5:10)*mag;
+  const lo = Math.floor(min/step)*step, out = [];
+  for (let v=lo; v<=max+step*0.001; v+=step) if (v>=min-step*0.001) out.push(+v.toFixed(10));
+  return out;
+}
+
+
+function frame(box, o={}){
+  box.innerHTML = "";
+  const W = Math.max(300, box.clientWidth || 700);
+  const narrow = W < 520;
+  const m = Object.assign({t:18, r:16, b:34, l:44}, o.m||{});
+  if (narrow && o.mNarrow) Object.assign(m, o.mNarrow);
+  const H = o.h || Math.round(Math.min(400, Math.max(230, W*(o.ratio||0.46))));
+  const svg = E("svg", {viewBox:`0 0 ${W} ${H}`, width:"100%", height:H,
+                        style:"direction:ltr", role:"img", "aria-label":o.label||""});
+  box.appendChild(svg);
+  const g = E("g"); svg.appendChild(g);
+  return {svg, g, W, H, m, iw:W-m.l-m.r, ih:H-m.t-m.b, narrow};
+}
+
+function estW(t, size){
+  let w=0;
+  for (const ch of String(t)) w += /[\u06F0-\u06F9\u066B\u066C]/.test(ch) ? size*0.58
+                                : /[\u2066-\u2069\u200E\u200F]/.test(ch) ? 0
+                                : size*0.56;
+  return w;
+}
+function needLeft(min, max, fmt, n, base){
+  const w = Math.max(...niceTicks(min, max, n).map(v=>estW(fmt(v), 10.5)));
+  return Math.max(base||44, Math.ceil(w) + 13);
+}
+function yAxis(f, min, max, fmt, o={}){
+  const ticks = niceTicks(min, max, o.n||5);
+  const Y = v => f.m.t + f.ih - (v-min)/(max-min)*f.ih;
+  ticks.forEach(v=>{
+    f.g.appendChild(E("line",{x1:f.m.l, x2:f.m.l+f.iw, y1:Y(v), y2:Y(v),
+      stroke: v===0 && min<0 ? C.line2 : C.line, "stroke-width": v===0&&min<0?1.4:1}));
+    f.g.appendChild(T(f.m.l-7, Y(v)+3.5, fmt(v), {anchor:"end", size:10.5, fill:C.faint}));
+  });
+  return Y;
+}
+function xCat(f, labels, o={}){
+  const n = labels.length;
+  const step = f.iw/(n - (o.band?0:1) || 1);
+  const X = i => o.band ? f.m.l + step*(i+0.5) : f.m.l + step*i;
+  const size = o.size||10.5;
+  
+  const wMax = Math.max(...labels.map(L=>String(L).length)) * size * 0.62 + 10;
+  let every = o.every || 1;
+  while (step*every < wMax && every < n) every++;
+  const drawn = [];
+  const fits = x => drawn.every(d => Math.abs(x-d) >= wMax);
+  const put = i => {
+    const x = X(i);
+    if (!fits(x)) return;
+    drawn.push(x);
+    const half = estW(labels[i], size)/2 + 6;
+    const xc = Math.max(half, Math.min(f.W - half, x));   
+    f.g.appendChild(T(xc, f.m.t+f.ih+16, labels[i], {size, fill:C.muted, w:600}));
+  };
+  put(n-1);                      
+  put(0);
+  for (let i=n-1; i>=0; i-=every) put(i);
+  f.g.appendChild(E("line",{x1:f.m.l, x2:f.m.l+f.iw, y1:f.m.t+f.ih, y2:f.m.t+f.ih,
+                            stroke:C.line2, "stroke-width":1.2}));
+  return {X, step};
+}
+function path(pts, o={}){
+  const d = pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(2)+" "+p[1].toFixed(2)).join(" ");
+  return E("path", Object.assign({d, fill:"none", "stroke-width":o.w||2.4,
+    stroke:o.c||C.ink, "stroke-linejoin":"round", "stroke-linecap":"round"},
+    o.dash?{"stroke-dasharray":o.dash}:{}));
+}
+
+
+function tipFor(box){
+  let t = box.querySelector(".tip");
+  if (!t){ t = document.createElement("div"); t.className="tip"; box.appendChild(t); }
+  return t;
+}
+function hoverLayer(f, box, n, xOf, build){
+  const tip = tipFor(box);
+  const st  = chState(box);
+  const line = E("line",{y1:f.m.t, y2:f.m.t+f.ih, stroke:C.ink, "stroke-width":1,
+                         "stroke-dasharray":"3 3", opacity:0});
+  f.g.appendChild(line);
+  const hit = E("rect",{x:f.m.l, y:f.m.t, width:f.iw, height:f.ih, fill:"transparent"});
+  f.g.appendChild(hit);
+
+  const show = i=>{
+    st.at = i;
+    line.setAttribute("x1",xOf(i)); line.setAttribute("x2",xOf(i));
+    line.setAttribute("opacity",.45);
+    tip.innerHTML = build(i);
+    tip.style.opacity = 1;
+    const r = f.svg.getBoundingClientRect();
+    const px = xOf(i)/f.W * r.width;
+    const tw = tip.offsetWidth;
+    tip.style.left = Math.max(4, Math.min(r.width-tw-4, px - tw/2)) + "px";
+    tip.style.top  = "6px";
+  };
+  const hide = ()=>{ st.at=null; tip.style.opacity=0; line.setAttribute("opacity",0); };
+  const nearest = ev=>{
+    const r = f.svg.getBoundingClientRect();
+    const cx = (ev.touches?ev.touches[0].clientX:ev.clientX) - r.left;
+    const sx = cx * (f.W / r.width);
+    let best=0, bd=1e9;
+    for(let i=0;i<n;i++){ const d=Math.abs(xOf(i)-sx); if(d<bd){bd=d;best=i;} }
+    return best;
+  };
+  const move = ev=>{ if(!st.pin) show(nearest(ev)); };
+  hit.addEventListener("mousemove", move);
+  hit.addEventListener("touchmove", e=>{ st.pin=false; show(nearest(e)); }, {passive:true});
+  hit.addEventListener("mouseleave", ()=>{ if(!st.pin) hide(); });
+
+  
+  hit.style.cursor = "crosshair";
+  hit.addEventListener("click", ev=>{
+    const i = nearest(ev);
+    if (st.pin && st.at===i){ st.pin=false; box.classList.remove("pinned"); hide(); }
+    else { st.pin=true; box.classList.add("pinned"); show(i); }
+  });
+
+  
+  box.tabIndex = 0;
+  box.setAttribute("role","application");
+  if (!box.getAttribute("aria-label"))
+    box.setAttribute("aria-label","Interactive chart; use the arrow keys to move between points");
+  if (!box._kb){
+    box._kb = true;
+    box.addEventListener("keydown", e=>{
+      const S = chState(box);
+      const N = S.n || n;
+      if (e.key==="ArrowRight" || e.key==="ArrowLeft"){
+        const d = e.key==="ArrowLeft" ? 1 : -1;      
+        S.pin = true; box.classList.add("pinned");
+        S.at = Math.max(0, Math.min(N-1, (S.at==null ? N-1 : S.at) + d));
+        (S.show||show)(S.at); e.preventDefault();
+      } else if (e.key==="Home"){ S.pin=true; S.at=0; (S.show||show)(0); e.preventDefault(); }
+      else if (e.key==="End"){ S.pin=true; S.at=N-1; (S.show||show)(N-1); e.preventDefault(); }
+      else if (e.key==="Escape"){ S.pin=false; box.classList.remove("pinned"); (S.hide||hide)(); }
+    });
+  }
+  st.show = show; st.hide = hide; st.n = n;
+  if (st.pin && st.at!=null && st.at < n) show(st.at);   
+}
+function tipRow(color, label, val){
+  return `<div class="r"><span><i style="background:${color}"></i>${label}</span><b>${val}</b></div>`;
+}
+
+
+function lineChart(box, cfg0){
+  const st = chState(box);
+  const redraw = () => lineChart(box, cfg0);
+  let cfg = cfg0;
+
+  
+  const modes = cfg0.modes;
+  if (modes && modes.length){
+    const m = modes[Math.min(st.mode, modes.length-1)];
+    cfg = Object.assign({}, cfg0, m.apply ? m.apply(cfg0) : {});
+    chartHead(box, modes, redraw, cfg0.file || box.id);
+  } else if (cfg0.png !== false){
+    chartHead(box, null, redraw, cfg0.file || box.id);
+  }
+
+  
+  const live = cfg.series.map((s,i)=>({s, i, on: !st.off.has(i)}));
+  const onSeries = live.filter(o=>o.on).map(o=>o.s);
+  if (cfg0.legend !== false)
+    legendFor(box, cfg.series.concat(cfg.legendStatic||[]), cfg.legendNote, redraw);
+
+  const all = onSeries.flatMap(s=>s.data.filter(v=>v!=null));
+  const auto = st.off.size > 0 || cfg.autoY;   
+  const min = (!auto && cfg.yMin!=null) ? cfg.yMin : Math.min(...all)*0.92;
+  const max = (!auto && cfg.yMax!=null) ? cfg.yMax : Math.max(...all)*1.06;
+  const yfmt = cfg.yFmt||(v=>num(v,cfg.yDec||0));
+  const nT = cfg.yTicks||5;
+  cfg = Object.assign({}, cfg, {
+    m:       Object.assign({}, cfg.m||{},       {l: needLeft(min,max,yfmt,nT,(cfg.m||{}).l)}),
+    mNarrow: cfg.mNarrow ? Object.assign({}, cfg.mNarrow,
+               {l: needLeft(min,max,yfmt,nT,cfg.mNarrow.l)}) : undefined
+  });
+  const f = frame(box, cfg);
+  const Y = yAxis(f, min, max, yfmt, {n:nT});
+  const ax = xCat(f, cfg.x, {every: cfg.every || (f.narrow?2:1), size:cfg.xSize});
+
+  
+  if (cfg.bands) cfg.bands.forEach(b=>{
+    if (st.off.has(b.a) || st.off.has(b.b)) return;
+    const A = cfg.series[b.a].data, B = cfg.series[b.b].data;
+    for(let i=0;i<A.length-1;i++){
+      const x0=ax.X(i), x1=ax.X(i+1);
+      const a0=A[i], a1=A[i+1], b0=B[i], b1=B[i+1];
+      const s0 = a0-b0, s1 = a1-b1;
+      const seg = (xs,xe,as,ae,bs,be)=>{
+        const up = (as-bs) >= 0;
+        f.g.appendChild(E("path",{
+          d:`M${xs} ${Y(as)} L${xe} ${Y(ae)} L${xe} ${Y(be)} L${xs} ${Y(bs)} Z`,
+          fill: up ? (b.up||"url(#hatch)") : (b.down||"rgba(15,127,135,.14)"), stroke:"none"}));
+      };
+      if (s0===0 || s1===0 || (s0>0)===(s1>0)) seg(x0,x1,a0,a1,b0,b1);
+      else { const t = s0/(s0-s1), xm = x0+(x1-x0)*t,
+             am = a0+(a1-a0)*t, bm = b0+(b1-b0)*t;
+             seg(x0,xm,a0,am,b0,bm); seg(xm,x1,am,a1,bm,b1); }
+    }
+  });
+
+  const endLabs = [];
+  onSeries.forEach(s=>{
+    const pts = s.data.map((v,i)=>v==null?null:[ax.X(i),Y(v)]).filter(Boolean);
+    f.g.appendChild(path(pts,{c:s.color,w:s.w||2.6,dash:s.dash}));
+    if (s.dots!==false) pts.forEach((p,i)=>{
+      if (!f.narrow || i===pts.length-1 || i===0)
+        f.g.appendChild(E("circle",{cx:p[0],cy:p[1],r:i===pts.length-1?4:2.8,
+          fill:"#fff",stroke:s.color,"stroke-width":i===pts.length-1?3:2}));
+    });
+    if (s.endLabel){
+      const last = pts[pts.length-1];
+      endLabs.push({x:last[0]-2, y:last[1]-11, t:s.endLabel, c:s.color});
+    }
+  });
+
+  
+  endLabs.sort((a,b)=>a.y-b.y);
+  const MIN = 14;
+  for (let i=1;i<endLabs.length;i++)
+    if (endLabs[i].y - endLabs[i-1].y < MIN) endLabs[i].y = endLabs[i-1].y + MIN;
+  const overflow = endLabs.length ? endLabs[endLabs.length-1].y - (f.m.t+f.ih-2) : 0;
+  if (overflow > 0) endLabs.forEach(l=>l.y -= overflow);
+  endLabs.forEach(l=> f.g.appendChild(T(l.x, l.y, l.t,
+    {anchor:"end", size:11.5, w:800, fill:l.c})));
+
+  (cfg.marks||[]).forEach(mk=>{
+    const x = ax.X(mk.i);
+    f.g.appendChild(E("line",{x1:x,x2:x,y1:f.m.t,y2:f.m.t+f.ih,
+      stroke:mk.color||C.faint,"stroke-width":1,"stroke-dasharray":"4 4",opacity:.7}));
+    if(mk.label) f.g.appendChild(T(x, f.m.t-5, mk.label,
+      {size:10.5, w:700, fill:mk.color||C.muted}));
+  });
+
+  hoverLayer(f, box, cfg.x.length, ax.X, i=>{
+    let h = `<b>${cfg.xLong?cfg.xLong[i]:cfg.x[i]}</b>`;
+    onSeries.forEach(s=>{ if(s.data[i]!=null)
+      h += tipRow(s.color, s.name, (cfg.tipFmt||cfg.yFmt||(v=>num(v,cfg.yDec||0)))(s.data[i])); });
+    return h;
+  });
+  return f;
+}
+
+
+function barChart(box, cfg0){
+  const st = chState(box);
+  const redraw = () => barChart(box, cfg0);
+  let cfg = cfg0;
+  const modes = cfg0.modes;
+  if (modes && modes.length){
+    const m = modes[Math.min(st.mode, modes.length-1)];
+    cfg = Object.assign({}, cfg0, m.apply ? m.apply(cfg0) : {});
+    chartHead(box, modes, redraw, cfg0.file || box.id);
+  } else if (cfg0.png !== false){
+    chartHead(box, null, redraw, cfg0.file || box.id);
+  }
+  const groups = cfg.series.filter((s,i)=>!st.off.has(i));
+  if (cfg0.legend !== false){
+    const items = cfg.series.slice();
+    if (cfg.line) items.push(Object.assign({}, cfg.line, {dash:cfg.line.dash||"5 4"}));
+    legendFor(box, items, cfg.legendNote, redraw);
+  }
+  if (!groups.length) groups.push(cfg.series[0]);
+  const all = groups.flatMap(s=>s.data);
+  const min = cfg.yMin!=null?cfg.yMin:Math.min(0,...all);
+  const max = cfg.yMax!=null?cfg.yMax:Math.max(...all)*1.1;
+  const yfmt = cfg.yFmt||(v=>num(v));
+  const nT = cfg.yTicks||5;
+  let rNeed = (cfg.m||{}).r;
+  if (cfg.line){   
+    const l2 = cfg.line, ok2 = l2.data.filter(v=>v!=null);
+    const lmin = l2.min!=null?l2.min:Math.min(...ok2)*0.8;
+    const lmax = l2.max!=null?l2.max:Math.max(...ok2)*1.15;
+    const w2 = Math.max(...niceTicks(lmin,lmax,4).map(v=>estW((l2.fmt||(x=>num(x)))(v),10.5)));
+    rNeed = Math.max(rNeed||16, Math.ceil(w2)+12);
+  }
+  cfg = Object.assign({}, cfg, {
+    m: Object.assign({}, cfg.m||{},
+         {l: needLeft(min,max,yfmt,nT,(cfg.m||{}).l), r: rNeed}),
+    mNarrow: cfg.mNarrow ? Object.assign({}, cfg.mNarrow,
+         {l: needLeft(min,max,yfmt,nT,cfg.mNarrow.l),
+          r: Math.max(cfg.mNarrow.r||16, rNeed||16)}) : undefined
+  });
+  const f = frame(box, cfg);
+  const Y = yAxis(f, min, max, yfmt, {n:nT});
+  const ax = xCat(f, cfg.x, {band:true, every:cfg.every||(f.narrow?2:1), size:cfg.xSize});
+  const bw = Math.min(cfg.maxBar||30, ax.step*0.74/groups.length);
+  groups.forEach((s,gi)=>{
+    s.data.forEach((v,i)=>{
+      const x = ax.X(i) - (groups.length*bw)/2 + gi*bw;
+      const y0 = Y(0), y1 = Y(v);
+      f.g.appendChild(E("rect",{x:x+1, y:Math.min(y0,y1), width:bw-2,
+        height:Math.max(1,Math.abs(y1-y0)), fill:s.color, opacity:s.opacity||1}));
+    });
+  });
+  let Y2 = null;
+  if (cfg.line && !st.off.has(cfg.series.length)){
+    const l = cfg.line;
+    const ok = l.data.filter(v=>v!=null);
+    const lmin = l.min!=null?l.min:Math.min(...ok)*0.8;
+    const lmax = l.max!=null?l.max:Math.max(...ok)*1.15;
+    Y2 = v => f.m.t + f.ih - (v-lmin)/(lmax-lmin)*f.ih;
+    const lpts = l.data.map((v,i)=>v==null?null:[ax.X(i),Y2(v)]).filter(Boolean);
+    f.g.appendChild(path(lpts, {c:l.color||C.saff, w:2.4, dash:l.dash||"5 4"}));
+    lpts.forEach(p=>f.g.appendChild(E("circle",{cx:p[0],cy:p[1],r:3,
+      fill:"#fff",stroke:l.color||C.saff,"stroke-width":2})));
+    niceTicks(lmin,lmax,4).forEach(v=>f.g.appendChild(
+      T(f.m.l+f.iw+7, Y2(v)+3.5, (l.fmt||(x=>num(x)))(v),
+        {anchor:"start", size:10.5, fill:l.color||C.saff})));
+  }
+  hoverLayer(f, box, cfg.x.length, ax.X, i=>{
+    let h = `<b>${cfg.xLong?cfg.xLong[i]:cfg.x[i]}</b>`;
+    groups.forEach(s=>h += tipRow(s.color, s.name, (cfg.yFmt||(v=>num(v)))(s.data[i])));
+    if (cfg.line && !st.off.has(cfg.series.length) && cfg.line.data[i]!=null)
+      h += tipRow(cfg.line.color||C.saff, cfg.line.name,
+                  (cfg.line.fmt||(v=>num(v)))(cfg.line.data[i]));
+    return h;
+  });
+  return f;
+}
+
+
+function divBars(box, cfg){
+  const f = frame(box, Object.assign({m:{t:26,r:16,b:44,l:52}}, cfg));
+  const vals = cfg.data.map(d=>d.v);
+  const mx = Math.max(...vals.map(Math.abs))*1.22;
+  const Y = yAxis(f, -mx, mx, cfg.yFmt||(v=>num(v)), {n:5});
+  const ax = xCat(f, cfg.data.map(d=>d.k), {band:true, size:cfg.xSize||10.5});
+  const bw = Math.min(cfg.maxBar||46, ax.step*0.6);
+  cfg.data.forEach((d,i)=>{
+    const y0=Y(0), y1=Y(d.v);
+    f.g.appendChild(E("rect",{x:ax.X(i)-bw/2, y:Math.min(y0,y1), width:bw,
+      height:Math.max(1.5,Math.abs(y1-y0)), fill:d.c||(d.v>=0?C.pom:C.turq)}));
+    f.g.appendChild(T(ax.X(i), d.v>=0?Math.min(y0,y1)-7:Math.max(y0,y1)+15,
+      (cfg.lblFmt||(v=>sgn(v)))(d.v), {size:11.5, w:800, fill:d.c||(d.v>=0?C.pom:C.turq)}));
+  });
+  return f;
+}
+
+
+function spark(box, data, color, o={}){
+  const pts = data.filter(v=>v!=null);
+  if (pts.length < 2) return;
+  const W = 150, H = 30, pad = 3;
+  const mn = Math.min(...pts), mx = Math.max(...pts), rg = (mx-mn)||1;
+  const X = i => pad + i*(W-pad*2)/(pts.length-1);
+  const Y = v => H-pad - (v-mn)/rg*(H-pad*2-4);
+  const svg = E("svg",{viewBox:`0 0 ${W} ${H}`, preserveAspectRatio:"none",
+                       style:"direction:ltr", "aria-hidden":"true", focusable:"false"});
+  const d  = pts.map((v,i)=>(i?"L":"M")+X(i).toFixed(1)+" "+Y(v).toFixed(1)).join(" ");
+  
+  svg.appendChild(E("path",{d: d+` L ${X(pts.length-1).toFixed(1)} ${H} L ${X(0)} ${H} Z`,
+    fill:color, opacity:.10, stroke:"none"}));
+  svg.appendChild(E("path",{d, fill:"none", stroke:color, "stroke-width":1.8,
+    "stroke-linejoin":"round", "stroke-linecap":"round",
+    "vector-effect":"non-scaling-stroke"}));
+  
+  svg.appendChild(E("circle",{cx:X(0), cy:Y(pts[0]), r:2, fill:"#fff",
+    stroke:color, "stroke-width":1.4, opacity:.55, "vector-effect":"non-scaling-stroke"}));
+  svg.appendChild(E("circle",{cx:X(pts.length-1), cy:Y(pts[pts.length-1]), r:3, fill:color}));
+  box.innerHTML = "";
+  box.appendChild(svg);
+  if (o.title) box.setAttribute("title", o.title);
+}
+
+
+function dotGrid(box, cfg){
+  box.innerHTML="";
+  const W = Math.max(280, box.clientWidth||700);
+  const cols = W<480?10:20, rows = 100/cols;
+  const gap = 4, size = Math.min(24, (W - gap*(cols-1) - 4)/cols);
+  const H = rows*size + (rows-1)*gap + 4;
+  const svg = E("svg",{viewBox:`0 0 ${W} ${H}`, width:"100%", height:H,
+                       style:"direction:ltr", role:"img","aria-label":cfg.label||""});
+  const left = (W - (cols*size + (cols-1)*gap))/2;
+  for(let i=0;i<100;i++){
+    const r=Math.floor(i/cols), c=(cols-1)-(i%cols);   
+    const on = i < cfg.on;
+    const rect = E("rect",{x:left+c*(size+gap), y:2+r*(size+gap), width:size, height:size,
+      rx:2, fill:on?(cfg.onColor||C.turq):C.stone2,
+      stroke:on?"none":C.line2, "stroke-width":1});
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+      rect.setAttribute("opacity","0");
+      rect.appendChild(E("animate",{attributeName:"opacity", from:"0", to:"1",
+        dur:"0.35s", begin:(i*0.008)+"s", fill:"freeze"}));
+    }
+    svg.appendChild(rect);
+  }
+  box.appendChild(svg);
+}
+
+
+function dumbbell(box, cfg){
+  const f = frame(box, Object.assign({m:{t:26,r:22,b:26,l:158},
+    mNarrow:{l:120,r:14}, h: 60+cfg.rows.length*62}, cfg));
+  const max = Math.max(...cfg.rows.flatMap(r=>[r.a,r.b]))*1.12;
+  const X = v => f.m.l + v/max*f.iw;
+  niceTicks(0,max,5).forEach(v=>{
+    f.g.appendChild(E("line",{x1:X(v),x2:X(v),y1:f.m.t-6,y2:f.m.t+f.ih,
+      stroke:C.line,"stroke-width":1}));
+    f.g.appendChild(T(X(v), f.m.t+f.ih+16, pct(v,0), {size:10.5, fill:C.faint}));
+  });
+  const step = f.ih/cfg.rows.length;
+  cfg.rows.forEach((r,i)=>{
+    const y = f.m.t + step*(i+0.5) - 6;
+    f.g.appendChild(T(f.m.l-12, y+4, r.k, {anchor:"end", size:f.narrow?10:13,
+      w:700, fill:C.ink}));
+    f.g.appendChild(E("line",{x1:X(Math.min(r.a,r.b)), x2:X(Math.max(r.a,r.b)),
+      y1:y, y2:y, stroke:C.line2, "stroke-width":5, "stroke-linecap":"round"}));
+    [[r.b, C.pom],[r.a, C.lapis]].forEach(([v,col])=>{
+      f.g.appendChild(E("circle",{cx:X(v), cy:y, r:8, fill:col}));
+      f.g.appendChild(T(X(v), y+22, pct(v), {size:11, w:800, fill:col}));
+    });
+    const gap = Math.abs(r.a-r.b);
+    f.g.appendChild(T((X(r.a)+X(r.b))/2, y-14, "Gap "+num(gap,1)+" %",
+      {size:10.5, w:700, fill:C.muted}));
+  });
+}
+
+
+function hSplit(box, cfg){
+  box.innerHTML="";
+  const W = Math.max(300, box.clientWidth||700);
+  const narrow = W<520;
+  const labW = narrow?112:184;         
+  const totW = narrow?56:82;           
+  const rowH = 42, barH = 22;
+  const H = cfg.rows.length*rowH + 10;
+  const svg = E("svg",{viewBox:`0 0 ${W} ${H}`, width:"100%", height:H,
+                       style:"direction:ltr", role:"img"});
+  const bx = totW + 10, bw = W - labW - totW - 20;
+  cfg.rows.forEach((r,i)=>{
+    const y = 6 + i*rowH, fs = r.f/r.t;
+    svg.appendChild(T(W-6, y+barH-6, r.k,
+      {anchor:"end", size:narrow?11.5:13, w:700, fill:C.ink}));
+    
+    svg.appendChild(E("rect",{x:bx, y, width:bw, height:barH, rx:2, fill:C.lapis}));
+    svg.appendChild(E("rect",{x:bx+bw*(1-fs), y, width:bw*fs, height:barH, rx:2, fill:C.pom}));
+    if (fs>0.13) svg.appendChild(T(bx+bw-8, y+barH-6, pct(fs*100,1),
+      {anchor:"end", size:11, w:800, fill:"#fff"}));
+    if (1-fs>0.13) svg.appendChild(T(bx+8, y+barH-6, pct((1-fs)*100,1),
+      {anchor:"start", size:11, w:800, fill:"#fff"}));
+    svg.appendChild(T(totW, y+barH-6, num(r.t),
+      {anchor:"end", size:narrow?10:11, w:700, fill:C.muted}));
+  });
+  box.appendChild(svg);
+  const lg = document.createElement("div");
+  lg.className = "legend";
+  lg.innerHTML = `<span><i class="sq" style="background:var(--pom)"></i>Women</span>
+                  <span><i class="sq" style="background:var(--lapis)"></i>Men</span>
+                  <span style="color:var(--faint)">the figure beside each bar is total enrolment in that field</span>`;
+  box.appendChild(lg);
+}
+
+
+function stackCol(box, cfg){
+  const tot0 = cfg.a.map((v,i)=>v+cfg.b[i]);
+  const max0 = Math.max(...tot0)*1.08;
+  const yf = v=>num(Math.round(v/1000))+"M";
+  const f = frame(box, Object.assign({}, cfg,
+    {m: Object.assign({t:20, r:46, b:34, l:needLeft(0, max0, yf, 5, 48)}, cfg.m||{})}));
+  const tot = tot0, max = max0;
+  const Y = yAxis(f, 0, max, yf, {n:5});
+  const ax = xCat(f, cfg.x, {band:true, every: f.narrow?4:2});
+  const bw = Math.min(26, ax.step*0.72);
+  cfg.a.forEach((v,i)=>{
+    const x = ax.X(i)-bw/2;
+    f.g.appendChild(E("rect",{x, y:Y(v), width:bw, height:f.m.t+f.ih-Y(v), fill:C.lapis}));
+    f.g.appendChild(E("rect",{x, y:Y(v+cfg.b[i]), width:bw, height:Y(v)-Y(v+cfg.b[i]),
+      fill:C.moss}));
+  });
+  const sh = cfg.a.map((v,i)=>v/tot[i]*100);
+  const lmin = Math.min(...sh)-1.5, lmax = Math.max(...sh)+1.5;
+  const Y2 = v => f.m.t + f.ih - (v-lmin)/(lmax-lmin)*f.ih;
+  f.g.appendChild(path(sh.map((v,i)=>[ax.X(i),Y2(v)]), {c:C.saff, w:2.6}));
+  niceTicks(lmin,lmax,4).forEach(v=>f.g.appendChild(
+    T(f.m.l+f.iw+7, Y2(v)+3.5, pct(v,0), {anchor:"start", size:10.5, fill:C.saff})));
+  hoverLayer(f, box, cfg.x.length, ax.X, i=>
+    `<b>${cfg.xLong?cfg.xLong[i]:cfg.x[i]}</b>` +
+    tipRow(C.lapis,"Urban", num(cfg.a[i])+"k") +
+    tipRow(C.moss,"Rural", num(cfg.b[i])+"k") +
+    tipRow(C.saff,"Urbanisation", pct(sh[i])));
+  return f;
+}
+
+</script>
+<script>
+
+
+const D = {"vital":{"years":[1395,1396,1397,1398,1399,1400,1401,1402,1403,1404],"births":[1528053,1487923,1366519,1196132,1114115,1116212,1075231,1057964,979929,892278],"deaths":[369751,376731,376953,395319,511881,544517,418781,442142,458858,459984],"natural":[1158302,1111192,989566,800813,602234,571695,656450,615822,521071,432294],"births_u":[1176032,1143558,1047925,907694,837630,844940,813040,800704,753496,693493],"births_r":[352021,344365,318594,288438,276485,271272,262191,257260,226433,198785],"deaths_u":[274870,278448,279225,295596,387273,420099,318237,337175,352631,362207],"deaths_r":[94788,98230,97658,99647,124559,124402,100532,104967,106227,97777],"sexratio":[106.0,106.1,106.3,106.4,106.7,106.6,107.0,107.4,106.5,107.4],"marr":[704716,612237,556315,536636,563567,573789,527871,484861,472590,431664],"div":[181049,182913,179700,179217,188187,205284,208385,206477,197172,181327]},"vital_q":{"labels":["Winter 1403","Spring 1404","Summer 1404","Autumn 1404","Winter 1404"],"births":[245684,214228,245987,224485,207578],"deaths":[133938,117925,114672,113716,113671]},"pop":{"years":[1396,1397,1398,1399,1400,1401,1402,1403,1404,1405,1406,1407,1408,1409,1410,1411,1412,1413,1414,1415],"total":[81053,81962,82710,83409,84055,84700,85329,85961,86562,87134,87676,88190,88678,89141,89580,89996,90391,90765,91116,91446],"urban":[60304,61311,62201,63056,63876,64655,65427,66207,66968,67708,68361,68994,69608,70203,70782,71307,71816,72309,72784,73243],"rural":[20749,20652,20509,20353,20179,20045,19902,19754,19595,19426,19315,19196,19071,18938,18799,18689,18575,18456,18332,18203],"male":[41040,41476,41831,42162,42467,42773,43072,43372,43658,43929,44185,44427,44656,44872,45075,45267,45449,45619,45779,45928],"female":[40013,40487,40880,41247,41588,41927,42258,42589,42904,43205,43491,43763,44022,44269,44505,44729,44943,45145,45337,45518]},"lab":{"years":[1395,1396,1397,1398,1399,1400,1401,1402,1403,1404],"pop15":[59528,59954,60632,61666,62376,63066,63794,64552,65338,66148],"act":[25723,26504,26986,27168,25737,25822,26065,26638,26818,26837],"emp":[22525,23297,23731,24274,23263,23447,23716,24490,24788,24822],"unemp":[3198,3207,3255,2894,2474,2375,2349,2148,2030,2014],"inact":[33805,33450,33646,34498,36639,37244,37729,37914,38520,39311],"part":[43.2,44.2,44.5,44.1,41.3,40.9,40.9,41.3,41,40.6],"part_m":[70.4,70.9,71.6,71.1,68.7,68.7,68.2,68.4,68.1,67.9],"part_f":[16.3,17.4,17.6,17,13.9,13.3,13.6,14.2,14.1,13.4],"part_u":[42.4,43.2,43.6,43,40.4,40.3,40.3,40.8,40.7,40.2],"part_r":[45.7,47.4,47.5,47.3,44.2,43.2,42.7,42.9,42.3,41.9],"ur":[12.4,12.1,12.1,10.7,9.6,9.2,9,8.1,7.6,7.5],"ur_m":[10.5,10.2,10.4,9,8.4,7.9,7.7,6.6,6.2,6],"ur_f":[20.7,19.9,18.9,17.5,15.6,16,15.8,15,14.3,15],"ur_u":[13.7,13.4,13.5,11.8,10.4,9.9,9.7,8.7,8.1,8.1],"ur_r":[8.9,8.3,8,7.3,7.2,6.9,6.7,5.8,5.7,5.6],"u24":[29.2,28.2,27.7,26,23.7,23.7,22.6,21.2,20.1,20.3],"u24_m":[25.4,24.2,24.3,22.7,21.2,20.9,19.9,18.6,17.7,17.5],"u24_f":[44.2,43.3,40.1,38.8,36,37,36.1,31.8,30.4,33.2],"u35":[26.8,19.7,19.6,17.9,16.7,16.5,16.3,15.2,14.7,15],"er":[37.8,38.9,39.1,39.4,37.3,37.2,37.2,37.9,37.9,37.5],"er_m":[63,63.7,64.2,64.7,62.9,63.3,63,63.9,63.9,63.8],"er_f":[12.9,14,14.2,14,11.7,11.1,11.4,12.1,12.1,11.4],"agri":[17.9,17.5,17.7,17.7,17.4,16.3,14.8,14.4,13.9,13.9],"ind":[31.9,32,32,32,33.3,33.8,33.6,33.7,33.3,32.8],"serv":[50.2,50.5,50.3,50.3,49.3,49.8,51.6,51.9,52.7,53.2]},"lab_q":{"labels":["Spring 1404","Summer 1404","Autumn 1404","Winter 1404","Spring 1405"],"pop15":[65843,66046,66250,66454,66671],"act":[27104,26938,26950,26357,27136],"emp":[25123,24958,24857,24352,24672],"unemp":[1981,1980,2093,2004,2464],"ur":[7.3,7.4,7.8,7.6,9.1],"u24":[19.7,19,21.5,21.2,23.4],"u24_f":[30.9,31.5,35.2,34.9,35.1],"u35":[14.5,14.4,15.9,15.1,17.5],"part":[41.2,40.8,40.7,39.7,40.7],"er":[38.2,37.8,37.5,36.6,37],"agri":[14.6,14.2,13.6,13.2,15.1],"ind":[33,32.6,33.2,32.5,31],"serv":[52.4,53.1,53.2,54.2,53.8],"ur_f":[13.7,15.2,16,15,16.7],"ur_m":[6,5.8,6.1,6.2,7.5]},"hh":{"years":["1335","1345","1355","1365","1370","1375","1385","1390","1395","1400"],"kol":[4.8,5,5,5.1,5.2,4.8,4,3.5,3.3,3.19],"urban":[4.7,4.9,4.8,4.8,4.9,4.6,3.9,3.5,3.3,3.13],"rural":[4.8,5,5.2,5.4,5.6,5.1,4.4,3.7,3.4,3.36]},"school":{"labels":["1380-1381","1385-1386","1390-1391","1391-1392","1392-1393","1393-1394","1394-1395","1395-1396","1396-1397","1397-1398","1398-1399","1399-1400","1400-1401","1401-1402","1402-1403","1403-1404"],"total":[17882515,14984301,13351254,13226473,13406458,13615311,13861901,14220342,14700309,15462046,15774075,15666587,16371865,16967478,16506493,16862048],"m":[9359952,7741044,6932408,6861311,6964461,7064602,7174229,7349326,7599675,8001045,8137984,8073596,8424777,8713472,8452612,8639835],"f":[8522563,7243257,6418846,6365162,6441997,6550709,6687672,6871016,7100634,7461001,7636091,7592991,7947088,8524006,8053881,8222213]},"school_lvl":[["Special education",81972,51223,30749],["Pre-primary","000","000","000"],["Primary",9283694,4778920,4504774],["Lower secondary ",3932181,2011182,1920999],["Upper secondary ",3125218,1545982,1579236],["Lower secondary (adult) ",21835,13789,8046],["Upper secondary (adult) ",417148,238739,178409]],"uni":{"labels":["1394-1395","1395-1396","1396-1397","1397-1398","1398-1399","1399-1400","1400-1401","1401-1402","1402-1403","1403-1404"],"total":[4348383,4073827,3616114,3373388,3182989,3070748,3342220,3249601,3351877,3503179],"m":[2345824,2202231,1930954,1768931,1638746,1556792,1700794,1618505,1651073,1684930],"f":[2002559,1871596,1685160,1604457,1544243,1513956,1641426,1631096,1700804,1818249]},"uni_field":[["Medicine",316615,130314,186301],["Humanities",1836773,775928,1060845],["Basic sciences",215535,67519,148016],["Engineering",774434,582615,191819],["Agriculture & veterinary",110628,52658,57970],["Art",249194,75896,173298]],"grad":{"labels":["1394-1395","1395-1396","1396-1397","1397-1398","1398-1399","1399-1400","1400-1401","1401-1402","1402-1403"],"total":[798736,779646,695055,640262,675724,516416,526520,496172,455335],"m":[466223,457164,393815,366054,378321,275388,272508,254563,233156],"f":[332513,322482,301240,274208,297403,241028,254012,241609,222179]},"grad_field":[["Medicine",38450,15530,22920],["Humanities",241740,113497,128243],["Basic sciences",24505,8519,15986],["Engineering",104401,79745,24656],["Agriculture & veterinary",13696,6979,6717],["Art",32543,8886,23657]],"deaths95_raw":[161774,207884],"deaths95_corr":[207884,161774],"deaths_sexratio":{"years":[1395,1396,1397,1398,1399,1400,1401,1402,1403,1404],"raw":[0.778,1.269,1.276,1.308,1.298,1.26,1.305,1.241,1.216,1.257],"corr":[1.285,1.269,1.276,1.308,1.298,1.26,1.305,1.241,1.216,1.257]}};
+
+
+const YRS   = D.lab.years;                       
+const YRFA  = YRS.map(y=>fa(y));
+const LAST  = YRS.length-1;
+
+
+function adjSeries(baseYear){
+  const bi = YRS.indexOf(baseYear), r = D.lab.part[bi]/100;
+  return YRS.map((y,i)=>{
+    const A = D.lab.pop15[i]*r;
+    return +(100*(1 - D.lab.emp[i]/A)).toFixed(2);
+  });
+}
+function hiddenAt(baseYear, i){
+  const bi = YRS.indexOf(baseYear), r = D.lab.part[bi]/100;
+  return Math.round(D.lab.pop15[i]*r - D.lab.act[i]);
+}
+
+
+function genderSplit(i){
+  const P = D.lab.pop15[i], Ee = D.lab.emp[i];
+  const rm = D.lab.er_m[i]/100, rf = D.lab.er_f[i]/100;
+  const Pm = (Ee - rf*P)/(rm - rf), Pf = P - Pm;
+  return {Pm, Pf, Em: rm*Pm, Ef: rf*Pf,
+          Am: D.lab.part_m[i]/100*Pm, Af: D.lab.part_f[i]/100*Pf};
+}
+
+
+function scenario(gb, gd, migK){
+  const yrs=[], vals=[]; let cross = null;
+  const mig = (migK||0)*1000;
+  let B = D.vital.births[LAST], De = D.vital.deaths[LAST];
+  let P = D.pop.total[D.pop.years.indexOf(1404)]*1000;
+  yrs.push(1404); vals.push(Math.round(P/1000));
+  for (let y=1405; y<=1415; y++){
+    B *= (1+gb); De *= (1+gd); P += (B - De + mig);
+    if (cross===null && De >= B) cross = y;
+    yrs.push(y); vals.push(Math.round(P/1000));
+  }
+  return {yrs, vals, cross};
+}
+
+
+const MP = {gb:-0.058, gd:0.0246, mig:0};
+
+
+
+const MODE_VAL = {label:"Value"};
+const idxMode = (baseLab) => ({
+  label: "Index " + baseLab + "=100",
+  apply: c => ({
+    series: c.series.map(s=>{
+      const b = s.data.find(v=>v!=null);
+      return Object.assign({}, s, {
+        data: s.data.map(v=>v==null?null:+(v/b*100).toFixed(1)),
+        endLabel: s.endLabel==null ? undefined
+          : num(+(s.data.filter(v=>v!=null).slice(-1)[0]/b*100).toFixed(0))
+      });
+    }),
+    yMin:null, yMax:null, autoY:true,
+    yFmt: v=>num(Math.round(v)), tipFmt: v=>num(v,1),
+    bands:null
+  })
+});
+const yoyMode = {
+  label:"Year on year",
+  apply: c => ({
+    series: c.series.map(s=>Object.assign({}, s, {
+      data: s.data.map((v,i)=> (i===0||v==null||s.data[i-1]==null) ? null
+                              : +((v/s.data[i-1]-1)*100).toFixed(2)),
+      endLabel: undefined
+    })),
+    yMin:null, yMax:null, autoY:true,
+    yFmt: v=>iso(sgn0(v,0)), tipFmt: v=>iso(sgn0(v,1)), bands:null
+  })
+};
+const sgn0 = (v,d=1)=> sgnRaw(v, d, "%");
+
+const R = {};   
+
+
+let BASE = 1395;
+R["c-hero"] = box => {
+  const adj = adjSeries(BASE);
+  lineChart(box, {
+    file:"bikari-tadil-shode",
+    x: YRFA, ratio:0.44, yMin:5, yMax:16, yFmt:v=>pct(v,0), yDec:1,
+    tipFmt: v=>pct(v,1),
+    series:[
+      {name:"Adjusted rate", data:adj, color:C.saff, endLabel:pct(adj[LAST],1)},
+      {name:"Official rate", data:D.lab.ur, color:C.turq, endLabel:pct(D.lab.ur[LAST],1)}
+    ],
+    bands:[{a:0, b:1, up:"url(#hatch)", down:"rgba(15,127,135,.16)"}],
+    legendStatic:[
+      {name:"Hidden unemployment (adjusted rate higher)", color:"var(--saff-l)", opacity:.55, static:true},
+      {name:"Genuine improvement (adjusted rate lower)", color:"var(--turq-l)", opacity:.45, static:true}],
+    marks:[{i:4, label:"COVID-19", color:C.faint}]
+  });
+};
+R["c-dots"] = box => dotGrid(box, {on:17, onColor:C.turq,
+  label:"Of every 100 added to the working-age population, 17 entered the labour force"});
+R["c-three"] = box => lineChart(box, {
+  modes:[MODE_VAL, idxMode("1395")], file:"se-nerkh",
+  x: YRFA, ratio:0.44, yMin:0, yMax:50, yFmt:v=>pct(v,0), tipFmt:v=>pct(v,1),
+  series:[
+    {name:"Participation rate", data:D.lab.part, color:C.lapis, endLabel:pct(D.lab.part[LAST],1)},
+    {name:"employment-to-population ratio", data:D.lab.er,   color:C.moss,  endLabel:pct(D.lab.er[LAST],1)},
+    {name:"Unemployment rate",  data:D.lab.ur,   color:C.pom,   endLabel:pct(D.lab.ur[LAST],1)}
+  ]});
+
+
+R["c-scissors"] = box => {
+  const uniF = D.uni.f.map((v,i)=>+(v/D.uni.total[i]*100).toFixed(1));
+  lineChart(box, {
+    x: YRFA, ratio:0.44, yMin:0, yMax:60, yFmt:v=>pct(v,0), tipFmt:v=>pct(v,1),
+    xLong: YRS.map((y,i)=>fa(y)+" · academic year "+rng(...D.uni.labels[i].split("-"))),
+    series:[
+      {name:"Women's share of students", data:uniF, color:C.lapis, endLabel:pct(uniF[LAST],1)},
+      {name:"Women's participation", data:D.lab.part_f, color:C.pom, endLabel:pct(D.lab.part_f[LAST],1)},
+      {name:"Women's employment ratio", data:D.lab.er_f, color:C.turq, endLabel:pct(D.lab.er_f[LAST],1)}
+    ]});
+};
+R["c-gendergap"] = box => dumbbell(box, {lw:150, rows:[
+  {k:"Participation",     a:D.lab.part_m[LAST], b:D.lab.part_f[LAST]},
+  {k:"Employment ratio",  a:D.lab.er_m[LAST],   b:D.lab.er_f[LAST]},
+  {k:"Unemployment",      a:D.lab.ur_m[LAST],   b:D.lab.ur_f[LAST]}
+]});
+R["c-fields"] = box => hSplit(box, {rows:
+  D.uni_field.map(r=>({k:r[0], t:r[1], m:r[2], f:r[3]}))
+             .sort((x,y)=>y.t-x.t)});
+
+
+R["c-q"] = box => lineChart(box, {
+  x: D.lab_q.labels, ratio:0.44, yMin:0, yMax:40, yFmt:v=>pct(v,0),
+  tipFmt:v=>pct(v,1), xSize:10.5, every:1,
+  series:[
+    {name:"Aged 15–24", data:D.lab_q.u24, color:C.saff},
+    {name:"Aged 18–35", data:D.lab_q.u35, color:C.lapis},
+    {name:"Women 15+",      data:D.lab_q.ur_f, color:C.turq},
+    {name:"All 15+",        data:D.lab_q.ur,  color:C.pom, w:3.2}
+  ]});
+R["c-sectorshock"] = box => {
+  const i0=0, i1=4;                       
+  const e0=D.lab_q.emp[i0], e1=D.lab_q.emp[i1];
+  const dd = k => Math.round(D.lab_q[k][i1]/100*e1 - D.lab_q[k][i0]/100*e0);
+  divBars(box, {ratio:0.4, yFmt:v=>num(v), lblFmt:v=>sgn(v)+"k", data:[
+    {k:"Industry",     v:dd("ind"),  c:C.pom},
+    {k:"Services",    v:dd("serv"), c:C.turq},
+    {k:"Agriculture",  v:dd("agri"), c:C.saff},
+    {k:"Actual net", v:e1-e0,    c:C.ink}
+  ]});
+};
+
+
+R["c-vital"] = box => lineChart(box, {
+  modes:[MODE_VAL, idxMode("1395"), yoyMode], file:"tavallod-va-fowt",
+  legendStatic:[{name:"Natural population increase", color:"var(--saff-l)", opacity:.5, static:true}],
+  x: YRFA, ratio:0.44, yMin:0, yMax:1700000, yTicks:5,
+  yFmt:v=>num(Math.round(v/1000))+"k", tipFmt:v=>num(v),
+  series:[
+    {name:"Births", data:D.vital.births, color:C.turq, endLabel:num(D.vital.births[LAST])},
+    {name:"Deaths",  data:D.vital.deaths, color:C.pom,  endLabel:num(D.vital.deaths[LAST])}
+  ],
+  bands:[{a:0,b:1,up:"url(#hatch)"}],
+  marks:[{i:4, label:"COVID-19", color:C.faint}]
+});
+R["c-marr"] = box => barChart(box, {
+  x: YRFA, ratio:0.44, yMax:820000, yFmt:v=>num(Math.round(v/1000))+"k",
+  series:[
+    {name:"Marriages fell", data:D.vital.marr, color:C.lapis},
+    {name:"Divorces",   data:D.vital.div,  color:C.pom}
+  ],
+  legendNote:"the dashed line is read on the right axis",
+  line:{name:"Divorces per 100 marriages",
+        data:D.vital.marr.map((m,i)=>+(D.vital.div[i]/m*100).toFixed(1)),
+        color:C.saff, min:20, max:48, fmt:v=>num(v,0)}
+});
+R["c-hh"] = box => {
+  const yrs = D.hh.years.map(Number);
+  const f = frame(box, {ratio:0.4, m:{t:20,r:16,b:34,l:40}});
+  const Y = yAxis(f, 2.8, 5.9, v=>num(v,1), {n:5});
+  const X = y => f.m.l + (y-1330)/(1405-1330)*f.iw;
+  [1335,1355,1375,1395,1405].forEach(y=>f.g.appendChild(
+    T(X(y), f.m.t+f.ih+16, fa(y), {size:10.5, fill:C.muted})));
+  f.g.appendChild(E("line",{x1:f.m.l,x2:f.m.l+f.iw,y1:f.m.t+f.ih,y2:f.m.t+f.ih,
+    stroke:C.line2,"stroke-width":1.2}));
+  [["rural",C.moss,"Rural"],["urban",C.lapis,"Urban"],["kol",C.ink,"Total"]].forEach(([k,col,nm])=>{
+    const pts = D.hh[k].map((v,i)=>[X(yrs[i]),Y(v)]);
+    f.g.appendChild(path(pts,{c:col,w:2.6}));
+    pts.forEach(p=>f.g.appendChild(E("circle",{cx:p[0],cy:p[1],r:3,fill:"#fff",
+      stroke:col,"stroke-width":2})));
+    const last = pts[pts.length-1];
+    f.g.appendChild(T(last[0]+2, last[1]+4, num(D.hh[k][D.hh[k].length-1],2),
+      {anchor:"start", size:11, w:800, fill:col}));
+  });
+};
+
+
+R["c-school"] = box => lineChart(box, {
+  modes:[MODE_VAL, idxMode("1380"), yoyMode], file:"danesh-amoozan",
+  x: D.school.labels.map(s=>fa(s.split("-")[0])), ratio:0.42,
+  xLong: D.school.labels.map(s=>"Academic year "+rng(...s.split("-"))),
+  yMin:12000000, yMax:18600000, yFmt:v=>num(+(v/1e6).toFixed(1),1)+"M",
+  tipFmt:v=>num(v), every:2,
+  series:[{name:"Total school enrolment", data:D.school.total, color:C.lapis,
+           endLabel:num(+(D.school.total[D.school.total.length-1]/1e6).toFixed(2),2)+"M"}],
+  marks:[{i:3, label:"Trough: 13.23M", color:C.faint},
+         {i:D.school.total.indexOf(Math.max(...D.school.total)), label:"Peak: 16.97M", color:C.pom}]
+});
+R["c-cohort"] = box => {
+  const B = D.vital.births, ys = D.vital.years;
+  const rows=[];
+  for (let s=0; s+6<=B.length; s++){
+    rows.push({k: rng(ys[s], ys[s+5]),
+               v: B.slice(s,s+6).reduce((a,b)=>a+b,0)});
+  }
+  const max = Math.max(...rows.map(r=>r.v))*1.14;
+  const yf = v=>num(+(v/1e6).toFixed(1),1)+"M";
+  const f = frame(box, {ratio:0.36, m:{t:24,r:16,b:38,l:needLeft(0,max,yf,4,52)}});
+  const Y = yAxis(f, 0, max, yf, {n:4});
+  const ax = xCat(f, rows.map(r=>r.k), {band:true, size:10.5});
+  const bw = Math.min(64, ax.step*0.6);
+  const base = rows[0].v;
+  rows.forEach((r,i)=>{
+    f.g.appendChild(E("rect",{x:ax.X(i)-bw/2, y:Y(r.v), width:bw,
+      height:f.m.t+f.ih-Y(r.v), fill: i===0?C.lapis:C.saff, opacity: i===0?1:0.55+0.11*i}));
+    f.g.appendChild(T(ax.X(i), Y(r.v)-19, num(+(r.v/1e6).toFixed(2),2)+"M",
+      {size:11.5, w:800, fill:C.ink}));
+    if (i) f.g.appendChild(T(ax.X(i), Y(r.v)-6,
+      iso(sgn(+((r.v/base-1)*100).toFixed(1),1)+"%"), {size:10.5, w:700, fill:C.pom}));
+  });
+};
+R["c-uni"] = box => barChart(box, {
+  x: D.uni.labels.map(s=>fa(s.split("-")[0])), ratio:0.42,
+  xLong: D.uni.labels.map(s=>"Academic year "+rng(...s.split("-"))),
+  yMax:4900000, yFmt:v=>num(+(v/1e6).toFixed(1),1)+"M", maxBar:34,
+  series:[{name:"Students", data:D.uni.total, color:C.lapis, opacity:.88}],
+  line:{name:"Graduates",
+        data:D.uni.labels.map(L=>{const j=D.grad.labels.indexOf(L);
+              return j<0?null:D.grad.total[j];}),
+        color:C.pom, min:0, max:900000, dash:"0",
+        fmt:v=>num(Math.round(v/1000))+"k"}
+});
+
+
+const GAPY = [1397,1398,1399,1400,1401,1402,1403,1404];
+function gapRows(){
+  return GAPY.map(y=>{
+    const pi = D.pop.years.indexOf(y), vi = D.vital.years.indexOf(y);
+    const dpop = D.pop.total[pi] - D.pop.total[pi-1];
+    const nat  = (D.vital.births[vi] - D.vital.deaths[vi])/1000;
+    return {y, dpop, nat:+nat.toFixed(1), gap:+(nat-dpop).toFixed(1)};
+  });
+}
+R["c-gap"] = box => divBars(box, {ratio:0.38, yFmt:v=>num(v),
+  lblFmt:v=>sgn(Math.round(v)), maxBar:44,
+  
+  data: gapRows().map(r=>({k:fa(r.y), v:r.gap,
+    c: r.gap >= 0 ? C.gain : C.loss}))});
+const GRP = [
+  {name:"Men",   ur:"ur_m", part:"part_m", color:C.lapis},
+  {name:"Women",    ur:"ur_f", part:"part_f", color:C.pom},
+  {name:"Urban",    ur:"ur_u", part:"part_u", color:C.turq},
+  {name:"Rural", ur:"ur_r", part:"part_r", color:C.saff}
+];
+const groupChart = key => box => lineChart(box, {
+  x: D.lab.years.map(fa), ratio:0.62, every:3, yTicks:4,
+  yFmt: v=>pct(v,0), tipFmt: v=>pct(v,1),
+  file: key==="ur" ? "gorooh-bikari" : "gorooh-mosharekat",
+  series: GRP.map(g=>({name:g.name, data:D.lab[g[key]], color:g.color, w:2.2,
+                       endLabel:pct(D.lab[g[key]][D.lab[g[key]].length-1],1)}))
+});
+R["c-groups-ur"]   = groupChart("ur");
+R["c-groups-part"] = groupChart("part");
+
+R["c-sector9"] = box => {
+  const L = D.lab, yrs = L.years.map(fa);
+  const cnt = k => L[k].map((p,i)=>Math.round(p/100*L.emp[i]));
+  const S = [
+    {key:"serv", name:"Services",   color:C.turq},
+    {key:"ind",  name:"Industry",    color:C.lapis},
+    {key:"agri", name:"Agriculture", color:C.pom}
+  ];
+  lineChart(box, {
+    x: yrs, ratio:0.44, file:"eshteghal-bakhshi",
+    modes:[
+      {label:"Share of employment", apply: c=>({
+        series: S.map(g=>({name:g.name, data:L[g.key], color:g.color, w:2.6,
+                           endLabel:pct(L[g.key][L[g.key].length-1],1)})),
+        yFmt:v=>pct(v,0), tipFmt:v=>pct(v,1), autoY:true })},
+      {label:"Headcount", apply: c=>({
+        series: S.map(g=>{ const d = cnt(g.key);
+          return {name:g.name, data:d, color:g.color, w:2.6,
+                  endLabel:num(+(d[d.length-1]/1000).toFixed(1),1)+"M"}; }),
+        yFmt:v=>num(+(v/1000).toFixed(0))+"M", tipFmt:v=>num(v)+"k",
+        autoY:true })}
+    ],
+    series: S.map(g=>({name:g.name, data:L[g.key], color:g.color, w:2.6,
+                       endLabel:pct(L[g.key][L[g.key].length-1],1)})),
+    yFmt:v=>pct(v,0), tipFmt:v=>pct(v,1)
+  });
+};
+
+R["c-proj"] = box => {
+  const s1 = scenario(MP.gb, MP.gd, MP.mig), s2 = scenario(-0.035, 0.0246, 0);
+  const yrs = D.pop.years;
+  const at = (sc,y)=>{ const i = sc.yrs.indexOf(y); return i<0?null:sc.vals[i]; };
+  const pad  = yrs.map(y=>at(s1,y));
+  const pad2 = yrs.map(y=>at(s2,y));
+  lineChart(box, {
+    x: yrs.map(fa), ratio:0.44, yMin:80000, yMax:93000, file:"model-jamiat",
+    yFmt:v=>num(+(v/1000).toFixed(0))+"M", tipFmt:v=>num(v)+"k", every:2,
+    series:[
+      {name:"Official projection", data:D.pop.total, color:C.turq,
+       endLabel:num(+(D.pop.total[D.pop.total.length-1]/1000).toFixed(1),1)+"M"},
+      {name:"Moderated scenario", data:pad2, color:C.saff, dash:"6 4",
+       endLabel:num(+(pad2[pad2.length-1]/1000).toFixed(1),1)+"M"},
+      {name:"Your model", data:pad, color:C.pom, dash:"6 4", w:3,
+       endLabel:num(+(pad[pad.length-1]/1000).toFixed(1),1)+"M"}
+    ],
+    marks:[{i:yrs.indexOf(1404), label:"Last actual data point", color:C.faint}]
+  });
+
+  
+  const off = D.pop.total[D.pop.total.length-1], mine = s1.vals[s1.vals.length-1];
+  const set = (id,t,cls)=>{ const e=document.getElementById(id); if(!e) return;
+    e.textContent = t; if (cls) e.className = "rv "+cls; };
+  set("p-off", num(off));
+  set("p-mod", num(mine));
+  const d = mine - off;
+  set("p-dif", sgn(Math.round(d)), d<0 ? "pom" : "turq");
+  set("p-cross", s1.cross ? fa(s1.cross) : "After 1415");
+};
+
+R["c-urban"] = box => stackCol(box, {ratio:0.44,
+  x: D.pop.years.map(fa), a: D.pop.urban, b: D.pop.rural});
+
+
+function refreshBase(){
+  const i = YRS.indexOf(BASE);
+  const adj = adjSeries(BASE);
+  const off = D.lab.ur[LAST], a = adj[LAST];
+  document.getElementById("lbl-baseyear").textContent =
+    fa(BASE) + " — participation " + pct(D.lab.part[i],1);
+  document.getElementById("r-off").textContent = pct(off,1);
+  document.getElementById("r-adj").textContent = pct(a,1);
+  document.getElementById("r-hid").textContent = num(hiddenAt(BASE, LAST));
+  const g = +(a-off).toFixed(1);
+  const el = document.getElementById("r-gap");
+  el.textContent = sgn(g,1);
+  el.className = "rv " + (g>=0 ? "saff" : "turq");
+  R["c-hero"](document.getElementById("c-hero"));
+}
+
+function fillGapTable(){
+  const tb = document.getElementById("gaptable");
+  if (!tb) return;
+  const why = {1397:"Reality ahead of projection", 1398:"Reality ahead of projection",
+               1399:"Excess COVID deaths", 1400:"Excess COVID deaths",
+               1401:"In line", 1402:"In line",
+               1403:"Accelerating birth decline", 1404:"Accelerating birth decline"};
+  let total = 0;
+  tb.innerHTML = gapRows().map(r=>{
+    total += r.gap;
+    const cls = r.gap < -60 ? "warn" : r.gap > 0 ? "fix" : "note";
+    return `<tr><td class="num">${fa(r.y)}</td><td class="num">${num(r.dpop)}</td>
+      <td class="num">${num(r.nat,1)}</td>
+      <td class="num" style="color:${r.gap>=0?"#2E7D4F":"#C4342E"}"><b>${sgn(r.gap,1)}</b></td>
+      <td><span class="chip ${cls}">${why[r.y]}</span></td></tr>`;
+  }).join("") +
+  `<tr style="background:var(--stone-2)"><td><b>Total</b></td><td></td><td></td>
+    <td class="num"><b>${sgn(+total.toFixed(1),1)}</b></td>
+    <td style="font-size:12px;color:var(--muted)">thousand, cumulative</td></tr>`;
+}
+
+
+let raf = null;
+
+const FILE = {"c-dots":"vorood-be-bazar-kar", "c-gendergap":"shekaf-jensiyati",
+  "c-fields":"gorooh-haye-tahsili", "c-sectorshock":"shock-bakhshi",
+  "c-sector9":"eshteghal-bakhshi", "c-groups-ur":"gorooh-bikari", "c-groups-part":"gorooh-mosharekat", "c-cohort":"nasl-ha", "c-gap":"shekaf-pishbini", "c-urban":"shahrneshini"};
+
+
+function renderSparks(){
+  const L = D.lab, V = D.vital;
+  const src = {
+    ur:      [L.ur,              "#2F7D4A", "Official unemployment rate, 1395 to 1404", "good"],
+    part:    [L.part,            "#B33A3A", "Participation rate, 1395 to 1404", "bad"],
+    er:      [L.er,              "#7A8491", "Employment ratio, almost flat", "neutral"],
+    adj:     [adjSeries(1395),   "#B33A3A", "Unemployment adjusted to a 1395 base", "bad"],
+    inact:   [L.inact,           "#B33A3A", "Inactive population aged 15+", "bad"],
+    u24:     [D.lab_q.u24,       "#B33A3A", "Unemployment aged 15–24, spring 1404 to spring 1405", "bad"],
+    births:  [V.births,          "#B33A3A", "Registered births", "bad"],
+    erf:     [L.er_f,            "#B33A3A", "Women's employment ratio", "bad"]
+  };
+  document.querySelectorAll(".kpi[data-spark]").forEach(card=>{
+    const k = card.dataset.spark, box = card.querySelector(".k-spark");
+    if (!box || !src[k]) return;
+    card.classList.remove("semantic-good","semantic-bad","semantic-neutral");
+    card.classList.add("semantic-" + src[k][3]);
+    spark(box, src[k][0], src[k][1], {title: src[k][2]});
+  });
+}
+
+function renderAll(){
+  renderSparks();
+  for (const id in R){
+    const box = document.getElementById(id);
+    if (box) { try { R[id](box); } catch(e){ console.error(id, e); } }
+  }
+  
+  for (const id in R){
+    const box = document.getElementById(id);
+    if (!box || !box.querySelector("svg")) continue;
+    const prev = box.previousElementSibling;
+    if (prev && prev.classList.contains("chead")) continue;
+    chartHead(box, null, ()=>R[id](box), FILE[id] || id);
+  }
+}
+function scheduleRender(){
+  if (raf) cancelAnimationFrame(raf);
+  raf = requestAnimationFrame(()=>{ renderAll(); refreshBase(); });
+}
+
+
+document.addEventListener("DOMContentLoaded", ()=>{
+  fillGapTable();
+  renderAll();
+  refreshBase();
+
+  const sl = document.getElementById("baseyear");
+  sl.addEventListener("input", e=>{ BASE = +e.target.value; refreshBase(); });
+
+  
+  const pb = document.getElementById("p-birth"),
+        pd = document.getElementById("p-death"),
+        pm = document.getElementById("p-mig");
+  if (pb && pd && pm){
+    const syncProj = ()=>{
+      MP.gb  = (+pb.value)/1000;      
+      MP.gd  = (+pd.value)/1000;
+      MP.mig = +pm.value;
+      document.getElementById("o-birth").textContent = sgn(+pb.value/10, 1, "%");
+      document.getElementById("o-death").textContent = sgn(+pd.value/10, 1, "%");
+      document.getElementById("o-mig").textContent   = sgn(+pm.value);
+      R["c-proj"](document.getElementById("c-proj"));
+    };
+    [pb,pd,pm].forEach(el=>el.addEventListener("input", syncProj));
+    document.getElementById("p-reset").onclick = ()=>{
+      pb.value=-58; pd.value=25; pm.value=0; syncProj();
+    };
+    syncProj();
+  }
+
+  let t=null;
+  window.addEventListener("resize", ()=>{ clearTimeout(t); t=setTimeout(scheduleRender, 180); });
+
+  
+  const bar = document.querySelector("#progress > i");
+  const chips = [...document.querySelectorAll("#navchips a")];
+  const secs  = chips.map(a=>document.querySelector(a.getAttribute("href"))).filter(Boolean);
+  const onScroll = ()=>{
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h>0 ? (window.scrollY/h*100) : 0) + "%";
+    let cur = 0;
+    secs.forEach((s,i)=>{ if (s.getBoundingClientRect().top <= 120) cur = i; });
+    chips.forEach((a,i)=>a.classList.toggle("on", i===cur));
+    const active = chips[cur];
+    if (active && active.offsetLeft !== undefined){
+      const nav = document.getElementById("navchips");
+      const l = active.offsetLeft, r = l + active.offsetWidth;
+      if (l < nav.scrollLeft || r > nav.scrollLeft + nav.clientWidth)
+        nav.scrollTo({left: l - nav.clientWidth/2 + active.offsetWidth/2, behavior:"smooth"});
+    }
+  };
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+
+  
+  (function(){
+    const nav = document.getElementById("navchips");
+    const wrap = nav.closest(".navwrap");
+    if (!nav || !wrap) return;
+    const maxL = () => nav.scrollWidth - nav.clientWidth;
+    const edges = ()=>{
+      
+      const x = Math.abs(nav.scrollLeft), m = maxL();
+      wrap.classList.toggle("can-start", x > 2);
+      wrap.classList.toggle("can-end",   x < m - 2);
+    };
+    const by = d => nav.scrollBy({left: d * nav.clientWidth * 0.7, behavior:"smooth"});
+    wrap.querySelector(".nb-start").onclick = ()=>by(1);
+    wrap.querySelector(".nb-end").onclick   = ()=>by(-1);
+    nav.addEventListener("scroll", edges, {passive:true});
+    window.addEventListener("resize", edges);
+    
+    nav.addEventListener("wheel", e=>{
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      nav.scrollLeft -= e.deltaY; e.preventDefault(); edges();
+    }, {passive:false});
+    
+    let down=false, sx=0, sl=0;
+    nav.addEventListener("pointerdown", e=>{
+      down=true; sx=e.clientX; sl=nav.scrollLeft; nav.style.scrollBehavior="auto";
+    });
+    nav.addEventListener("pointermove", e=>{
+      if(!down) return;
+      const d = e.clientX - sx;
+      if (Math.abs(d) > 3) nav.scrollLeft = sl + d;
+      edges();
+    });
+    const up = ()=>{ down=false; nav.style.scrollBehavior="smooth"; };
+    nav.addEventListener("pointerup", up);
+    nav.addEventListener("pointercancel", up);
+    nav.addEventListener("pointerleave", up);
+    edges(); setTimeout(edges, 400);
+  })();
+
+  
+  const revealables = document.querySelectorAll(
+    ".panel, .blocks, .statstrip, .callout, .pull, .tblwrap");
+  const showAll = ()=> revealables.forEach(el=>el.classList.add("in"));
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window){
+    const io = new IntersectionObserver(es=>es.forEach(en=>{
+      if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
+    }), {threshold:0.02, rootMargin:"200px 0px"});
+    revealables.forEach(el=>{ el.classList.add("reveal"); io.observe(el); });
+    
+    window.addEventListener("beforeprint", showAll);
+    setTimeout(showAll, 12000);
+  }
+
+  
+  const preparePrint = ()=>{
+    document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));
+    document.body.classList.add("printing");
+    try { renderAll(); refreshBase(); } catch(e) { console.error("print render", e); }
+    void document.body.offsetHeight;
+  };
+  window.addEventListener("beforeprint", preparePrint);
+  window.addEventListener("afterprint", ()=>document.body.classList.remove("printing"));
+  const printBtn = document.getElementById("print-dashboard");
+  if (printBtn){
+    printBtn.addEventListener("click", ()=>{
+      preparePrint();
+      requestAnimationFrame(()=>requestAnimationFrame(()=>window.print()));
+    });
+  }
+
+  
+  const dl = (name, text, type, bom)=>{
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([(bom?"\uFEFF":"")+text], {type}));
+    a.download = name; a.click(); URL.revokeObjectURL(a.href);
+  };
+  document.getElementById("dl-json").onclick = ()=>
+    dl("iran-population-labour-clean.json", JSON.stringify(D, null, 1), "application/json");
+  document.getElementById("dl-csv").onclick = ()=>{
+    const adj = adjSeries(1395);
+    const head = ["Year","Population 15+ (thousands)","Labour force","Employed","Unemployed","Participation rate",
+                  "Official unemployment rate","Adjusted unemployment rate","employment-to-population ratio",
+                  "Births","Deaths","Natural increase","Marriages fell","Divorces"];
+    const rows = YRS.map((y,i)=>[y, D.lab.pop15[i], D.lab.act[i], D.lab.emp[i],
+      D.lab.unemp[i], D.lab.part[i], D.lab.ur[i], adj[i], D.lab.er[i],
+      D.vital.births[i], D.vital.deaths[i], D.vital.natural[i],
+      D.vital.marr[i], D.vital.div[i]]);
+    dl("iran-key-series.csv", [head, ...rows].map(r=>r.join(",")).join("\n"), "text/csv;charset=utf-8", true);
+  };
+});
+
+</script>
+</body>
+</html>
