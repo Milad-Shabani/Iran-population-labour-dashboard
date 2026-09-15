@@ -1,0 +1,2909 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>بیکاری کم شد، شغل زیاد نشد — روایت داده‌محور جمعیت و نیروی انسانی ایران</title>
+<meta name="description" content="داشبورد تحلیلی جمعیت و نیروی انسانی ایران، ۱۳۹۵ تا ۱۴۰۵، بر پایه داده‌های مرکز آمار ایران، سازمان ثبت احوال، وزارت آموزش و پرورش و وزارت علوم.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/aminabedi68/Estedad@latest/dist/Estedad-font-face.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/morabba-font@v1.0.0/dist/font-face.css" rel="stylesheet">
+<style>
+/* جهت نمایش استاندارد اعداد علامت‌دار: علامت همیشه سمت چپ عدد دیده شود */
+/* نمایش استاندارد درصدهای علامت‌دار: علامت چپ، عدد وسط، درصد راست */
+.twin{display:grid; grid-template-columns:1fr 1fr; gap:8px 26px; margin-top:6px}
+.twin-h{font-size:12px; font-weight:800; color:var(--ink-2); letter-spacing:-.01em;
+  padding-bottom:4px; border-bottom:1px solid var(--line); margin-bottom:6px}
+@media (max-width:820px){ .twin{grid-template-columns:1fr; gap:22px} }
+.lg-in{display:inline-flex; align-items:center; gap:6px; margin-inline-start:14px;
+  font-size:12px; font-weight:700; color:var(--ink-2); white-space:nowrap}
+.lg-in i{width:10px; height:10px; border-radius:2px; display:inline-block}
+.pc{direction:ltr; unicode-bidi:isolate; white-space:nowrap; display:inline-block;
+  font-variant-numeric:tabular-nums; letter-spacing:0}
+.signed-percent{direction:ltr; unicode-bidi:isolate; white-space:nowrap; display:inline-block; font-variant-numeric:tabular-nums; letter-spacing:0}
+
+.signed-number, .sg, .trend-good, .trend-bad, output {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+  text-align:left;
+  font-variant-numeric:tabular-nums;
+}
+/* ==========================================================================
+   نظام طراحی — «کاشی»
+   رنگ در این اثر تزئین نیست؛ قرارداد معنایی است:
+     فیروزه‌ای  = رقم رسمیِ منتشرشده
+     زعفرانی    = شاخص بازمحاسبه‌شده / آنچه در رقم رسمی دیده نمی‌شود
+     اناری      = افت، هشدار، نقطه شکست
+     لاجوردی    = ساختار، جمعیت، بستر
+   ========================================================================== */
+:root{
+  --stone:#EDEFF3; --stone-2:#E3E7EE; --panel:#FFFFFF;
+  --ink:#131F33; --ink-2:#33455E; --muted:#6B7C93; --faint:#93A2B5;
+  --line:#D8DEE7; --line-2:#C3CCDA;
+  --lapis:#1F3D73; --lapis-l:#3C63A8;
+  --turq:#0F7F87; --turq-l:#5FB3B8;
+  --saff:#C98A0E; --saff-l:#E9C877;
+  --pom:#A3242F; --pom-l:#D97A82;
+  --moss:#4A7A4E;
+  --r:4px; --maxw:1180px; --gut:22px;
+  /* پشتهٔ فونت: اول فونت‌های نصب‌شدهٔ رایج روی رایانه‌های ایرانی،
+     سپس وب‌فونت‌ها، و در نهایت فونت سامانه. هیچ حلقه‌ای حیاتی نیست. */
+  --f: 'Estedad','IRANSansX','IRANSans','IRANYekanX','IRANYekan',
+       'Vazirmatn','Vazir','Shabnam','Segoe UI',Tahoma,sans-serif;
+  --f-disp: 'Morabba','Estedad','IRANSansX','IRANSans','Vazirmatn',
+       'Segoe UI',Tahoma,sans-serif;
+  /* ارقام همیشه از فونتی می‌آیند که ارقام فارسیِ هم‌عرض دارد */
+  --f-num: 'Estedad','Vazirmatn','IRANSansX','IRANSans',Tahoma,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important; transition:none!important} }
+body{
+  margin:0; background:var(--stone); color:var(--ink); font-family:var(--f);
+  font-size:16px; line-height:1.85; font-weight:400;
+  font-variant-numeric:tabular-nums; text-rendering:optimizeLegibility;
+}
+h1,h2,h3,h4{margin:0; line-height:1.4; font-weight:800; letter-spacing:-.01em;
+  font-family:var(--f-disp); font-feature-settings:"ss01" 1}
+h1,h2{line-height:1.28; letter-spacing:-.02em}
+.k-val,.v,.rv{font-family:var(--f-num); font-variant-numeric:tabular-nums;
+  letter-spacing:-.015em}
+p{margin:0 0 .9em}
+a{color:var(--lapis); text-decoration-thickness:1px; text-underline-offset:3px}
+:focus-visible{outline:2.5px solid var(--saff); outline-offset:3px; border-radius:2px}
+
+/* ---------- شبکه ---------- */
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 var(--gut)}
+.narrow{max-width:760px}
+
+/* ---------- نوار بالا ---------- */
+#progress{position:fixed; inset-block-start:0; inset-inline:0; height:3px; background:transparent; z-index:60}
+#progress > i{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--turq),var(--saff)); transition:width .08s linear}
+#topbar{
+  position:sticky; top:0; z-index:50; background:rgba(237,239,243,.93);
+  backdrop-filter:saturate(1.4) blur(10px); border-bottom:1px solid var(--line);
+}
+#topbar .inner{display:flex; align-items:center; gap:12px; height:52px}
+#topbar .brand{font-weight:800; font-size:13.5px; white-space:nowrap; color:var(--ink); letter-spacing:-.02em; flex:0 0 auto}
+#topbar .brand b{color:var(--pom)}
+
+/* نوار پرده‌ها: لغزنده به چپ و راست، با دکمه و سایهٔ لبه */
+.navwrap{position:relative; flex:1 1 auto; min-width:0; display:flex; align-items:center}
+#navchips{display:flex; gap:5px; overflow-x:auto; scrollbar-width:none;
+  flex:1 1 auto; min-width:0; scroll-behavior:smooth; padding:2px 30px}
+#navchips::-webkit-scrollbar{display:none}
+.navwrap::before,.navwrap::after{
+  content:""; position:absolute; top:0; bottom:0; width:44px; pointer-events:none;
+  z-index:2; opacity:0; transition:opacity .18s}
+.navwrap::before{right:0; background:linear-gradient(to left, rgba(237,239,243,.98), rgba(237,239,243,0))}
+.navwrap::after{left:0;  background:linear-gradient(to right, rgba(237,239,243,.98), rgba(237,239,243,0))}
+.navwrap.can-start::before{opacity:1}
+.navwrap.can-end::after{opacity:1}
+.navbtn{
+  position:absolute; z-index:3; top:50%; transform:translateY(-50%);
+  width:26px; height:26px; border-radius:50%; border:1px solid var(--line-2);
+  background:var(--panel); color:var(--ink-2); cursor:pointer; display:none;
+  align-items:center; justify-content:center; padding:0; line-height:1;
+  font-size:15px; font-weight:800; box-shadow:0 1px 4px rgba(19,31,51,.12)}
+.navbtn:hover{border-color:var(--lapis); color:var(--lapis)}
+.navbtn.nb-start{right:0}
+.navbtn.nb-end{left:0}
+.navwrap.can-start .nb-start,.navwrap.can-end .nb-end{display:flex}
+/* در نمایشگر باریک، نام اثر جا را از نوار پرده‌ها نگیرد */
+@media (max-width:820px){
+  #topbar .brand{font-size:12px}
+  #topbar .brand .long{display:none}
+}
+@media (max-width:600px){
+  #topbar .inner{gap:8px}
+  #topbar .brand{display:none}
+}
+#navchips a{
+  white-space:nowrap; font-size:12.5px; font-weight:600; color:var(--ink-2);
+  padding:5px 11px; border:1px solid var(--line-2); border-radius:100px; text-decoration:none;
+  background:var(--panel); transition:.15s;
+}
+#navchips a:hover{border-color:var(--lapis); color:var(--lapis)}
+#navchips a.on{background:var(--lapis); border-color:var(--lapis); color:#fff}
+
+/* ==========================================================================
+   جلد — هدر تحلیلی: عنوان قدرتمند، سیگنال اصلی، و روایت کوتاه
+   ========================================================================== */
+.cover{
+  position:relative; background:
+    radial-gradient(circle at 92% 8%, rgba(31,61,115,.055), transparent 28%),
+    linear-gradient(180deg,#fff 0%,#fbfcfd 100%);
+  color:var(--ink); border-bottom:1px solid var(--line);
+}
+.cover .wrap{position:relative; z-index:1}
+
+.hero{padding:42px 0 0}
+.eyebrow{
+  font-size:10.5px; font-weight:800; letter-spacing:.12em; color:var(--muted);
+  display:flex; align-items:center; gap:10px; margin-bottom:18px;
+}
+.eyebrow::after{content:""; flex:1; height:1px; background:var(--line-2)}
+.hero .eyebrow::before{
+  content:""; width:7px; height:7px; border-radius:50%; background:#E1382C;
+  flex:0 0 auto; box-shadow:0 0 0 4px rgba(225,56,44,.08)
+}
+
+/* سربرگ دو ستونه: تیتر + «سیگنال اصلی» */
+.hero .hero-top{
+  display:grid; grid-template-columns:minmax(0,1.18fr) minmax(260px,.82fr);
+  gap:28px; align-items:end;
+}
+.hero h1{
+  font-size:clamp(38px,5.3vw,64px); font-weight:900; letter-spacing:-.045em;
+  line-height:1.28; color:var(--ink); max-width:15ch; text-wrap:balance;
+}
+.hero h1 .hl2{color:#5E6877}
+.hero h1 .hl{color:#E1382C; font-weight:900}
+
+.hero-signal{
+  border-inline-start:4px solid #E1382C; padding:5px 0 5px 22px; padding-inline-start:12px;
+  margin-bottom:5px;
+}
+.hero-signal .signal-kicker{
+  font-size:10.5px; font-weight:800; color:var(--muted); margin-bottom:4px;
+}
+.hero-signal .signal-main{
+  display:flex; align-items:baseline; gap:7px; font-family:var(--f-num);
+}
+.hero-signal .signal-main strong{
+  font-size:clamp(38px,4.5vw,55px); line-height:1; letter-spacing:-.05em; color:#E1382C;
+}
+.hero-signal .signal-main span{
+  font-size:14px; font-weight:700; color:var(--ink-2);
+}
+.hero-signal .signal-note{
+  font-size:11.5px; color:var(--muted); line-height:1.7; margin-top:7px;
+}
+
+/* روایت + تز: دو کارت با hierarchy روشن */
+.hero .grid{
+  display:grid; grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);
+  gap:14px; align-items:stretch; margin-top:25px; padding-bottom:18px;
+}
+.hero .lede{
+  font-size:clamp(14px,1.45vw,16px); color:var(--ink-2); font-weight:400; line-height:1.95;
+  background:#F5F7F9; border:1px solid #EDF0F4; border-radius:18px; padding:22px 24px; margin:0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8);
+}
+.hero .lede b{color:var(--ink); font-weight:800}
+.hero .lede .lede-em{
+  display:block; margin-top:13px; padding-top:11px; border-top:1px dashed var(--line-2);
+  color:var(--ink); font-weight:800; font-size:12.5px;
+}
+.hero .lede .lede-em span{color:#E1382C}
+
+/* کارت تز — عنصر قهرمان */
+.thesis{
+  position:relative; overflow:hidden; background:#fff; border:1px solid var(--line);
+  border-radius:18px; padding:20px 22px 19px;
+  box-shadow:0 8px 28px -22px rgba(19,31,51,.28);
+}
+/* نوار بالای کارت تز حذف شد تا کارت خلوت‌تر و متعادل‌تر باشد */
+.thesis::before{display:none}
+.thesis .ratio{display:flex; align-items:baseline; gap:4px; font-family:var(--f-num)}
+.thesis .a{font-size:clamp(48px,5.3vw,62px); font-weight:900; color:#E1382C;
+  letter-spacing:-.05em; line-height:.9}
+.thesis .sl{font-size:25px; font-weight:300; color:var(--line-2); line-height:1; margin:0 1px}
+.thesis .b{font-size:22px; font-weight:700; color:var(--faint); letter-spacing:-.03em; line-height:1}
+.thesis .cap{font-size:10px; font-weight:800; letter-spacing:.08em; color:var(--muted);
+  margin-top:10px}
+.thesis p{font-size:12.8px; color:var(--ink-2); line-height:1.85; margin:8px 0 0}
+.thesis p b{color:var(--ink); font-weight:800}
+.thesis .bar{
+  display:flex; height:7px; margin-top:15px; border-radius:100px; overflow:hidden;
+  background:var(--stone-2)
+}
+.thesis .bar i{
+  display:block; height:100%; background:#E1382C; border-radius:100px;
+  width:0; animation:grow 1s .45s forwards cubic-bezier(.2,.7,.3,1)
+}
+.thesis .bar::after{
+  content:"۸۳% خارج از بازار کار"; position:absolute; inset-inline-start:22px;
+  bottom:17px; font-size:9.5px; font-weight:700; color:var(--faint);
+}
+@keyframes grow{to{width:17%}}
+@media (prefers-reduced-motion:reduce){ .thesis .bar i{animation:none; width:17%} }
+
+
+/* چیدمان هدر: تیتر و ۱۷/۱۰۰ در یک ردیف؛ روایت و پیام نهایی در زیر آن */
+.hero-top-with-thesis{align-items:center!important; grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr)!important; gap:34px!important;}
+.hero-top-with-thesis h1{line-height:1.48!important; row-gap:14px;}
+.thesis{animation:thesisIn .7s cubic-bezier(.2,.75,.25,1) both; transform-origin:center;}
+.thesis .ratio{animation:thesisRatio .8s .12s cubic-bezier(.2,.75,.25,1) both;}
+.thesis-explain{animation:thesisText .7s .24s ease both;}
+@keyframes thesisIn{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes thesisRatio{from{opacity:0;transform:translateY(8px) scale(.92)}to{opacity:1;transform:none}}
+@keyframes thesisText{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.hero-top-with-thesis .thesis{height:100%; display:flex; flex-direction:column; justify-content:center;}
+.hero-story{margin-top:20px;}
+.lede-wrap{display:flex;flex-direction:column;align-items:stretch;width:100%;border:1px solid #E1E6EC;border-radius:18px;overflow:hidden;background:#F5F7F9;box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+.hero-story .lede{font-size:clamp(14px,1.45vw,16px); color:var(--ink-2); font-weight:400; line-height:2.05; background:#F5F7F9; border:0; border-radius:0; padding:26px 34px 22px; margin:0; box-shadow:none; text-align:right;}
+.hero-story .lede b{color:var(--ink);font-weight:800}
+.hero-story .lede-em{display:flex;align-items:center;justify-content:flex-start;margin:0 34px;padding:14px 0 15px;border:0;border-top:1px dashed #CBD4DE;border-radius:0;background:transparent;color:var(--ink);font-weight:900;font-size:15px;line-height:1.7;text-align:right;box-shadow:none;}
+.hero-story .lede-em span{color:#E1382C;display:inline-block;}
+@media(max-width:760px){.hero-top-with-thesis{grid-template-columns:1fr!important;gap:18px!important}.hero-top-with-thesis .thesis{height:auto}.hero-story{margin-top:16px}.lede-wrap{width:100%}.hero-story .lede{padding:20px 18px 16px;line-height:1.9}.hero-story .lede-em{margin:0 18px;padding:12px 0 13px;font-size:13px}}
+
+/* ---------- کارت ۱۷ از ۱۰۰: عدد + توضیح روشن ---------- */
+.thesis{
+  position:relative; background:linear-gradient(180deg,#fff 0%,#F8FAFC 100%);
+  border:1px solid var(--line); border-radius:16px; padding:18px 20px 17px;
+  box-shadow:0 8px 24px -18px rgba(19,31,51,.22);
+}
+.thesis-kicker{font-size:10.5px;font-weight:800;color:var(--muted);letter-spacing:.04em;margin-bottom:3px}
+.thesis-explain{font-size:14px;line-height:1.85;color:var(--ink-2);margin-top:4px}
+.thesis-explain b{color:var(--ink);font-weight:900}
+.thesis .bar{display:none!important}
+/* منابع */
+.hero .srcline{
+  padding:13px 0 14px; border-top:1px solid var(--line);
+  font-size:11px; color:var(--muted); font-weight:400; line-height:1.8;
+}
+.hero .srcline a{color:var(--ink); text-decoration:none; font-weight:700;
+  border-bottom:1px solid var(--line-2)}
+.hero .srcline a:hover{border-color:#E1382C; color:#E1382C}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+
+/* ---------- شش شاخص کلیدی — کارت‌های مجزا ---------- */
+.kpis{
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px;
+  padding:16px 0 30px;
+}
+.kpi{
+  position:relative; display:flex; flex-direction:column;
+  padding:16px 18px 14px; background:#fff;
+  border:1px solid var(--line); border-top:2px solid var(--line-2); border-radius:14px;
+  box-shadow:0 1px 2px rgba(20,20,20,.03);
+  transition:box-shadow .2s, transform .2s, border-color .2s;
+}
+.kpi:hover{box-shadow:0 12px 26px -16px rgba(20,20,20,.28); transform:translateY(-2px)}
+.kpi.semantic-good{border-top-color:#2F7D4A}
+.kpi.semantic-bad{border-top-color:#B33A3A}
+.kpi.semantic-neutral{border-top-color:#9AA3AE}
+
+/* برچسب: دقیقاً دو سطر جا دارد تا اعداد همهٔ کارت‌ها هم‌تراز بمانند */
+.kpi .k-lab{
+  font-size:11.5px; color:var(--ink-2); font-weight:600; line-height:1.55;
+  min-height:2.5em; display:flex; align-items:flex-start;
+}
+.kpi .k-val{
+  font-family:var(--f-num); font-size:clamp(24px,2.4vw,30px); font-weight:800;
+  letter-spacing:-.035em; line-height:1.05; margin-top:6px; white-space:nowrap;
+  color:var(--ink);
+}
+.kpi .k-un{font-size:.44em; font-weight:700; letter-spacing:0;
+  margin-inline-start:.32em; opacity:.6}
+.kpi .k-sub{font-size:11px; color:var(--faint); margin-top:5px; font-weight:400;
+  line-height:1.75; min-height:2.6em}
+.kpi .k-sub .trend-good{color:#2F7D4A; font-weight:800}
+.kpi .k-sub .trend-bad{color:#B33A3A; font-weight:800}
+.kpi .k-sub .trend-neutral{color:#687383; font-weight:700}
+.kpi .k-spark{margin-top:auto; padding-top:10px; height:66px}
+.kpi .k-spark svg{display:block; width:100%; height:62px!important; overflow:visible; opacity:.9}
+
+.twin{display:grid; grid-template-columns:1fr 1fr; gap:8px 26px; margin-top:6px}
+.twin-h{font-size:12px; font-weight:800; color:var(--ink-2); letter-spacing:-.01em;
+  padding-bottom:4px; border-bottom:1px solid var(--line); margin-bottom:6px}
+@media (max-width:820px){ .twin{grid-template-columns:1fr; gap:22px} }
+.lg-in{display:inline-flex; align-items:center; gap:6px; margin-inline-start:14px;
+  font-size:12px; font-weight:700; color:var(--ink-2); white-space:nowrap}
+.lg-in i{width:10px; height:10px; border-radius:2px; display:inline-block}
+.pc{direction:ltr; unicode-bidi:isolate; white-space:nowrap; display:inline-block;
+  font-variant-numeric:tabular-nums; letter-spacing:0}
+.signed-percent,.signed-number{direction:ltr; unicode-bidi:isolate; white-space:nowrap;
+  display:inline-block; font-variant-numeric:tabular-nums}
+@media (max-width:900px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){
+  .kpis{grid-template-columns:1fr}
+  .kpi .k-lab,.kpi .k-sub{min-height:0}
+  .kpi .k-spark{height:58px} .kpi .k-spark svg{height:54px!important}
+}
+
+/* کارت ۱۷/۱۰۰: تمرکز عمودی و سلسله‌مراتب واضح */
+.hero .hero-top{grid-template-columns:1fr;gap:22px;align-items:stretch}
+.thesis{min-height:220px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:28px 30px}
+.thesis .ratio{justify-content:center;margin:7px 0 10px}
+.thesis-kicker{font-size:12px;margin-bottom:6px}
+.thesis-explain{max-width:620px;font-size:15px;line-height:1.9}
+
+/* ---------- هفت یافته: فهرست تحریریه‌ای ---------- */
+.findlead{
+  display:flex; align-items:baseline; gap:14px; margin:46px 0 4px;
+  font-size:11px; font-weight:700; letter-spacing:.2em; color:var(--muted);
+}
+.findlead::after{content:""; flex:1; height:1px; background:var(--line)}
+.findings{margin:0 0 46px; border-top:2px solid var(--ink)}
+.finding{
+  position:relative; display:grid; grid-template-columns:54px minmax(0,1fr) auto;
+  grid-template-areas:"n t g" "n d d";
+  gap:0 20px; align-items:baseline; padding:20px 10px 18px 6px;
+  border-bottom:1px solid var(--line); text-decoration:none; color:inherit;
+  transition:background .18s, padding .18s;
+}
+.finding:hover{background:linear-gradient(to left, rgba(31,61,115,.055), transparent 70%)}
+.finding:focus-visible{outline:2px solid var(--lapis); outline-offset:-2px}
+.finding .n{grid-area:n;
+  font-family:var(--f-num); font-size:27px; font-weight:300; line-height:1;
+  color:var(--line-2); letter-spacing:-.03em; transition:color .22s;
+  font-variant-numeric:tabular-nums; position:relative;
+}
+.finding .n::after{
+  content:""; position:absolute; inset-inline-start:-14px; top:.24em;
+  width:1px; height:1.5em; background:var(--line); transition:background .22s;
+}
+.finding:hover .n::after{background:var(--pom)}
+.finding:hover .n{color:var(--pom)}
+.finding .t{grid-area:t; font-weight:700; font-size:16px; line-height:1.68; display:block;
+  letter-spacing:-.012em}
+.finding .t em{font-style:normal; color:var(--pom); font-weight:800}
+.finding .d{grid-area:d; font-size:13px; color:var(--muted); font-weight:400; margin-top:6px;
+  line-height:1.85; display:block; max-width:78ch; justify-self:stretch}
+.finding .go{grid-area:g;
+  font-size:11px; color:var(--lapis); font-weight:700; white-space:nowrap;
+  opacity:0; transform:translateX(6px); transition:opacity .18s, transform .18s;
+}
+.finding:hover .go{opacity:1; transform:none}
+
+@media (max-width:1080px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .hero{padding:32px 0 0}
+  .hero .hero-top{grid-template-columns:1fr; gap:18px}
+  .hero h1{font-size:clamp(36px,10vw,48px)}
+  .hero-signal{border-inline-start-width:3px; padding-inline-start:16px}
+  .hero .grid{grid-template-columns:1fr; gap:12px; padding-bottom:20px}
+  .thesis{padding:19px 20px}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; padding:18px 0 24px}
+  .kpi{padding:16px 14px 13px}
+  .kpi .k-lab{min-height:0}
+  .finding{grid-template-columns:38px minmax(0,1fr);
+    grid-template-areas:"n t" "n d"; gap:0 12px; padding:16px 4px}
+  .finding .go{display:none}
+}
+
+/* ---------- پرده‌ها ---------- */
+.act{padding:56px var(--gut) 10px; border-top:1px solid var(--line-2); scroll-margin-top:64px}
+.act:first-of-type{border-top:none}
+.act-num{
+  font-size:11.5px; font-weight:800; letter-spacing:.14em; color:var(--panel);
+  background:var(--ink); padding:4px 11px; display:inline-block; border-radius:100px;
+}
+.act h2{font-size:clamp(23px,3.6vw,36px); font-weight:900; letter-spacing:-.03em; margin:16px 0 0; max-width:900px}
+.act .lede{font-size:clamp(14.5px,1.7vw,17.5px); color:var(--ink-2); max-width:760px; margin-top:14px}
+
+/* ---------- نوار آمار ---------- */
+.statstrip{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:var(--line-2); border:1px solid var(--line-2); margin:28px 0}
+.statstrip > div{background:var(--panel); padding:14px 15px}
+.statstrip .v{font-size:26px; font-weight:900; letter-spacing:-.04em; line-height:1.2}
+.statstrip .l{font-size:11.5px; color:var(--muted); font-weight:600; margin-top:5px; line-height:1.6}
+.v.pom{color:var(--pom)} .v.turq{color:var(--turq)} .v.saff{color:var(--saff)} .v.lapis{color:var(--lapis)} .v.moss{color:var(--moss)}
+
+/* ---------- پنل نمودار ---------- */
+.panel{background:var(--panel); border:1px solid var(--line); margin:26px 0; padding:20px 20px 16px}
+.panel > h3{font-size:16.5px; font-weight:800; letter-spacing:-.02em}
+.panel > .sub{font-size:12.5px; color:var(--muted); margin:6px 0 0; font-weight:500; line-height:1.7}
+.chartbox{position:relative; width:100%; margin-top:16px}
+.chartbox svg{display:block; width:100%; height:auto; overflow:visible}
+figcaption, .srcline{
+  font-size:11.5px; color:var(--faint); margin-top:12px; padding-top:10px; border-top:1px dashed var(--line-2); line-height:1.75; font-weight:500;
+}
+.legend{display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:12px; font-size:12.5px; font-weight:600; color:var(--ink-2)}
+.legend i{width:13px; height:3px; border-radius:2px; display:inline-block; margin-inline-end:6px; vertical-align:middle}
+.legend .sq{width:12px;height:12px;border-radius:2px}
+.tip{
+  position:absolute; pointer-events:none; background:var(--ink); color:#fff; font-size:12px; font-weight:600;
+  padding:8px 11px; border-radius:var(--r); white-space:nowrap; opacity:0; transition:opacity .12s; z-index:9;
+  box-shadow:0 6px 22px rgba(19,31,51,.28); line-height:1.75;
+}
+.tip b{font-weight:800}
+.tip .r{display:flex; gap:10px; justify-content:space-between}
+.tip .r i{width:8px;height:8px;border-radius:50%;display:inline-block;margin-inline-end:5px}
+
+/* ---------- بلوک‌های داده/تحلیل/نتیجه ---------- */
+.blocks{display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:14px; margin:28px 0 8px}
+.blk{background:var(--panel); border:1px solid var(--line); border-top:3px solid; padding:16px 17px 6px}
+.blk h4{
+  font-size:11.5px; letter-spacing:.13em; font-weight:800; margin-bottom:10px;
+  display:flex; align-items:center; gap:7px;
+}
+.blk p{font-size:13.8px; line-height:1.9; color:var(--ink-2)}
+.blk p:last-child{margin-bottom:14px}
+.blk-data{border-top-color:var(--turq)} .blk-data h4{color:var(--turq)}
+.blk-analysis{border-top-color:var(--lapis)} .blk-analysis h4{color:var(--lapis)}
+.blk-concl{border-top-color:var(--pom); background:#FBF7F3} .blk-concl h4{color:var(--pom)}
+.blk h4::before{content:""; width:9px; height:9px; background:currentColor; display:inline-block; border-radius:1px}
+
+/* ---------- کنترل تعاملی ---------- */
+.control{
+  background:linear-gradient(180deg,#132443,#1C3358); color:#EAF0F8; border:1px solid #0C1A31;
+  padding:20px 22px; margin:26px 0;
+}
+.control h4{font-size:14px; font-weight:800; color:#fff; margin-bottom:4px}
+.control .hint{font-size:12.5px; color:#A9BEDB; margin-bottom:16px; line-height:1.75}
+.ctl-row{display:flex; flex-wrap:wrap; align-items:center; gap:14px 22px}
+.ctl-row label{font-size:13px; font-weight:700; color:#CFDDF0; white-space:nowrap}
+input[type=range]{
+  -webkit-appearance:none; appearance:none; background:transparent; height:26px; flex:1; min-width:190px; cursor:pointer; direction:rtl;
+}
+input[type=range]::-webkit-slider-runnable-track{height:5px; background:#3B5480; border-radius:100px}
+input[type=range]::-moz-range-track{height:5px; background:#3B5480; border-radius:100px}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none; width:20px; height:20px; border-radius:50%; background:var(--saff);
+  border:3px solid #0F1E38; margin-top:-7.5px; box-shadow:0 0 0 1px var(--saff);
+}
+input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:var(--saff);border:3px solid #0F1E38}
+.readout{display:flex; flex-wrap:wrap; gap:1px; background:#31486E; margin-top:18px; border:1px solid #31486E}
+.readout > div{background:#0F1E38; padding:12px 15px; flex:1; min-width:130px}
+.readout .rv.lapis{color:#8FB2E8}
+.readout .rv{font-size:25px; font-weight:900; letter-spacing:-.04em; line-height:1.2}
+.readout .rl{font-size:11px; color:#9FB4D2; font-weight:600; margin-top:4px; line-height:1.6}
+.rv.saff{color:var(--saff-l)} .rv.turq{color:var(--turq-l)} .rv.pom{color:var(--pom-l)} .rv.w{color:#fff}
+.seg{display:inline-flex; background:#0F1E38; border:1px solid #31486E; border-radius:100px; padding:3px}
+.seg button{
+  background:transparent; border:0; color:#A9BEDB; font-family:var(--f); font-size:12.5px; font-weight:700;
+  padding:5px 13px; border-radius:100px; cursor:pointer; transition:.15s;
+  white-space:nowrap;
+}
+.seg button.on{background:var(--saff); color:#12203A}
+.seg.light{background:var(--stone-2); border-color:var(--line-2)}
+.seg.light button{color:var(--ink-2)}
+.seg.light button.on{background:var(--lapis); color:#fff}
+
+/* ---------- جدول ---------- */
+.tblwrap{overflow-x:auto; margin:20px 0; border:1px solid var(--line); background:var(--panel)}
+table{border-collapse:collapse; width:100%; font-size:13px; min-width:540px}
+th,td{padding:9px 12px; text-align:right; border-bottom:1px solid var(--line)}
+thead th{background:var(--stone-2); font-weight:800; font-size:11.5px; color:var(--ink-2); letter-spacing:.02em; white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#F7F9FC}
+td.num{font-weight:600}
+.chip{display:inline-block; font-size:10.5px; font-weight:800; padding:2px 8px; border-radius:100px; white-space:nowrap}
+.chip.fix{background:#E6F2F1; color:var(--turq)}
+.chip.warn{background:#FBF0DC; color:#8A5E05}
+.chip.note{background:#E8ECF4; color:var(--lapis)}
+
+/* ---------- جعبه هشدار/نقل ---------- */
+.callout{
+  border-inline-start:4px solid var(--saff); background:#FCF8EF; padding:16px 20px; margin:24px 0;
+  font-size:14.5px; line-height:1.9; color:var(--ink-2);
+}
+.callout.pom{border-inline-start-color:var(--pom); background:#FCF3F3}
+.callout.turq{border-inline-start-color:var(--turq); background:#F0F7F7}
+.callout b{color:var(--ink)}
+.pull{
+  font-size:clamp(18px,2.7vw,26px); font-weight:800; line-height:1.6; letter-spacing:-.025em;
+  color:var(--ink); margin:34px 0; padding-inline-start:20px; border-inline-start:3px solid var(--pom); max-width:820px;
+}
+.pull span{color:var(--pom)}
+
+/* ---------- جمع‌بندی ---------- */
+.finale{background:var(--ink); color:#E8EDF5; padding:52px 0 44px; margin-top:60px}
+.finale h2{color:#fff; font-size:clamp(24px,3.6vw,38px)}
+.finale .lede{color:#B6C4D8}
+.finale .fgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1px; background:#2A3B55; border:1px solid #2A3B55; margin-top:32px}
+.finale .fgrid > div{background:#182740; padding:20px 18px}
+.finale .fgrid h4{font-size:14px; color:var(--saff-l); margin-bottom:9px}
+.finale .fgrid p{font-size:13.5px; color:#AFC0D6; line-height:1.9; margin:0}
+
+/* ---------- پیوست ---------- */
+.appendix{background:var(--stone-2); padding:52px 0 60px}
+.appendix h2{font-size:26px} 
+.appendix h3{font-size:16px; margin:32px 0 10px; color:var(--lapis); font-weight:800}
+.appendix p, .appendix li{font-size:13.8px; line-height:1.95; color:var(--ink-2)}
+.appendix ul{padding-inline-start:20px; margin:0 0 14px}
+.appendix li{margin-bottom:7px}
+.formula{
+  background:var(--panel); border:1px solid var(--line); padding:12px 15px; margin:10px 0 16px;
+  font-size:13px; direction:ltr; text-align:left; overflow-x:auto; line-height:2; font-weight:600; color:var(--ink);
+}
+.formula span{color:var(--muted); font-weight:500}
+details{background:var(--panel); border:1px solid var(--line); margin:10px 0; padding:0}
+summary{padding:12px 16px; font-weight:700; font-size:13.5px; cursor:pointer; list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+ "; color:var(--saff); font-weight:900}
+details[open] summary::before{content:"− "}
+details > div{padding:0 16px 14px; font-size:13.5px; line-height:1.9; color:var(--ink-2)}
+.btn{
+  display:inline-flex; align-items:center; gap:8px; background:var(--lapis); color:#fff; border:0;
+  font-family:var(--f); font-size:13px; font-weight:700; padding:10px 18px; cursor:pointer; text-decoration:none; transition:.15s;
+}
+.btn:hover{background:#16305C}
+.btn.ghost{background:transparent; color:var(--lapis); border:1px solid var(--line-2)}
+.btn.ghost:hover{background:var(--panel)}
+footer.f{padding:34px 0 44px; font-size:12px; color:var(--muted); text-align:center; line-height:2}
+.byline{
+  display:flex; align-items:center; gap:20px; text-align:start;
+  max-width:540px; margin:0 auto 24px; padding:22px 26px;
+  background:#fff; border:1px solid var(--line); border-radius:8px;
+  box-shadow:0 14px 34px -26px rgba(19,31,51,.55);
+  position:relative; overflow:hidden;
+}
+.byline::after{
+  content:""; position:absolute; inset-inline-start:0; inset-block:0; width:3px;
+  background:linear-gradient(to bottom, var(--turq), var(--saff));
+}
+.byline .ava{
+  width:78px; height:78px; border-radius:50%; object-fit:cover; flex:0 0 auto;
+  box-shadow:0 0 0 2px #fff, 0 0 0 3.5px var(--turq-l);
+}
+.byline .kick{font-size:9.5px; font-weight:800; letter-spacing:.18em;
+  color:var(--turq); margin-bottom:5px}
+.byline .nm{font-family:var(--f-disp); font-size:21px; font-weight:900;
+  color:var(--ink); line-height:1.4; letter-spacing:-.02em}
+.byline .rl{font-size:11.5px; color:var(--muted); line-height:1.85; margin-top:4px}
+.byline .site{
+  display:inline-block; margin-top:11px; font-size:12.5px; font-weight:800;
+  color:#fff; background:var(--turq); border-radius:100px; padding:5px 15px;
+  text-decoration:none; transition:background .18s, transform .18s;
+}
+.byline .site:hover{background:var(--lapis); transform:translateY(-1px)}
+@media (max-width:520px){
+  :root{--gut:16px}
+  .byline{flex-direction:column; text-align:center; gap:14px; padding:20px}
+  .byline::after{inset-inline:0; inset-block:auto; top:0; width:auto; height:3px;
+    background:linear-gradient(to left, var(--turq), var(--saff))}
+}
+.fnote{font-size:12px; line-height:2}
+
+/* فهرست منابع با پیوند */
+.srclist{list-style:none; padding:0; margin:14px 0}
+.srclist li{padding:10px 14px; margin-bottom:8px; background:var(--panel);
+  border:1px solid var(--line); border-inline-start:3px solid var(--turq);
+  border-radius:var(--r); font-size:13.5px; line-height:1.9}
+.srclist b a{color:var(--lapis); text-decoration:none; border-bottom:1.5px solid var(--lapis-l)}
+.srclist b a:hover{color:var(--turq); border-color:var(--turq)}
+.srclist .u{display:inline-block; font-size:11.5px; color:var(--faint); font-weight:600;
+  direction:ltr; unicode-bidi:isolate}
+.srcnote{font-size:12.5px; color:var(--muted); border-inline-start:3px solid var(--line-2);
+  padding-inline-start:12px}
+
+/* ---------- ریزچیزها ---------- */
+.sg{unicode-bidi:isolate; direction:ltr; display:inline-block}
+
+/* ---------- کنترل‌های تعاملی نمودار ---------- */
+.chead{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:10px 0 2px}
+.chead .spacer{flex:1}
+.modes{display:inline-flex; border:1px solid var(--line-2); border-radius:999px;
+  overflow:hidden; background:#fff}
+.modes button{font:inherit; font-size:12px; font-weight:700; color:var(--muted);
+  background:none; border:0; padding:5px 13px; cursor:pointer; white-space:nowrap;
+  border-inline-start:1px solid var(--line); transition:background .15s,color .15s}
+.modes button:first-child{border-inline-start:0}
+.modes button[aria-pressed="true"]{background:var(--lapis); color:#fff}
+.modes button:hover:not([aria-pressed="true"]){background:var(--stone-2); color:var(--ink)}
+.iconbtn{font:inherit; font-size:11.5px; font-weight:700; color:var(--muted);
+  background:#fff; border:1px solid var(--line-2); border-radius:999px;
+  padding:5px 11px; cursor:pointer}
+.iconbtn:hover{color:var(--ink); border-color:var(--faint)}
+.legend button{font:inherit; font-size:12.5px; font-weight:600; color:var(--ink-2);
+  background:none; border:0; padding:2px 0; cursor:pointer; border-radius:3px;
+  display:inline-flex; align-items:center; transition:opacity .15s}
+.legend button:hover{opacity:.62}
+.legend button[aria-pressed="false"]{opacity:.34; text-decoration:line-through}
+.legend button:focus-visible,.modes button:focus-visible,.iconbtn:focus-visible,
+.chartbox:focus-visible{outline:2px solid var(--lapis); outline-offset:2px}
+.chartbox{position:relative}
+.chartbox:focus{outline:none}
+.lghint{font-size:11.5px; color:var(--faint); font-weight:600}
+.pinned .tip{box-shadow:0 6px 22px rgba(19,31,51,.22); border-color:var(--lapis)}
+.mini{display:flex; flex-wrap:wrap; gap:14px 20px; align-items:flex-end;
+  margin:12px 0 4px; padding:12px 14px; background:var(--stone);
+  border:1px solid var(--line); border-radius:var(--r)}
+.mini .fld{display:flex; flex-direction:column; gap:5px; min-width:186px; flex:1}
+.mini label{font-size:12px; font-weight:700; color:var(--ink-2)}
+.mini output{font-family:var(--f-num); font-weight:800; color:var(--lapis)}
+.mini input[type=range]{direction:rtl; width:100%; cursor:pointer}
+.hidden{display:none !important}
+.nowrap{white-space:nowrap}
+.mono{font-variant-numeric:tabular-nums}
+sup.ref{font-size:10px; color:var(--turq); font-weight:800; cursor:help}
+.reveal{opacity:0; transform:translateY(14px); transition:opacity .55s ease, transform .55s ease}
+.reveal.in{opacity:1; transform:none}
+@media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none} }
+@media (max-width:640px){
+  :root{--gut:18px}
+  body{font-size:15px}
+  .panel{padding:15px 13px 12px}
+  .kpi .k-val{font-size:26px}
+  .act{padding:40px var(--gut) 6px}
+  .findings{grid-template-columns:1fr}
+  .finding{padding:13px 13px 12px; gap:2px 11px}
+  .hero{padding:34px 0 22px}
+}
+@media print{
+  @page{margin:12mm 10mm}
+  /* رنگ‌ها همان نسخهٔ روی صفحه بمانند */
+  *{-webkit-print-color-adjust:exact !important; print-color-adjust:exact !important}
+  /* عناصر تعاملی که روی کاغذ معنا ندارند */
+  #topbar,#progress,.control,.btn,.chead,.mini,.lghint,.navwrap,.finding .go{
+    display:none !important}
+  /* محتوایی که با پیمایش ظاهر می‌شود، در چاپ همیشه دیده شود */
+  .reveal,body.printing .reveal{opacity:1 !important; transform:none !important}
+  .hero h1 .hl,.hero h1 .hl2{background-size:100% 2px !important; animation:none !important}
+  .thesis .bar i{animation:none !important; width:17% !important}
+  details{display:block !important}
+  details > *{display:revert !important}
+  details > div{display:block !important}
+  /* جلوگیری از شکستن بلوک‌ها میان دو صفحه */
+  .panel,.blk,.kpi,.finding,.byline,.srclist li,.blocks,.statstrip,.tblwrap,figure{
+    break-inside:avoid; page-break-inside:avoid}
+  h2,h3{break-after:avoid; page-break-after:avoid}
+  .act{break-before:auto}
+  /* نشانی کامل پیوندها روی کاغذ */
+  .srclist a[href^="http"]::after{content:" (" attr(href) ")"; font-size:9.5px; color:#666}
+  body{background:#fff}
+}
+
+/* یکدست‌سازی نهایی جهت اعداد و درصدها */
+.num, .k-val, .v, .rv, .sg, .trend-good, .trend-bad, .signed-percent, .signed-number, .pct-inline {
+  direction:ltr !important;
+  unicode-bidi:isolate !important;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.hero-story .lede-em{direction:rtl; justify-content:flex-start; gap:7px;}
+.hero-story .lede-em b{color:var(--ink) !important; font-weight:900;}
+.hero-story .lede-em span{color:#E1382C !important;}
+
+.langsw{display:inline-flex; flex:0 0 auto; margin-inline-start:auto; align-items:center;
+  border:1px solid var(--line-2); border-radius:100px; overflow:hidden; background:var(--panel)}
+.langsw a{font-size:11.5px; font-weight:800; letter-spacing:.04em; padding:5px 11px;
+  color:var(--muted); text-decoration:none; line-height:1.4; transition:.15s}
+.langsw a+a{border-inline-start:1px solid var(--line)}
+.langsw a.on{background:var(--lapis); color:#fff}
+.langsw a:not(.on):hover{color:var(--ink); background:var(--stone-2)}
+@media (max-width:520px){ .langsw a{padding:4px 9px; font-size:11px} }
+</style>
+</head>
+<body>
+<div id="progress"><i></i></div>
+<header id="topbar">
+  <div class="wrap inner">
+    <div class="brand"><span class="long">جمعیت و نیروی انسانی ایران</span>&nbsp;<b>۱۳۹۵–۱۴۰۵</b></div>
+    <div class="navwrap">
+      <button type="button" class="navbtn nb-start" aria-label="پرده‌های پیشین">›</button>
+      <nav id="navchips">
+      <a href="#summary">خلاصه</a>
+      <a href="#act1">۱ · توهم تک‌رقمی</a>
+      <a href="#act2">۲ · نیمه‌ی غایب</a>
+      <a href="#act3">۳ · شوک ۱۴۰۵</a>
+      <a href="#act4">۴ · گهوارهٔ خالی</a>
+      <a href="#act5">۵ · صف مدرسه</a>
+      <a href="#act6">۶ · پیش‌بینی زیر فشار</a>
+      <a href="#finale">جمع‌بندی</a>
+      <a href="#method">روش و داده</a>
+      </nav>
+      <button type="button" class="navbtn nb-end" aria-label="پرده‌های بعدی">‹</button>
+    </div>
+    <div class="langsw" role="group" aria-label="زبان"><a href="index.html" hreflang="en" title="English version">EN</a><a class="on" href="index.fa.html" aria-current="page" hreflang="fa">فا</a></div>
+  </div>
+</header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <pattern id="hatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <rect width="7" height="7" fill="#C98A0E" fill-opacity=".10"/>
+    <line x1="0" y1="0" x2="0" y2="7" stroke="#C98A0E" stroke-width="2.2" stroke-opacity=".38"/>
+  </pattern>
+  <pattern id="hatchPom" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <rect width="7" height="7" fill="#A3242F" fill-opacity=".08"/>
+    <line x1="0" y1="0" x2="0" y2="7" stroke="#A3242F" stroke-width="2.2" stroke-opacity=".32"/>
+  </pattern>
+</defs></svg>
+
+<main>
+<div class="cover">
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">روایت داده‌محور جمعیت و نیروی انسانی ایران · ۱۳۹۵ تا ۱۴۰۵</div>
+
+    <div class="hero-top hero-top-with-thesis">
+      <h1>بیکاری <span class="hl2">کم شد</span>،<br>اما شغل <span class="hl">زیاد نشد</span>.</h1>
+
+      <div class="thesis">
+        <div class="thesis-kicker">جمعیتِ تازه‌وارد به بازار کار</div>
+        <div class="ratio">
+          <span class="a">۱۷</span><span class="sl">/</span><span class="b">۱۰۰</span>
+        </div>
+        <div class="thesis-explain">
+          از هر ۱۰۰ نفری که به سن کار رسیدند، تنها <b>۱۷ نفر</b> وارد بازار کار شدند.
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-story">
+      <div class="lede-wrap">
+        <div class="lede">
+          نرخ بیکاری ایران از ۱۲٫۴ درصد در ۱۳۹۵ به ۷٫۵ درصد در ۱۴۰۴ رسیده؛ کم‌سابقه‌ترین رقم دو دههٔ اخیر.
+          اما <b>نسبت اشتغال</b> — سهم شاغلان از جمعیت در سن کار — در همین ۹ سال از ۳۷٫۸ به ۳۷٫۵ درصد رفته است.
+          یعنی اقتصاد به‌ازای رشد جمعیت در سن کار، شغل متناسب نساخته؛ بخش بزرگی از بهبودِ ظاهری،
+          حاصل <b>خروج</b> مردم از بازار کار بوده است، نه ورود آن‌ها به شغل.
+        </div>
+        <div class="lede-em"><b>شکاف اصلی:</b><span>کاهش بیکاری ≠ افزایش اشتغال</span></div>
+      </div>
+    </div>
+
+    <div class="srcline">
+      منابع: نهادهای رسمی آمار و جمعیت‌نگاری کشور — شرح کامل منابع و روش محاسبه در
+      <a href="#method">پیوست فنی</a>.
+    </div>
+  </div>
+</section>
+
+<div class="wrap" id="summary" style="scroll-margin-top:64px">
+  <div class="kpis">
+    <div class="kpi semantic-good" data-spark="ur">
+      <div class="k-lab">نرخ بیکاری رسمی، ۱۴۰۴</div>
+      <div class="k-val"><span class="pc">۷٫۵%</span></div>
+      <div class="k-sub">از <span class="pc">۱۲٫۴%</span> در ۱۳۹۵ ·
+        <span class="trend-good"><span class="pc">−۴٫۹</span> واحد درصد</span></div>
+      <div class="k-spark"></div>
+    </div>
+
+    <div class="kpi semantic-bad" data-spark="part">
+      <div class="k-lab">نرخ مشارکت اقتصادی، ۱۴۰۴</div>
+      <div class="k-val"><span class="pc">۴۰٫۶%</span></div>
+      <div class="k-sub">از <span class="pc">۴۳٫۲%</span> در ۱۳۹۵ ·
+        <span class="trend-bad"><span class="pc">−۲٫۶</span> واحد درصد</span></div>
+      <div class="k-spark"></div>
+    </div>
+
+    <div class="kpi semantic-neutral" data-spark="er">
+      <div class="k-lab">نسبت اشتغال؛ شاغلان به جمعیت ۱۵ سال و بیشتر</div>
+      <div class="k-val"><span class="pc">۳۷٫۵%</span></div>
+      <div class="k-sub">از <span class="pc">۳۷٫۸%</span> در ۱۳۹۵ ·
+        <span class="trend-neutral">عملاً بی‌تغییر</span></div>
+      <div class="k-spark"></div>
+    </div>
+
+    <div class="kpi semantic-bad" data-spark="adj">
+      <div class="k-lab">نرخ بیکاری تعدیل‌شده با مشارکت ۱۳۹۵</div>
+      <div class="k-val"><span class="pc">۱۳٫۱%</span></div>
+      <div class="k-sub">اگر مشارکت افت نکرده بود، نرخ رسمی <span class="pc">۷٫۵%</span>
+        نمی‌ماند</div>
+      <div class="k-spark"></div>
+    </div>
+
+    <div class="kpi semantic-bad" data-spark="inact">
+      <div class="k-lab">نیمه‌ی غایب بازار کار؛ جمعیت غیرفعال ۱۵ سال و بیشتر</div>
+      <div class="k-val"><span class="pc">+۵٫۵</span><span class="k-un">میلیون</span></div>
+      <div class="k-sub">افزوده‌شده در ۹ سال ·
+        <span class="trend-bad">نه شاغل، نه بیکار</span></div>
+      <div class="k-spark"></div>
+    </div>
+
+    <div class="kpi semantic-bad" data-spark="u24">
+      <div class="k-lab">نرخ بیکاری جوانان ۱۵ تا ۲۴ ساله، بهار ۱۴۰۵</div>
+      <div class="k-val"><span class="pc">۲۳٫۴%</span></div>
+      <div class="k-sub">بهار ۱۴۰۴: <span class="pc">۱۹٫۷%</span> ·
+        <span class="trend-bad"><span class="pc">+۳٫۷</span> واحد درصد</span></div>
+      <div class="k-spark"></div>
+    </div>
+
+    <div class="kpi semantic-bad" data-spark="births">
+      <div class="k-lab">تولدهای ثبت‌شده، ۱۴۰۴</div>
+      <div class="k-val">۸۹۲<span class="k-un">هزار</span></div>
+      <div class="k-sub">از ۱٬۵۲۸ هزار در ۱۳۹۵ ·
+        <span class="trend-bad"><span class="pc">−۴۱٫۶%</span></span></div>
+      <div class="k-spark"></div>
+    </div>
+
+    <div class="kpi semantic-bad" data-spark="erf">
+      <div class="k-lab">سهم زنان از کل شاغلان کشور، ۱۴۰۴</div>
+      <div class="k-val"><span class="pc">۱۵٫۲%</span></div>
+      <div class="k-sub">در حالی که <span class="pc">۵۱٫۹%</span> دانشجویان کشور
+        زن هستند</div>
+      <div class="k-spark"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<section class="wrap">
+  <div class="findlead">هفت یافتهٔ اصلی، به ترتیب اهمیت</div>
+  <div class="findings">
+    <a class="finding" href="#act1"><span class="n">۰۱</span><span class="t">از هر ۱۰۰ نفری که به سن کار رسیدند، تنها <em>۱۷ نفر</em> وارد بازار کار شدند.</span><span class="go">پردهٔ ۱ ↙</span><span class="d">جمعیت ۱۵ ساله و بیشتر ۶٫۶۲ میلیون نفر بزرگ‌تر شد، اما جمعیت فعال فقط ۱٫۱۱ میلیون نفر.</span></a>
+    <a class="finding" href="#act1"><span class="n">۰۲</span><span class="t">با فرض ثبات نرخ مشارکت، بیکاری ۱۴۰۴ به‌جای <span class="pc">۷٫۵%</span> برابر <em><span class="pc">۱۳٫۱%</span></em> می‌شد.</span><span class="go">پردهٔ ۱ ↙</span><span class="d">معادل ۱٫۷۴ میلیون «بیکار پنهان» که در تعریف رسمی، بیکار شمرده نمی‌شوند.</span></a>
+    <a class="finding" href="#act2"><span class="n">۰۳</span><span class="t">زنان اکثریت دانشجویان‌اند (<span class="pc">۵۱٫۹%</span>) اما حدود <em><span class="pc">۱۵%</span></em> شاغلان.</span><span class="go">پردهٔ ۲ ↙</span><span class="d">۸۶٫۶ درصد زنان ۱۵ ساله و بیشتر، خارج از بازار کارند؛ برای مردان این رقم ۳۲٫۱ درصد است.</span></a>
+    <a class="finding" href="#act3"><span class="n">۰۴</span><span class="t">بهار ۱۴۰۵ نخستین شکست روند است: <em>۴۵۱ هزار شغل کمتر</em> از بهار ۱۴۰۴.</span><span class="go">پردهٔ ۳ ↙</span><span class="d">نرخ بیکاری در یک سال از <span class="pc">۷٫۳%</span> به <span class="pc">۹٫۱%</span> پرید — بزرگ‌ترین جهش فصلی دورهٔ بررسی.</span></a>
+    <a class="finding" href="#act4"><span class="n">۰۵</span><span class="t">رشد طبیعی جمعیت <em><span class="pc">۶۲٫۷%</span></em> آب رفت؛ نسبت تولد به فوت از <span class="pc">۴٫۱</span> به <span class="pc">۱٫۹</span> رسید.</span><span class="go">پردهٔ ۴ ↙</span><span class="d">ازدواج <span class="pc">۳۸٫۷%</span> کم شد در حالی که طلاق تقریباً ثابت ماند: ۴۲ طلاق به ازای هر ۱۰۰ ازدواج.</span></a>
+    <a class="finding" href="#act5"><span class="n">۰۶</span><span class="t">کوهورت ورودی مدرسه ظرف یک دهه <em><span class="pc">۲۰%</span></em> کوچک‌تر شده است.</span><span class="go">پردهٔ ۵ ↙</span><span class="d">کودک متولد ۱۴۰۴ عضو نسلی است <span class="pc">۴۱٫۶%</span> کوچک‌تر از نسل متولد ۱۳۹۵.</span></a>
+    <a class="finding" href="#act6"><span class="n">۰۷</span><span class="t">پیش‌بینی رسمی جمعیت، در ۱۴۰۴ حدود <em>۱۶۹ هزار نفر</em> از واقعیت جلو افتاده است.</span><span class="go">پردهٔ ۶ ↙</span><span class="d">تداوم روند ده‌سالهٔ تولد و فوت، رشد طبیعی را حوالی ۱۴۱۲ تا ۱۴۱۵ به صفر می‌رساند.</span></a>
+  </div>
+</section>
+
+<section class="act wrap" id="act1">
+  <span class="act-num">پردهٔ ۱</span>
+  <h2>توهم تک‌رقمی: بیکاری کم شد چون بازار کار خالی شد</h2>
+  <p class="lede">
+    نرخ بیکاری، کسری است با مخرجِ متغیر. وقتی مردم جست‌وجوی کار را رها می‌کنند از مخرج حذف می‌شوند و نرخ — بدون آنکه شغلی ساخته شود — پایین می‌آید.
+    برای سنجش اینکه چه مقدار از بهبود واقعی است، نرخ بیکاری را با فرض <b>ثابت‌ماندن نرخ مشارکت</b> بازمحاسبه کرده‌ایم.
+  </p>
+
+  <div class="statstrip">
+    <div><div class="v lapis"><span class="sg">+۶٫۶۲</span><span class="k-un">میلیون</span></div><div class="l">رشد جمعیت ۱۵ ساله و بیشتر، ۱۳۹۵ تا ۱۴۰۴</div></div>
+    <div><div class="v turq"><span class="sg">+۱٫۱۱</span><span class="k-un">میلیون</span></div><div class="l">رشد جمعیت فعال (شاغل + بیکار)</div></div>
+    <div><div class="v pom"><span class="sg">+۵٫۵۱</span><span class="k-un">میلیون</span></div><div class="l">رشد جمعیت غیرفعال</div></div>
+    <div><div class="v saff"><span class="pc">۱۶٫۸%</span></div><div class="l">سهم جذب‌شده در بازار کار از ورودی سن کار</div></div>
+  </div>
+
+  <figure class="panel">
+    <h3>نرخ بیکاری رسمی در برابر نرخ بیکاری تعدیل‌شده با مشارکت</h3>
+    <p class="sub">
+      ناحیهٔ هاشورخورده، «بیکاری پنهان» است: تفاوت میان رقم رسمی و رقمی که اگر نرخ مشارکت در سطح سال مبنا مانده بود، گزارش می‌شد.
+      سال مبنا را با نوار پایین تغییر دهید.
+    </p>
+    <div class="chartbox" id="c-hero"></div>
+    <div class="legend">
+      <span><i style="background:var(--turq)"></i>نرخ بیکاری رسمی</span>
+      <span><i style="background:var(--saff)"></i>نرخ تعدیل‌شده با مشارکت سال مبنا</span>
+      <span><i class="sq" style="background:var(--saff-l);opacity:.55"></i>بیکاری پنهان (تعدیل‌شده بالاتر)</span>
+      <span><i class="sq" style="background:var(--turq-l);opacity:.45"></i>بهبود واقعی (تعدیل‌شده پایین‌تر)</span>
+    </div>
+    <figcaption>داده: مرکز آمار ایران، «جمعیت ۱۵ ساله و بیش‌تر برحسب وضع فعالیت اقتصادی» و «نرخ مشارکت اقتصادی». محاسبهٔ نرخ تعدیل‌شده در بخش روش‌شناسی آمده است.</figcaption>
+  </figure>
+
+  <div class="control">
+    <h4>سال مبنای مشارکت را انتخاب کنید</h4>
+    <p class="hint">
+      پرسش این ابزار ساده است: «اگر نسبت مردمی که وارد بازار کار می‌شوند، در سطح سال مبنا باقی می‌ماند، امروز نرخ بیکاری چقدر بود؟»
+      تعداد شاغلان در هر سال دقیقاً همان رقم رسمی است و دست نخورده باقی می‌ماند؛ تنها اندازهٔ جمعیت فعال بازمحاسبه می‌شود.
+    </p>
+    <div class="ctl-row">
+      <label for="baseyear">سال مبنا</label>
+      <input type="range" id="baseyear" min="1395" max="1403" step="1" value="1395" aria-label="انتخاب سال مبنای نرخ مشارکت">
+      <span class="seg light"><button id="lbl-baseyear" class="on" style="pointer-events:none">۱۳۹۵ — مشارکت <span class="pc">۴۳٫۲%</span></button></span>
+    </div>
+    <div class="readout">
+      <div><div class="rv turq" id="r-off"><span class="pc">۷٫۵%</span></div><div class="rl">نرخ بیکاری رسمی ۱۴۰۴</div></div>
+      <div><div class="rv saff" id="r-adj"><span class="pc">۱۳٫۱%</span></div><div class="rl">نرخ تعدیل‌شده ۱۴۰۴</div></div>
+      <div><div class="rv pom" id="r-hid">۱٬۷۴۰</div><div class="rl">بیکار پنهان (هزار نفر)</div></div>
+      <div><div class="rv w" id="r-gap"><span class="sg">+۵٫۶</span></div><div class="rl">شکاف (%)</div></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>سرنوشت ۶٫۶۲ میلیون نفری که در ۹ سال به سن کار رسیدند</h3>
+    <p class="sub">هر مربع، یک درصد از خالص افزودهٔ جمعیت ۱۵ ساله و بیشتر میان ۱۳۹۵ و ۱۴۰۴ است.</p>
+    <div class="chartbox" id="c-dots"></div>
+    <div class="legend">
+      <span><i class="sq" style="background:var(--turq)"></i>وارد بازار کار شدند — <span class="pc">۱۷%</span></span>
+      <span><i class="sq" style="background:var(--stone-2);border:1px solid var(--line-2)"></i>غیرفعال ماندند — <span class="pc">۸۳%</span></span>
+    </div>
+    <figcaption>محاسبه: رشد جمعیت فعال در این ۹ سال (۱٬۱۱۴ هزار نفر) تقسیم بر رشد جمعیت ۱۵ ساله و بیشتر (۶٬۶۲۰ هزار نفر)، برابر ۱۶٫۸ درصد است. مربع‌ها گرد شده‌اند.</figcaption>
+  </div>
+
+  <figure class="panel">
+    <h3>سه نرخ، سه روایت متفاوت</h3>
+    <p class="sub">نرخ بیکاری سقوط کرده، نرخ مشارکت افت کرده، و نسبت اشتغال — که به هیچ‌کدام از این دو حساسیت ندارد — تقریباً درجا زده است.</p>
+    <div class="chartbox" id="c-three"></div>
+    <div class="legend">
+      <span><i style="background:var(--pom)"></i>نرخ بیکاری</span>
+      <span><i style="background:var(--lapis)"></i>نرخ مشارکت اقتصادی</span>
+      <span><i style="background:var(--moss)"></i>نسبت اشتغال</span>
+    </div>
+    <figcaption>هر سه شاخص برای جمعیت ۱۵ سالهٔ و بیشتر، کل کشور. منبع: مرکز آمار ایران.</figcaption>
+  </figure>
+
+  <figure class="panel">
+    <h3>همین الگو، همه‌جا: شهر و روستا، زن و مرد</h3>
+    <p class="sub">
+      اگر افت بیکاری واقعی بود، باید در گروه‌های مختلف الگوهای متفاوتی می‌دیدیم. اما در هر چهار گروه
+      یک چیز تکرار می‌شود: <b>خط بیکاری پایین می‌آید و خط مشارکت هم پایین می‌آید</b>. هر دو نمودار
+      همان چهار گروه و همان سال‌ها را نشان می‌دهند.
+    </p>
+    <div class="twin">
+      <div>
+        <div class="twin-h">نرخ بیکاری</div>
+        <div class="chartbox" id="c-groups-ur"></div>
+      </div>
+      <div>
+        <div class="twin-h">نرخ مشارکت اقتصادی</div>
+        <div class="chartbox" id="c-groups-part"></div>
+      </div>
+    </div>
+    <figcaption>
+      روستا بیکاری کمتری از شهر ثبت می‌کند، ولی مشارکتش سریع‌تر افت کرده: <span class="pc">−۳٫۸</span>
+      واحد درصد در برابر <span class="pc">−۲٫۲</span> واحد درصد شهر. زنان بدترین ترکیب را دارند —
+      بیکاری‌شان دو و نیم برابر مردان است و مشارکتشان یک‌پنجم آن‌ها.
+    </figcaption>
+  </figure>
+
+  <div class="callout">
+    <b>چرا این نمودار مهم است:</b> کاهش هم‌زمان بیکاری و مشارکت در چهار گروه مستقل، تصادفی نیست.
+    این همان اثری است که در سطح کل کشور دیدیم، و نشان می‌دهد پدیده ساختاری است نه ویژهٔ یک گروه خاص.
+  </div>
+
+  <div class="blocks">
+    <div class="blk blk-data">
+      <h4>داده</h4>
+      <p>میان ۱۳۹۵ و ۱۴۰۴، جمعیت ۱۵ ساله و بیشتر از ۵۹٫۵ به ۶۶٫۱ میلیون نفر رسید (<span class="sg">+۱۱٫۱%</span>). در همین دوره شاغلان ۲٫۳۰ میلیون نفر افزوده شدند، بیکاران ۱٫۱۸ میلیون نفر کم شدند، و جمعیت غیرفعال ۵٫۵۱ میلیون نفر بزرگ‌تر شد.</p>
+      <p>نرخ مشارکت از <span class="pc">۴۳٫۲%</span> به <span class="pc">۴۰٫۶%</span> و نسبت اشتغال از <span class="pc">۳۷٫۸%</span> به <span class="pc">۳۷٫۵%</span> رسید.</p>
+    </div>
+    <div class="blk blk-analysis">
+      <h4>تحلیل</h4>
+      <p>نرخ تعدیل‌شده نشان می‌دهد ماجرا دو فاز دارد. بین ۱۳۹۵ و ۱۳۹۸ بهبود <em>واقعی</em> بود: نرخ تعدیل‌شده هم از <span class="pc">۱۲٫۴%</span> به <span class="pc">۸٫۹%</span> افت کرد. از ۱۳۹۹ به بعد اما این دو از هم جدا می‌شوند؛ نرخ رسمی به <span class="pc">۷٫۵%</span> می‌رسد ولی نرخ تعدیل‌شده در محدودهٔ ۱۲ تا ۱۴ درصد قفل می‌شود.</p>
+      <p>یعنی کل بهبودِ گزارش‌شدهٔ پس از ۱۳۹۹، تقریباً به‌طور کامل با کوچک‌شدن نسبیِ بازار کار توضیح داده می‌شود، نه با خلق شغل.</p>
+    </div>
+    <div class="blk blk-concl">
+      <h4>نتیجه‌گیری</h4>
+      <p>نرخ بیکاری برای این اقتصاد شاخص گمراه‌کننده‌ای شده است. شاخص جایگزینِ پیشنهادی این اثر، <b>نسبت اشتغال</b> است که در ۹ سال ۰٫۳ % افت کرده و روایت درست‌تری می‌گوید: اقتصاد ایران به‌ازای رشد جمعیت در سن کار، شغل متناسب نساخته است.</p>
+      <p>هر سیاستی که موفقیت خود را با نرخ بیکاری بسنجد، در معرض این خطاست.</p>
+    </div>
+  </div>
+</section>
+<section class="act wrap" id="act2">
+  <span class="act-num">پردهٔ ۲</span>
+  <h2>نیمه‌ی غایب: کشور روی زنان سرمایه‌گذاری می‌کند و از آن‌ها استفاده نمی‌کند</h2>
+  <p class="lede">
+    برای نخستین بار در آمار موجود، زنان اکثریت دانشجویان کشور را تشکیل می‌دهند. اما در همان سال،
+    نرخ مشارکت اقتصادی زنان به پایین‌ترین سطح دههٔ اخیر رسید. این دو خط، در جهت مخالف هم حرکت می‌کنند.
+  </p>
+
+  <div class="statstrip">
+    <div><div class="v lapis"><span class="pc">۵۱٫۹%</span></div><div class="l">سهم زنان از دانشجویان، ۱۴۰۳–۱۴۰۴</div></div>
+    <div><div class="v pom"><span class="pc">۱۳٫۴%</span></div><div class="l">نرخ مشارکت اقتصادی زنان، ۱۴۰۴</div></div>
+    <div><div class="v saff"><span class="sg">۱۵٫۲%</span></div><div class="l">سهم برآوردی زنان از کل شاغلان</div></div>
+    <div><div class="v pom"><span class="pc">۸۶٫۶%</span></div><div class="l">زنان ۱۵ ساله و بیشترِ خارج از بازار کار</div></div>
+  </div>
+
+  <figure class="panel">
+    <h3>قیچی سرمایهٔ انسانی</h3>
+    <p class="sub">سهم زنان از دانشجویان آموزش عالی، در برابر نرخ مشارکت اقتصادی زنان. هر دو بر حسب درصد، روی یک محور.</p>
+    <div class="chartbox" id="c-scissors"></div>
+    <div class="legend">
+      <span><i style="background:var(--lapis)"></i>سهم زنان از دانشجویان</span>
+      <span><i style="background:var(--pom)"></i>نرخ مشارکت اقتصادی زنان</span>
+      <span><i style="background:var(--turq)"></i>نسبت اشتغال زنان</span>
+    </div>
+    <figcaption>
+      سال تحصیلی ۱۳۹۴–۱۳۹۵ با سال تقویمی ۱۳۹۵ هم‌ردیف شده است (هر سال تحصیلی به سال تقویمیِ نیمهٔ دومش نسبت داده شده).
+      منابع: وزارت علوم، تحقیقات و فناوری؛ مرکز آمار ایران.
+    </figcaption>
+  </figure>
+
+  <p class="pull">در سال ۱۴۰۳–۱۴۰۴، از هر ۱۰۰ دانشجوی کشور ۵۲ نفر زن بودند. در سال ۱۴۰۴، از هر ۱۰۰ شاغل کشور تنها حدود <span>۱۵ نفر</span> زن بود.</p>
+
+  <div class="panel">
+    <h3>فاصلهٔ جنسیتی در بازار کار، ۱۴۰۴</h3>
+    <p class="sub">سه شاخص کلیدی بازار کار، به تفکیک جنسیت. طول هر میله، اندازهٔ شکاف است.</p>
+    <div class="chartbox" id="c-gendergap"></div>
+    <div class="legend">
+      <span><i class="sq" style="background:var(--lapis)"></i>مردان</span>
+      <span><i class="sq" style="background:var(--pom)"></i>زنان</span>
+    </div>
+    <figcaption>منبع: مرکز آمار ایران، شاخص‌های نیروی کار سال ۱۴۰۴.</figcaption>
+  </div>
+
+  <figure class="panel">
+    <h3>زنان کجا درس می‌خوانند؟</h3>
+    <p class="sub">ترکیب جنسیتی دانشجویان به تفکیک گروه عمدهٔ تحصیلی، سال ۱۴۰۳–۱۴۰۴. عدد کنار هر میله، تعداد کل دانشجویان آن گروه است.</p>
+    <div class="chartbox" id="c-fields"></div>
+    <figcaption>منبع: وزارت علوم، تحقیقات و فناوری. مجموع دانشجویان: ۳٬۵۰۳٬۱۷۹ نفر.</figcaption>
+  </figure>
+
+  <div class="blocks">
+    <div class="blk blk-data">
+      <h4>داده</h4>
+      <p>سهم زنان از دانشجویان از <span class="pc">۴۶٫۱%</span> در ۱۳۹۴–۱۳۹۵ به <span class="pc">۵۱٫۹%</span> در ۱۴۰۳–۱۴۰۴ رسید. در همین دوره نرخ مشارکت زنان از <span class="pc">۱۶٫۳%</span> به <span class="pc">۱۳٫۴%</span> و نسبت اشتغال زنان از <span class="pc">۱۲٫۹%</span> به <span class="pc">۱۱٫۴%</span> افت کرد.</p>
+      <p>زنان در هنر (<span class="pc">۶۹٫۵%</span>)، علوم پایه (<span class="pc">۶۸٫۷%</span>)، پزشکی (<span class="pc">۵۸٫۸%</span>) و علوم انسانی (<span class="pc">۵۷٫۸%</span>) اکثریت‌اند و در فنی و مهندسی (<span class="pc">۲۴٫۸%</span>) اقلیت.</p>
+    </div>
+    <div class="blk blk-analysis">
+      <h4>تحلیل</h4>
+      <p>افت نرخ بیکاری زنان از <span class="pc">۲۰٫۷%</span> به <span class="pc">۱۵٫۰%</span> در نگاه اول مثبت است، اما هم‌زمان با افت نسبت اشتغال زنان رخ داده؛ یعنی همان الگوی پردهٔ ۱، با شدت بیشتر. تعریف رسمی، زنِ تحصیل‌کرده‌ای را که جست‌وجوی فعال کار را کنار گذاشته «بیکار» نمی‌شمارد.</p>
+      <p>ترکیب رشته‌ها هم بی‌ربط نیست: بخش صنعت — که <span class="pc">۳۲٫۸%</span> اشتغال کشور را می‌سازد — از رشته‌ای تغذیه می‌شود که تنها یک‌چهارم دانشجویانش زن‌اند.</p>
+    </div>
+    <div class="blk blk-concl">
+      <h4>نتیجه‌گیری</h4>
+      <p>بزرگ‌ترین ذخیرهٔ استفاده‌نشدهٔ نیروی انسانی ایران، ۲۸٫۷ میلیون زن ۱۵ ساله و بیشترِ غیرفعال است — جمعیتی بزرگ‌تر از کل شاغلان کشور.</p>
+      <p>اگر نرخ مشارکت زنان تنها به سطح ۱۳۹۷ (<span class="pc">۱۷٫۶%</span>) بازگردد، حدود ۱٫۴ میلیون نفر به جمعیت فعال اضافه می‌شوند. این، بازگشتِ سرمایه‌ای است که کشور پیشاپیش در آموزش آن‌ها خرج کرده است.</p>
+    </div>
+  </div>
+</section>
+
+<section class="act wrap" id="act3">
+  <span class="act-num">پردهٔ ۳</span>
+  <h2>زنگ خطر بهار ۱۴۰۵: جایی که روند ده‌ساله شکست</h2>
+  <p class="lede">
+    تازه‌ترین دادهٔ فصلی این مجموعه، اولین وارونگی جدی روند است. بهار ۱۴۰۵ نسبت به بهار ۱۴۰۴ —
+    یعنی مقایسهٔ فصل با فصل مشابه که اثر فصلی را خنثی می‌کند — نه‌تنها بیکاری بالا رفته، بلکه <b>تعداد مطلق شاغلان کم شده است</b>.
+  </p>
+
+  <div class="statstrip">
+    <div><div class="v pom"><span class="sg">−۴۵۱</span> هزار</div><div class="l">تغییر تعداد شاغلان، بهار ۱۴۰۵ نسبت به بهار ۱۴۰۴</div></div>
+    <div><div class="v pom"><span class="sg">+۴۸۳</span> هزار</div><div class="l">تغییر تعداد بیکاران</div></div>
+    <div><div class="v pom"><span class="pc">۹٫۱%</span></div><div class="l">نرخ بیکاری، بهار ۱۴۰۵ (بهار ۱۴۰۴: <span class="pc">۷٫۳%</span>)</div></div>
+    <div><div class="v pom"><span class="pc">۲۳٫۴%</span></div><div class="l">نرخ بیکاری ۱۵ تا ۲۴ ساله‌ها</div></div>
+  </div>
+
+  <figure class="panel">
+    <h3>پنج فصل آخر: بیکاری کل، جوانان و زنان</h3>
+    <p class="sub">هر سه سری در بهار ۱۴۰۵ هم‌زمان جهش کرده‌اند — نشانهٔ یک شوک عمومی، نه نوسان یک گروه خاص.</p>
+    <div class="chartbox" id="c-q"></div>
+    <div class="legend">
+      <span><i style="background:var(--pom)"></i>کل ۱۵ ساله و بیشتر</span>
+      <span><i style="background:var(--saff)"></i>۱۵ تا ۲۴ ساله</span>
+      <span><i style="background:var(--lapis)"></i>۱۸ تا ۳۵ ساله</span>
+      <span><i style="background:var(--turq)"></i>زنان ۱۵ ساله و بیشتر</span>
+    </div>
+    <figcaption>منبع: مرکز آمار ایران، طرح آمارگیری نیروی کار، فصول بهار ۱۴۰۴ تا بهار ۱۴۰۵.</figcaption>
+  </figure>
+
+  <figure class="panel">
+    <h3>شوک از کجا آمد؟ تغییر اشتغال بخشی، بهار ۱۴۰۵ نسبت به بهار ۱۴۰۴</h3>
+    <p class="sub">با ضرب سهم هر بخش در تعداد کل شاغلان همان فصل، تعداد شاغلان بخشی برآورد و تفاضل گرفته شده است.</p>
+    <div class="chartbox" id="c-sectorshock"></div>
+    <figcaption>
+      برآورد نگارنده بر پایهٔ «سهم شاغلان در بخش‌های عمدهٔ اقتصادی» و «جمعیت شاغل» مرکز آمار.
+      چون سهم‌ها با یک رقم اعشار منتشر می‌شوند، خطای گردکردن هر بخش تا حدود <span class="sg">±۱۲</span> هزار نفر است؛ بسیار کوچک‌تر از تغییر مشاهده‌شده در صنعت.
+    </figcaption>
+  </figure>
+
+  <figure class="panel">
+    <h3>شغل‌های تازه از کجا آمدند؟ نُه سال، سه بخش</h3>
+    <p class="sub">
+      داده‌های رسمی سهم هر بخش را <b>درصدی</b> منتشر می‌کنند، و درصد می‌تواند فریب بدهد: سهم کشاورزی
+      افت کرده، ولی این یعنی شغل از دست داده یا فقط کندتر رشد کرده؟ دکمهٔ «تعداد شاغلان» را بزنید تا
+      همان داده را به نفر ببینید. پاسخ روشن است.
+    </p>
+    <div class="chartbox" id="c-sector9"></div>
+    <div class="statstrip">
+      <div><div class="v pom"><span class="pc">−۵۸۲</span></div><div class="l">تغییر شاغلان کشاورزی، ۱۳۹۵ تا ۱۴۰۴ (هزار نفر)</div></div>
+      <div><div class="v lapis"><span class="pc">+۹۵۶</span></div><div class="l">تغییر شاغلان صنعت (هزار نفر)</div></div>
+      <div><div class="v turq"><span class="pc">+۱٬۸۹۷</span></div><div class="l">تغییر شاغلان خدمات (هزار نفر)</div></div>
+      <div><div class="v saff"><span class="pc">۸۳%</span></div><div class="l">سهم خدمات از کل شغل‌های خالص افزوده</div></div>
+    </div>
+    <figcaption>
+      محاسبهٔ این اثر: سهم درصدی هر بخش ضرب در جمعیت شاغل همان سال. کل رشد خالص اشتغال در این ۹ سال
+      ۲٬۲۷۱ هزار نفر است که با رقم مستقلِ ۲٬۲۹۷ هزار نفر (تفاضل جمعیت شاغل) تا حد خطای گردکردن می‌خواند.
+    </figcaption>
+  </figure>
+
+  <div class="callout">
+    <b>یافتهٔ این نمودار:</b> کشاورزی در این ۹ سال نه‌تنها سهم، بلکه <b>شغل</b> از دست داده است —
+    نزدیک به ۵۸۲ هزار نفر. تقریباً تمام رشد خالص اشتغال کشور از بخش خدمات آمده، بخشی که
+    بهره‌وری و پایداری شغلی‌اش به‌طور میانگین کمتر از صنعت است. این یعنی ترکیب اشتغال هم
+    مثل حجم آن، جای نگرانی دارد.
+  </div>
+
+  <div class="callout pom">
+    <b>چرا این فصل مهم است؟</b> در تمام دورهٔ ۱۳۹۵ تا ۱۴۰۴، افت نرخ بیکاری با ثبات یا رشد آرام تعداد شاغلان همراه بود.
+    بهار ۱۴۰۵ نخستین فصلی است که هر دو با هم بد می‌شوند: <b>هم شغل کم شده، هم بیکار زیاد</b>. این الگو با «خروج از بازار کار» توضیح داده نمی‌شود —
+    جمعیت فعال تقریباً ثابت مانده (<span class="sg">+۳۲</span> هزار نفر) و آنچه تغییر کرده، جابه‌جایی ۴۵۱ هزار نفر از ستون «شاغل» به ستون «بیکار» است.
+  </div>
+
+  <div class="blocks">
+    <div class="blk blk-data">
+      <h4>داده</h4>
+      <p>بهار ۱۴۰۵: جمعیت ۱۵+ برابر ۶۶٬۶۷۱ هزار نفر (<span class="sg">+۸۲۸</span> هزار نسبت به بهار ۱۴۰۴)، فعال ۲۷٬۱۳۶ (<span class="sg">+۳۲</span>)، شاغل ۲۴٬۶۷۲ (<span class="sg">−۴۵۱</span>)، بیکار ۲٬۴۶۴ (<span class="sg">+۴۸۳</span>).</p>
+      <p>سهم صنعت از اشتغال از <span class="pc">۳۳٫۰%</span> به <span class="pc">۳۱٫۰%</span> افت کرد؛ سهم خدمات از <span class="pc">۵۲٫۴%</span> به <span class="pc">۵۳٫۸%</span> و کشاورزی از <span class="pc">۱۴٫۶%</span> به <span class="pc">۱۵٫۱%</span> رسید.</p>
+    </div>
+    <div class="blk blk-analysis">
+      <h4>تحلیل</h4>
+      <p>ترجمهٔ سهم‌ها به تعداد نشان می‌دهد صنعت حدود ۶۴۳ هزار شغل از دست داده، در حالی که خدمات تنها ۱۱۰ هزار و کشاورزی ۵۸ هزار شغل افزوده‌اند. یعنی منشأ شوک، تقریباً به‌طور کامل بخش صنعت است.</p>
+      <p>افزایش هم‌زمان سهم کشاورزی — بخشی که در کل دهه در حال کوچک‌شدن بوده — نشانهٔ کلاسیک <em>پناه‌بردن</em> نیروی کار به مشاغل غیررسمی و کم‌بهره‌ور در زمان انقباض است.</p>
+    </div>
+    <div class="blk blk-concl">
+      <h4>نتیجه‌گیری</h4>
+      <p>این یک نقطهٔ عطف است، نه نوسان. برای اولین بار در دورهٔ بررسی، رشد جمعیت در سن کار با <em>کاهش</em> مطلق اشتغال همراه شده است.</p>
+      <p>هشدار روش‌شناختی: این یافته بر یک فصل استوار است و باید با داده‌های تابستان و پاییز ۱۴۰۵ راستی‌آزمایی شود. اما اندازهٔ تغییر (۱٫۸ % در نرخ بیکاری) بزرگ‌تر از هر نوسان فصلیِ ثبت‌شده در این مجموعه است.</p>
+    </div>
+  </div>
+</section>
+<section class="act wrap" id="act4">
+  <span class="act-num">پردهٔ ۴</span>
+  <h2>گهوارهٔ خالی: موتور جمعیتی در حال خاموش‌شدن است</h2>
+  <p class="lede">
+    تا اینجا دربارهٔ کسانی حرف زدیم که <b>هستند</b>. این پرده دربارهٔ کسانی است که <b>نیستند</b>.
+    تولدهای ثبت‌شده در ۹ سال ۴۱٫۶ درصد کم شده‌اند — افتی که سرعتش در دو سال آخر بیشتر هم شده است.
+  </p>
+
+  <div class="statstrip">
+    <div><div class="v pom"><span class="sg">−۴۱٫۶%</span></div><div class="l">تغییر تولدهای ثبت‌شده، ۱۳۹۵ تا ۱۴۰۴</div></div>
+    <div><div class="v saff"><span class="sg">+۲۴٫۴%</span></div><div class="l">تغییر فوت‌های ثبت‌شده در همین دوره</div></div>
+    <div><div class="v pom"><span class="sg">−۶۲٫۷%</span></div><div class="l">تغییر رشد طبیعی جمعیت (تولد منهای فوت)</div></div>
+    <div><div class="v lapis"><span class="pc">۴٫۱</span> ← <span class="pc">۱٫۹</span></div><div class="l">نسبت تولد به فوت</div></div>
+  </div>
+
+  <figure class="panel">
+    <h3>قیچی حیاتی: تولد و فوت در مسیر تلاقی</h3>
+    <p class="sub">ناحیهٔ هاشورخورده، رشد طبیعی جمعیت است. در سال ۱۳۹۵ به ازای هر فوت، ۴٫۱ تولد ثبت می‌شد؛ در ۱۴۰۴ این رقم به ۱٫۹ رسیده است.</p>
+    <div class="chartbox" id="c-vital"></div>
+    <div class="legend">
+      <span><i style="background:var(--turq)"></i>تولد ثبت‌شده</span>
+      <span><i style="background:var(--pom)"></i>فوت ثبت‌شده</span>
+      <span><i class="sq" style="background:var(--saff-l);opacity:.5"></i>رشد طبیعی جمعیت</span>
+    </div>
+    <figcaption>
+      منبع: سازمان ثبت احوال کشور. رقم تولد پسران در سال ۱۳۹۵ اصلاح شده است (شرح در بخش پاک‌سازی داده‌ها)؛
+      این اصلاح بر جمع کل تولدها اثری ندارد. جهش فوت‌های ۱۳۹۹ و ۱۴۰۰ مربوط به همه‌گیری کرونا است.
+    </figcaption>
+  </figure>
+
+  <figure class="panel">
+    <h3>ازدواج ۳۹ درصد کم شد، طلاق تکان نخورد</h3>
+    <p class="sub">میله‌ها تعداد رویداد و خط نقطه‌چین، تعداد طلاق به ازای هر ۱۰۰ ازدواج در همان سال است.</p>
+    <div class="chartbox" id="c-marr"></div>
+    <div class="legend">
+      <span><i class="sq" style="background:var(--lapis)"></i>ازدواج</span>
+      <span><i class="sq" style="background:var(--pom)"></i>طلاق</span>
+      <span><i style="background:var(--saff)"></i>طلاق به ازای ۱۰۰ ازدواج (محور راست)</span>
+    </div>
+    <figcaption>منبع: سازمان ثبت احوال کشور. نسبت طلاق به ازدواج در همان سال محاسبه شده و معیار طلاق در میان ازدواج‌های یک کوهورت نیست.</figcaption>
+  </figure>
+
+  <div class="callout">
+    <b>یک رابطهٔ قابل اتکا:</b> همبستگی میان تعداد ازدواج‌های هر سال و تعداد تولدهای <em>سال بعد</em> در این دوره برابر
+    <b>۰٫۹۵</b> است (همبستگی هم‌سال: ۰٫۸۹). چون ازدواج پیشرانِ زمان‌دارِ تولد است، افت ازدواج در ۱۴۰۴ به ۴۳۲ هزار رویداد
+    — کمترین رقم دوره — یعنی <b>افت تولدها دست‌کم تا ۱۴۰۵ ادامه دارد و در داده‌های امروز قفل شده است</b>.
+  </div>
+
+  <figure class="panel">
+    <h3>خانوار کوچک‌تر می‌شود</h3>
+    <p class="sub">متوسط تعداد افراد در خانوار، از سرشماری ۱۳۳۵ تا ۱۴۰۰. تفاوت شهر و روستا تقریباً محو شده است.</p>
+    <div class="chartbox" id="c-hh"></div>
+    <div class="legend">
+      <span><i style="background:var(--ink)"></i>کل کشور</span>
+      <span><i style="background:var(--lapis)"></i>شهری</span>
+      <span><i style="background:var(--moss)"></i>روستایی</span>
+    </div>
+    <figcaption>منبع: مرکز آمار ایران. فاصلهٔ سال‌ها یکسان نیست؛ محور افقی بر حسب سال واقعی مقیاس‌بندی شده است.</figcaption>
+  </figure>
+
+  <div class="blocks">
+    <div class="blk blk-data">
+      <h4>داده</h4>
+      <p>تولد: ۱٬۵۲۸٬۰۵۳ در ۱۳۹۵ به ۸۹۲٬۲۷۸ در ۱۴۰۴ (نرخ رشد مرکب سالانه <span class="sg">−۵٫۸%</span>). فوت: ۳۶۹٬۷۵۱ به ۴۵۹٬۹۸۴ (<span class="sg">+۲٫۵%</span> سالانه). رشد طبیعی: ۱٬۱۵۸٬۳۰۲ به ۴۳۲٬۲۹۴ نفر.</p>
+      <p>زمستان ۱۴۰۴ با ۲۰۷٬۵۷۸ تولد، کم‌تولدترین فصلِ ثبت‌شده در این مجموعه است.</p>
+    </div>
+    <div class="blk blk-analysis">
+      <h4>تحلیل</h4>
+      <p>دو نیرو هم‌زمان کار می‌کنند: کاهش تولد که ریشه در افت ازدواج و کوچک‌شدن خانوار دارد، و افزایش فوت که تا حد زیادی نتیجهٔ <em>سالخوردگی</em> جمعیت است، نه بدترشدن سلامت. سال‌های ۱۳۹۹ و ۱۴۰۰ استثنای کروناست و پس از آن فوت‌ها به روند بلندمدت بازگشته‌اند.</p>
+      <p>افت تولد در روستاها (<span class="sg">−۴۳٫۵%</span>) کمی شدیدتر از شهرها (<span class="sg">−۴۱٫۰%</span>) بوده؛ یعنی حاشیهٔ باروری بالاتر روستایی هم در حال از بین رفتن است.</p>
+    </div>
+    <div class="blk blk-concl">
+      <h4>نتیجه‌گیری</h4>
+      <p>رشد طبیعی جمعیت ایران در ۹ سال، نزدیک به دو سوم آب رفته است. این رقم دیگر یک «روند آرام» نیست؛ سرعت آن در ۱۴۰۳ و ۱۴۰۴ افزایش هم یافته است.</p>
+      <p>چون ازدواج پیش‌نگر تولد است و ازدواج در ۱۴۰۴ به کف دوره رسیده، ادامهٔ افت در کوتاه‌مدت تقریباً قطعی است. سیاست‌های تشویق فرزندآوری، اگر اثری داشته باشند، در داده‌های موجود هنوز دیده نمی‌شود.</p>
+    </div>
+  </div>
+</section>
+
+<section class="act wrap" id="act5">
+  <span class="act-num">پردهٔ ۵</span>
+  <h2>صف مدرسه کوتاه می‌شود: موجی که در راه است</h2>
+  <p class="lede">
+    جمعیت دانش‌آموزی کشور در ۱۴۰۱–۱۴۰۲ به اوج ۱۶٫۹۷ میلیون نفر رسید. این اوج، بازتاب موج تولد سال‌های ۱۳۹۳ تا ۱۳۹۶ است.
+    اما آن موج تمام شده و آنچه پشت سرش می‌آید، به‌مراتب کوچک‌تر است — و این را نه با پیش‌بینی، که با <b>تعداد کودکانی که همین حالا متولد شده‌اند</b> می‌دانیم.
+  </p>
+
+  <div class="statstrip">
+    <div><div class="v lapis">۱۶٫۸۶<span class="k-un">میلیون</span></div><div class="l">دانش‌آموزان، ۱۴۰۳–۱۴۰۴</div></div>
+    <div><div class="v pom"><span class="sg">−۲۰٫۱%</span></div><div class="l">کوچک‌شدن کوهورت شش‌سالهٔ ورودی مدرسه</div></div>
+    <div><div class="v pom"><span class="sg">−۴۳٫۰%</span></div><div class="l">افت دانش‌آموختگان آموزش عالی، ۱۳۹۴–۹۵ تا ۱۴۰۲–۰۳</div></div>
+    <div><div class="v saff">۹٫۲۸<span class="k-un">میلیون</span></div><div class="l">دانش‌آموزان دورهٔ ابتدایی امروز</div></div>
+  </div>
+
+  <figure class="panel">
+    <h3>اوج گذشته است</h3>
+    <p class="sub">
+      خط بالا، جمعیت دانش‌آموزی ثبت‌شده در هر سال تحصیلی است. اوج آن در ۱۴۰۱–۱۴۰۲ رخ داده و بازتاب موج تولد سال‌های ۱۳۹۳ تا ۱۳۹۶ است.
+    </p>
+    <div class="chartbox" id="c-school"></div>
+    <div class="legend"><span><i style="background:var(--lapis)"></i>کل دانش‌آموزان ثبت‌شده، بر حسب سال تحصیلی</span></div>
+    <h3 style="margin-top:26px; font-size:14.5px">و اندازهٔ نسل‌هایی که در راه‌اند</h3>
+    <p class="sub">هر میله، مجموع تولدهای شش سال متوالی است؛ یعنی جمعیتی که حدود هفت سال بعد کل دورهٔ ابتدایی را پر می‌کند. درصد زیر هر میله، تغییر نسبت به پنجرهٔ نخست است.</p>
+    <div class="chartbox" id="c-cohort"></div>
+    <figcaption>
+      فرض: نرخ ثبت‌نام نزدیک به صددرصد، مرگ‌ومیر کودکان ناچیز و مهاجرت خالص صفر. میله‌ها سطحِ ثبت‌نام آینده را پیش‌بینی نمی‌کنند —
+      <em>نسبتِ</em> کوچک‌شدن نسل‌ها را می‌سنجند، که به این فرض‌ها بسیار کم‌حساس است. تفاوت سطح میله‌ها با خط، تا حدی ناشی از حضور دانش‌آموزان اتباع خارجی و نبود دادهٔ تولد پیش از ۱۳۹۵ است.
+    </figcaption>
+  </figure>
+
+  <div class="callout turq">
+    <b>یک قطعیت کمیاب در پیش‌بینی:</b> کودکی که در ۱۴۰۴ متولد شده، در حدود ۱۴۱۰ وارد دبستان و در حدود ۱۴۲۲ وارد بازار کار می‌شود.
+    تعداد این کودکان <b>همین حالا معلوم است</b>: ۸۹۲٬۲۷۸ نفر، در برابر ۱٬۵۲۸٬۰۵۳ نفرِ نسل ۱۳۹۵.
+    این تنها بخشی از آیندهٔ جمعیتی است که به هیچ فرضی نیاز ندارد.
+  </div>
+
+  <figure class="panel">
+    <h3>آموزش عالی: دانشجو برگشت، دانش‌آموخته نه</h3>
+    <p class="sub">تعداد دانشجویان پس از افت شدید ۱۳۹۴ تا ۱۳۹۹ در حال بازیابی است، اما تعداد دانش‌آموختگان همچنان کاهنده است.</p>
+    <div class="chartbox" id="c-uni"></div>
+    <div class="legend">
+      <span><i style="background:var(--lapis)"></i>دانشجویان</span>
+      <span><i style="background:var(--pom)"></i>دانش‌آموختگان</span>
+    </div>
+    <figcaption>منبع: وزارت علوم، تحقیقات و فناوری. دادهٔ دانش‌آموختگان تا سال تحصیلی ۱۴۰۲–۱۴۰۳ منتشر شده است.</figcaption>
+  </figure>
+
+  <div class="blocks">
+    <div class="blk blk-data">
+      <h4>داده</h4>
+      <p>جمعیت دانش‌آموزی: ۱۷٫۸۸ میلیون (۱۳۸۰–۸۱) ← کف ۱۳٫۲۳ میلیون (۱۳۹۱–۹۲) ← اوج ۱۶٫۹۷ میلیون (۱۴۰۱–۰۲) ← ۱۶٫۸۶ میلیون (۱۴۰۳–۰۴).</p>
+      <p>مجموع تولد ۱۳۹۵ تا ۱۴۰۰ برابر ۷٬۸۰۸٬۹۵۴ و مجموع ۱۳۹۹ تا ۱۴۰۴ برابر ۶٬۲۳۵٬۷۲۹ نفر است.</p>
+    </div>
+    <div class="blk blk-analysis">
+      <h4>تحلیل</h4>
+      <p>موج جمعیت دانش‌آموزی، با تأخیر شش تا هفت ساله، آینهٔ موج تولد است. چون تولد از ۱۳۹۵ پیوسته کاهنده بوده، جمعیت دانش‌آموزی از حدود ۱۴۰۵–۱۴۰۶ وارد فاز نزولی پایدار می‌شود؛ نخست در ابتدایی، سپس با تأخیر در متوسطه و آموزش عالی.</p>
+      <p>افت ۴۳ درصدی دانش‌آموختگان در حالی رخ داده که تعداد دانشجویان از ۱۴۰۰ رو به افزایش است — نشانهٔ ترکیبی از افت ورودی‌های سال‌های میانی و احتمالاً افزایش انصراف یا طولانی‌شدن تحصیل.</p>
+    </div>
+    <div class="blk blk-concl">
+      <h4>نتیجه‌گیری</h4>
+      <p>کشور در آستانهٔ یک بازآرایی بزرگ زیرساخت آموزشی است: مازاد ظرفیت در دبستان‌ها طی چند سال آینده، و پس از آن در متوسطه و دانشگاه.</p>
+      <p>در سوی دیگر، نیروی کار جوانِ ورودی به اقتصاد پس از حدود ۱۴۱۵ به‌طور محسوس کم‌شمارتر خواهد بود. این یعنی پنجرهٔ جمعیتی ایران — دوره‌ای که سهم جمعیت در سن کار بالاست — رو به بسته‌شدن است، در حالی که (طبق پردهٔ ۱) هنوز از آن استفادهٔ کامل نشده است.</p>
+    </div>
+  </div>
+</section>
+
+<section class="act wrap" id="act6">
+  <span class="act-num">پردهٔ ۶</span>
+  <h2>پیش‌بینی رسمی زیر فشار</h2>
+  <p class="lede">
+    شیت «جمعیت و نیروی انسانی» دو چیز را کنار هم گذاشته که کمتر با هم مقایسه می‌شوند:
+    <b>پیش‌بینی جمعیت تا ۱۴۱۵</b> و <b>آمار واقعی تولد و فوت</b>. اگر این دو را کنار هم بگذاریم، شکافی پیدا می‌شود که در دو سال آخر به‌سرعت باز شده است.
+  </p>
+
+  <figure class="panel">
+    <h3>شکاف میان رشد پیش‌بینی‌شده و رشد طبیعیِ واقعی</h3>
+    <p class="sub">
+      هر میله نشان می‌دهد <b>رشد طبیعی واقعی</b> (تولد منهای فوت) چقدر از
+      <b>افزایش جمعیتی که پیش‌بینی رسمی انتظار داشت</b> جلوتر یا عقب‌تر بوده است.
+      <span class="lg-in"><i style="background:#2E7D4F"></i>سبز: واقعیت بهتر از پیش‌بینی</span>
+      <span class="lg-in"><i style="background:#C4342E"></i>قرمز: واقعیت عقب‌تر از پیش‌بینی</span>
+    </p>
+    <div class="chartbox" id="c-gap"></div>
+    <figcaption>
+      دو موج قرمز، دو علت متفاوت دارند: ۱۳۹۹ و ۱۴۰۰ فوت مازاد کرونا، و ۱۴۰۳ و ۱۴۰۴ افت شتابان تولد.
+      شکاف را می‌توان با مهاجرت خالص، تفاوت فرض باروری، یا هر دو هم توضیح داد؛ تفکیک این‌ها با داده‌های این شیت
+      ممکن نیست و ادعایی دربارهٔ آن نمی‌کنیم.
+    </figcaption>
+  </figure>
+
+  <div class="tblwrap">
+    <table>
+      <caption class="hidden">مقایسهٔ افزایش جمعیت پیش‌بینی‌شده با رشد طبیعی واقعی</caption>
+      <thead><tr><th>سال</th><th>افزایش جمعیت طبق پیش‌بینی (هزار نفر)</th><th>رشد طبیعی واقعی (هزار نفر)</th><th>شکاف (واقعی منهای پیش‌بینی)</th><th>توضیح غالب</th></tr></thead>
+      <tbody id="gaptable"></tbody>
+    </table>
+  </div>
+
+  <figure class="panel">
+    <h3>مدل زندهٔ جمعیت تا ۱۴۱۵ — فرض‌ها را خودتان عوض کنید</h3>
+    <p class="sub">
+      خط فیروزه‌ای، پیش‌بینی رسمی مرکز آمار است و ثابت می‌ماند. خط اناری، مدل این اثر است: جمعیت را از رقم واقعی
+      ۱۴۰۴ آغاز می‌کند و تنها با تولد، فوت و مهاجرت جلو می‌برد. سه اهرم زیر را جابه‌جا کنید تا ببینید نتیجه چقدر
+      به فرض‌ها حساس است.
+    </p>
+
+    <div class="mini" id="projctl">
+      <div class="fld">
+        <label for="p-birth">رشد سالانهٔ تولد: <output id="o-birth"><span class="pc">−۵٫۸%</span></output></label>
+        <input type="range" id="p-birth" min="-90" max="40" step="1" value="-58"
+               aria-label="نرخ رشد سالانهٔ تولد بر حسب دهم درصد">
+      </div>
+      <div class="fld">
+        <label for="p-death">رشد سالانهٔ فوت: <output id="o-death"><span class="pc">+۲٫۵%</span></output></label>
+        <input type="range" id="p-death" min="0" max="60" step="1" value="25"
+               aria-label="نرخ رشد سالانهٔ فوت بر حسب دهم درصد">
+      </div>
+      <div class="fld">
+        <label for="p-mig">مهاجرت خالص سالانه: <output id="o-mig">۰</output> هزار نفر</label>
+        <input type="range" id="p-mig" min="-400" max="200" step="10" value="0"
+               aria-label="مهاجرت خالص سالانه بر حسب هزار نفر">
+      </div>
+      <div class="fld" style="flex:0 0 auto; min-width:0">
+        <label>&nbsp;</label>
+        <button type="button" class="iconbtn" id="p-reset">بازگشت به فرض پایه</button>
+      </div>
+    </div>
+
+    <div class="readout" id="projout">
+      <div><div class="rv turq" id="p-off">۹۱٬۴۴۶</div><div class="rl">پیش‌بینی رسمی ۱۴۱۵ (هزار نفر)</div></div>
+      <div><div class="rv pom"  id="p-mod">۸۷٬۶۵۷</div><div class="rl">مدل شما برای ۱۴۱۵</div></div>
+      <div><div class="rv saff" id="p-dif">۳٬۷۸۹−</div><div class="rl">اختلاف با رقم رسمی</div></div>
+      <div><div class="rv lapis" id="p-cross">۱۴۱۲</div><div class="rl">سالی که فوت از تولد پیشی می‌گیرد</div></div>
+    </div>
+
+    <div class="chartbox" id="c-proj"></div>
+    <div class="legend">
+      <span><i style="background:var(--turq)"></i>پیش‌بینی رسمی مرکز آمار</span>
+      <span><i style="background:var(--saff)"></i>سناریوی تعدیل‌شده: افت تولد <span class="sg">−۳٫۵%</span> سالانه</span>
+      <span><i style="background:var(--pom)"></i>مدل شما</span>
+    </div>
+    <figcaption>
+      نرخ <span class="sg">−۵٫۸%</span> همان نرخ رشد مرکب واقعی تولدها در ۱۳۹۵ تا ۱۴۰۴ است. نرخ <span class="sg">+۲٫۵%</span> برای فوت‌ها نیز از همان دوره گرفته شده
+      (و با نرخ ۱۳۹۸ تا ۱۴۰۴ که <span class="pc">۲٫۵۶%</span> است هم‌خوان است، یعنی به سال‌های کرونا حساس نیست).
+      این سناریوها <b>پیش‌بینی نیستند</b>؛ آزمون حساسیت‌اند و نشان می‌دهند تحقق پیش‌بینی رسمی، مشروط به توقف روند ده‌سالهٔ اخیر است.
+    </figcaption>
+  </figure>
+
+  <figure class="panel">
+    <h3>ایران شهری‌تر می‌شود چون روستا خالی می‌شود</h3>
+    <p class="sub">در پیش‌بینی رسمی، جمعیت روستایی و غیرساکن در <em>تک‌تک</em> سال‌های ۱۳۹۶ تا ۱۴۱۵ کاهش می‌یابد.</p>
+    <div class="chartbox" id="c-urban"></div>
+    <div class="legend">
+      <span><i class="sq" style="background:var(--lapis)"></i>مناطق شهری</span>
+      <span><i class="sq" style="background:var(--moss)"></i>مناطق روستایی و غیرساکن</span>
+      <span><i style="background:var(--saff)"></i>درجهٔ شهرنشینی (محور راست)</span>
+    </div>
+    <figcaption>منبع: مرکز آمار ایران، پیش‌بینی جمعیت کل کشور. ارقام به هزار نفر.</figcaption>
+  </figure>
+
+  <div class="blocks">
+    <div class="blk blk-data">
+      <h4>داده</h4>
+      <p>پیش‌بینی رسمی برای ۱۴۰۴ افزایش ۶۰۱ هزار نفری جمعیت را در بر دارد، در حالی که رشد طبیعی واقعی همان سال ۴۳۲ هزار نفر بوده است؛ شکاف ۱۶۹ هزار نفر. در ۱۴۰۳ این شکاف ۱۱۱ هزار نفر بود.</p>
+      <p>نرخ رشد سالانهٔ جمعیت در پیش‌بینی رسمی از <span class="pc">۱٫۱۲%</span> در ۱۳۹۷ به <span class="pc">۰٫۳۶%</span> در ۱۴۱۵ کاهش می‌یابد. جمعیت روستایی از ۲۰٫۷۵ به ۱۸٫۲۰ میلیون نفر (<span class="sg">−۱۲٫۳%</span>) می‌رسد.</p>
+    </div>
+    <div class="blk blk-analysis">
+      <h4>تحلیل</h4>
+      <p>شکاف دو منشأ متفاوت دارد و نباید یکجا خوانده شود. شکاف سال‌های ۱۳۹۹ و ۱۴۰۰ (<span class="sg">+۹۷</span> و <span class="sg">+۷۴</span> هزار) نتیجهٔ فوت‌های مازاد کروناست؛ رویدادی که هیچ پیش‌بینی‌ای آن را ندیده بود. اما شکاف ۱۴۰۳ و ۱۴۰۴ (<span class="sg">+۱۱۱</span> و <span class="sg">+۱۶۹</span> هزار) منشأ دیگری دارد: افت تولد سریع‌تر از فرض مدل.</p>
+      <p>سناریوها نشان می‌دهند اگر روند فعلی ادامه یابد، رشد طبیعی جمعیت حوالی ۱۴۱۲ (تداوم روند) تا ۱۴۱۵ (سناریوی تعدیل‌شده) به صفر می‌رسد و پس از آن منفی می‌شود.</p>
+    </div>
+    <div class="blk blk-concl">
+      <h4>نتیجه‌گیری</h4>
+      <p>این نقد مدل مرکز آمار نیست؛ هر پیش‌بینی جمعیتی بر فرض‌هایی استوار است و باید هنگام تغییر واقعیت بازنگری شود. یافتهٔ ما این است که <b>آن لحظه فرا رسیده</b>: شکاف در دو سال آخر دو برابر شده و علتش هم مشخص است.</p>
+      <p>پیامد عملی: برنامه‌ریزی‌هایی که به رقم ۹۱٫۴ میلیون نفر در ۱۴۱۵ تکیه می‌کنند — از تخصیص یارانه و آب تا ظرفیت مدرسه و صندوق‌های بازنشستگی — باید سناریوی جمعیت پایین‌تر (حدود ۸۸ تا ۸۹ میلیون) را هم لحاظ کنند.</p>
+    </div>
+  </div>
+</section>
+<section class="finale" id="finale" style="scroll-margin-top:56px">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--saff-l)">جمع‌بندی</div>
+    <h2>دو ساعت شنی که هم‌زمان خالی می‌شوند</h2>
+    <p class="lede" style="max-width:820px; font-size:17px; margin-top:16px">
+      روایت این داشبورد یک جمله است: <b style="color:#fff">ایران هم‌زمان با دو محدودیت روبه‌روست که یکدیگر را تشدید می‌کنند.</b>
+      از یک سو موتور جمعیتی در حال خاموش‌شدن است و ورودی نیروی کار در دهه‌های آینده کوچک‌تر می‌شود.
+      از سوی دیگر، همین امروز که جمعیت در سن کار هنوز در حال رشد است، اقتصاد نتوانسته آن را جذب کند و
+      شاخص رسمی بیکاری این ناتوانی را پنهان کرده است.
+      پنجرهٔ جمعیتی دارد بسته می‌شود، پیش از آنکه باز شده باشد.
+    </p>
+
+    <div class="fgrid">
+      <div>
+        <h4>۱ · شاخص را عوض کنید</h4>
+        <p>نرخ بیکاری در اقتصادی با مشارکت ریزشی، شاخص گمراه‌کننده است. <b>نسبت اشتغال</b> و <b>تعداد مطلق شاغلان</b> باید معیار اصلی ارزیابی سیاست اشتغال باشند. اولی در ۹ سال ۰٫۳ % افت کرده است.</p>
+      </div>
+      <div>
+        <h4>۲ · بزرگ‌ترین ذخیره، زنان‌اند</h4>
+        <p>۲۸٫۷ میلیون زن ۱۵ ساله و بیشتر خارج از بازار کارند، در حالی که زنان اکثریت دانشجویان کشورند. بازگرداندن مشارکت زنان تنها به سطح ۱۳۹۷، حدود ۱٫۴ میلیون نفر به جمعیت فعال می‌افزاید.</p>
+      </div>
+      <div>
+        <h4>۳ · بهار ۱۴۰۵ را جدی بگیرید</h4>
+        <p>نخستین فصلی که هم‌زمان شغل کم و بیکار زیاد شد؛ با منشأ روشن در بخش صنعت (<span class="sg">−۶۴۳</span> هزار شغل برآوردی). این را باید با دو فصل بعدی راستی‌آزمایی کرد، اما اندازه‌اش بی‌سابقه است.</p>
+      </div>
+      <div>
+        <h4>۴ · پیش‌بینی‌ها را بازنگری کنید</h4>
+        <p>شکاف پیش‌بینی رسمی با رشد طبیعی واقعی در دو سال به بیش از دو برابر رسیده. برنامه‌ریزی بلندمدت باید سناریوی جمعیت ۸۸ تا ۸۹ میلیون نفری در ۱۴۱۵ را هم بپوشاند، نه فقط ۹۱٫۴ میلیون را.</p>
+      </div>
+      <div>
+        <h4>۵ · ساعت آموزش زودتر زنگ می‌زند</h4>
+        <p>افت جمعیت دانش‌آموزی از حدود ۱۴۰۵–۱۴۰۶ آغاز می‌شود و برخلاف بازار کار، تقریباً قطعی است؛ چون کودکانش قبلاً متولد شده‌اند. مازاد ظرفیت مدارس، فرصت بازتخصیص است نه بحران.</p>
+      </div>
+      <div>
+        <h4>۶ · نقطهٔ اتصال دو بحران</h4>
+        <p>اگر بهره‌وری و مشارکت بالا نرود، کوچک‌شدن نیروی کار آینده به معنی کاهش تولید و فشار مضاعف بر صندوق‌های بازنشستگی است. زمانِ استفاده از جمعیت جوانِ موجود، همین امروز است.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="appendix" id="method" style="scroll-margin-top:56px">
+  <div class="wrap">
+    <div class="eyebrow">پیوست فنی</div>
+    <h2>داده، روش، اصلاحات و شفافیت</h2>
+    <p class="narrow" style="margin-top:14px">
+      هر عددی که در این داشبورد به‌عنوان «شاخص ساخته‌شده» معرفی شده، در این بخش با فرمول، فرض و منبعش آمده است.
+      هدف این است که خواننده بتواند هر محاسبه را مستقلاً بازتولید کند.
+    </p>
+
+    <h3>۱ · منابع داده</h3>
+    <p>
+      تمام ارقام از شیت «جمعیت و نیروی انسانی» فایل <b>«شاخص‌های کلان اقتصادی و اجتماعی کشور»</b> استخراج شده‌اند.
+      فایل خام همراه این پروژه منتشر شده و از <a href="data/raw/iran-macro-indicators.xlsx">اینجا</a>
+      قابل دریافت است. هیچ دادهٔ بیرونی به این مجموعه افزوده نشده است.
+      متولی هر جدول، همان‌گونه که در خود فایل ذکر شده، در فهرست زیر آمده و نشانی مرجعِ رسمی هر نهاد نیز پیوند شده است:
+    </p>
+    <ul class="srclist">
+      <li>
+        <b><a href="https://www.amar.org.ir/" target="_blank" rel="noopener noreferrer">مرکز آمار ایران</a></b>
+        <span class="u">amar.org.ir</span> — پیش‌بینی جمعیت کل کشور تا ۱۴۱۵؛ متوسط بعد خانوار؛ جمعیت ۱۵ ساله و بیشتر بر حسب
+        وضع فعالیت؛ نرخ مشارکت اقتصادی؛ نرخ بیکاری کل، ۱۵–۲۴ و ۱۸–۳۵ ساله؛ نسبت اشتغال؛ سهم بخش‌های عمدهٔ اقتصادی از اشتغال.
+        <span class="u">داده‌های نیروی کار از «طرح آمارگیری نیروی کار» همین مرکز می‌آید.</span>
+      </li>
+      <li>
+        <b><a href="https://www.sabteahval.ir/" target="_blank" rel="noopener noreferrer">سازمان ثبت احوال کشور</a></b>
+        <span class="u">sabteahval.ir</span> — تولدها و فوت‌های ثبت‌شده به تفکیک جنس و مناطق شهری و روستایی؛
+        ازدواج و طلاق ثبت‌شده، سالانه و فصلی.
+      </li>
+      <li>
+        <b><a href="https://www.medu.ir/" target="_blank" rel="noopener noreferrer">وزارت آموزش و پرورش</a></b>
+        <span class="u">medu.ir</span> — تعداد دانش‌آموزان به تفکیک جنسیت و دورهٔ تحصیلی.
+      </li>
+      <li>
+        <b><a href="https://www.msrt.ir/" target="_blank" rel="noopener noreferrer">وزارت علوم، تحقیقات و فناوری</a></b>
+        <span class="u">msrt.ir</span> — دانشجویان و دانش‌آموختگان آموزش عالی به تفکیک گروه تحصیلی و جنسیت.
+        <span class="u">آمار مؤسسات زیر نظر وزارت بهداشت در همین جدول‌ها لحاظ شده است.</span>
+      </li>
+    </ul>
+    <p class="srcnote">
+      نسخهٔ پاک‌سازی‌شدهٔ داده‌ها که این داشبورد روی آن کار می‌کند، از دکمه‌های پایین همین صفحه به‌صورت
+      <span dir="ltr" class="mono">JSON</span> و <span dir="ltr" class="mono">CSV</span> قابل دریافت است تا هر رقمِ
+      این اثر مستقلاً بازبینی شود.
+    </p>
+
+    <h3>۲ · پاک‌سازی و اصلاح داده‌ها</h3>
+    <p>
+      پیش از تحلیل، تمام جدول‌های دارای ساختار «کل = مرد + زن» و «کل = شهری + روستایی» به‌صورت خودکار آزمون سازگاری شدند.
+      این آزمون ۹ مورد ناسازگاری پیدا کرد. پنج مورد با شواهد داخلیِ قطعی اصلاح شدند؛ بقیه علامت‌گذاری شد و دست نخورد.
+      <b>هیچ اصلاحی بر جمع‌های کل کشور اثر ندارد</b>؛ همهٔ آن‌ها اجزای درونی‌اند.
+    </p>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>#</th><th>سری و مورد</th><th>مقدار در فایل</th><th>مقدار اصلاح‌شده</th><th>شواهد</th><th>اقدام</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>۱</td><td>تولد ۱۳۹۵ — پسر، کل کشور</td>
+            <td class="num">۷۶۶٬۱۴۲</td><td class="num">۷۸۶٬۱۴۲</td>
+            <td>پسرِ شهری + پسرِ روستایی = ۶۰۵٬۵۲۳ + ۱۸۰٬۶۱۹ = ۷۸۶٬۱۴۲. ضمناً مقدار اصلاحی، نسبت جنسی تولد را از ۱۰۳٫۳ (خارج از دامنهٔ طبیعی) به ۱۰۶٫۰ می‌رساند که با ۱۰۶٫۱ سال ۱۳۹۶ هم‌خوان است.</td>
+            <td><span class="chip fix">اصلاح شد</span></td>
+          </tr>
+          <tr>
+            <td>۲</td><td>تولد ۱۳۹۶ — جمع مناطق روستایی</td>
+            <td class="num">۳۴۴٬۳۵۵</td><td class="num">۳۴۴٬۳۶۵</td>
+            <td>پسر + دختر روستایی = ۱۷۷٬۰۲۹ + ۱۶۷٬۳۳۶ = ۳۴۴٬۳۶۵؛ و شهری + روستایی آنگاه دقیقاً برابر جمع کل کشور می‌شود.</td>
+            <td><span class="chip fix">اصلاح شد</span></td>
+          </tr>
+          <tr>
+            <td>۳</td><td>فوت زمستان ۱۴۰۴ — جمع مناطق شهری</td>
+            <td class="num">۹۰۸٬۸۶۶</td><td class="num">۹۰٬۸۶۶</td>
+            <td>یک رقم اضافه؛ مرد + زن شهری = ۵۳٬۴۱۰ + ۳۷٬۴۵۶ = ۹۰٬۸۶۶. مقدار منتشرشده هشت برابر کل فوت‌های آن فصل است.</td>
+            <td><span class="chip fix">اصلاح شد</span></td>
+          </tr>
+          <tr>
+            <td>۴</td><td>فوت زمستان ۱۴۰۴ — جمع مناطق روستایی</td>
+            <td class="num">۲۳٬۸۰۵</td><td class="num">۲۲٬۸۰۵</td>
+            <td>مرد + زن روستایی = ۱۲٬۰۹۳ + ۱۰٬۷۱۲ = ۲۲٬۸۰۵. پس از این اصلاح، ۹۰٬۸۶۶ + ۲۲٬۸۰۵ = ۱۱۳٬۶۷۱ که دقیقاً برابر جمع کل فصل است.</td>
+            <td><span class="chip fix">اصلاح شد</span></td>
+          </tr>
+          <tr>
+            <td>۵</td><td>فوت تابستان ۱۴۰۴ — جمع مناطق روستایی</td>
+            <td class="num">۲۵٬۵۳۱</td><td class="num">۲۳٬۵۳۱</td>
+            <td>مرد + زن روستایی = ۱۲٬۴۰۳ + ۱۱٬۱۲۸ = ۲۳٬۵۳۱؛ و ۹۱٬۱۴۱ + ۲۳٬۵۳۱ = ۱۱۴٬۶۷۲ برابر جمع کل فصل.</td>
+            <td><span class="chip fix">اصلاح شد</span></td>
+          </tr>
+          <tr>
+            <td>۶</td><td>فوت ۱۳۹۵ — تفکیک جنسیت (هر سه ناحیه)</td>
+            <td class="num">مرد ۱۶۱٬۷۷۴<br>زن ۲۰۷٬۸۸۴</td><td class="num">—</td>
+            <td>نسبت فوت مرد به زن در ۱۳۹۵ برابر ۰٫۷۸ است، حال آنکه در ۱۳۹۶ تا ۱۴۰۴ همواره بین ۱٫۲۰ و ۱٫۳۰ می‌ماند. این وارونگی در کل کشور، شهری و روستایی هم‌زمان رخ داده — الگوی مشخصِ جابه‌جایی دو ستون. چون شاهد قطعی نداریم، اصلاح نکردیم.</td>
+            <td><span class="chip warn">علامت‌گذاری شد</span></td>
+          </tr>
+          <tr>
+            <td>۷</td><td>نرخ بیکاری ۱۸–۳۵ ساله، سال ۱۳۹۵</td>
+            <td class="num"><span class="pc">۲۶٫۸%</span></td><td class="num">—</td>
+            <td>افت ۷٫۱ % در یک سال (به <span class="pc">۱۹٫۷%</span> در ۱۳۹۶)، در حالی که گروه ۱۵–۲۴ فقط ۱٫۰ واحد و کل جمعیت فقط ۰٫۳ واحد افت داشته‌اند. نشانهٔ شکست تعریفی یا خطای ثبت، نه تغییر واقعی.</td>
+            <td><span class="chip warn">از تحلیل روند کنار گذاشته شد</span></td>
+          </tr>
+          <tr>
+            <td>۸</td><td>جمع فوت‌ها بر حسب جنس، ۱۳۹۵ تا ۱۴۰۱</td>
+            <td class="num">اختلاف ۱۲ تا ۹۳ نفر</td><td class="num">—</td>
+            <td>جمع مرد + زن همواره اندکی کمتر از جمع کل است. تفسیر ما: رکوردهای با جنسیت نامشخص. مقدار اختلاف کمتر از <span class="pc">۰٫۰۳%</span> است و از ۱۴۰۲ به بعد به صفر رسیده.</td>
+            <td><span class="chip note">دست نخورد</span></td>
+          </tr>
+          <tr>
+            <td>۹</td><td>پیش‌بینی جمعیت — جمع اجزا</td>
+            <td class="num">اختلاف <span class="sg">±۱</span> هزار</td><td class="num">—</td>
+            <td>در ۱۶ سطر، جمع اجزا یک هزار نفر با جمع کل تفاوت دارد. ناشی از گردکردن ارقام به هزار نفر است، نه خطا.</td>
+            <td><span class="chip note">دست نخورد</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px">
+      همچنین برچسب برخی ردیف‌های فصلی در فایل، فاصلهٔ اضافی انتهایی داشت (مثلاً «بهار ۱۴۰۴ ») که پیش از پیوند دادن جدول‌ها یکسان‌سازی شد.
+      ردیف «پیش‌دبستانی» در جدول دانش‌آموزان با مقدار «۰۰۰» ثبت شده که به‌معنای «داده در دسترس نیست» تعبیر و از محاسبات کنار گذاشته شد.
+    </p>
+
+    <h3>۳ · شاخص‌های ساخته‌شده و روش محاسبه</h3>
+
+    <details open><summary>الف) نرخ بیکاری تعدیل‌شده با مشارکت — شاخص محوری این اثر</summary>
+      <div>
+        <p>پرسش: اگر نرخ مشارکت اقتصادی در سطح سال مبنا (<span dir="ltr">base</span>) ثابت مانده بود، با همان تعداد شاغلِ واقعی، نرخ بیکاری چه بود؟</p>
+        <div class="formula">
+          A*<sub>t</sub> = P<sub>t</sub> × r<sub>base</sub> &nbsp;&nbsp;<span>← جمعیت فعال فرضی (خلاف‌واقع)</span><br>
+          U*<sub>t</sub> = ( A*<sub>t</sub> − E<sub>t</sub> ) / A*<sub>t</sub> = 1 − E<sub>t</sub> / ( P<sub>t</sub> × r<sub>base</sub> )<br>
+          H<sub>t</sub> = A*<sub>t</sub> − A<sub>t</sub> &nbsp;&nbsp;<span>← بیکار پنهان</span>
+        </div>
+        <p>
+          که در آن P جمعیت ۱۵ ساله و بیشتر، E جمعیت شاغل، A جمعیت فعال منتشرشده و r نرخ مشارکت است.
+          نمونهٔ ۱۴۰۴ با مبنای ۱۳۹۵ (<span class="pc">۴۳٫۲%</span>): <span dir="ltr" class="mono">A* = 66,148 × 0.432 = 28,576</span> هزار نفر؛
+          <span dir="ltr" class="mono">U* = 1 − 24,822 / 28,576 = 13.14%</span>؛ بیکار پنهان <span dir="ltr" class="mono">= 28,576 − 26,837 = 1,739</span> هزار نفر.
+        </p>
+        <p><b>محدودیت:</b> این شاخص فرض نمی‌کند همهٔ خارج‌شدگان «واقعاً بیکار»اند. بخشی از افت مشارکت می‌تواند ناشی از افزایش تحصیل، بازنشستگی یا سالخوردگی ترکیب جمعیت باشد. بنابراین U* را باید <em>کران بالای</em> نرخ بیکاری واقعی خواند و U را کران پایین آن. پیام تحلیل، فاصلهٔ این دو است.</p>
+      </div>
+    </details>
+
+    <details><summary>ب) تفکیک جنسیتی جمعیت ۱۵+ و اشتغال (برآورد تحلیلی)</summary>
+      <div>
+        <p>فایل، جمعیت ۱۵ ساله و بیشتر را به تفکیک جنسیت منتشر نکرده، اما نسبت اشتغال مردان و زنان را داده است. با حل یک معادلهٔ یک‌مجهولی می‌توان تفکیک را بازسازی کرد:</p>
+        <div class="formula">
+          r<sub>m</sub>·P<sub>m</sub> + r<sub>f</sub>·(P − P<sub>m</sub>) = E &nbsp;&nbsp;⟹&nbsp;&nbsp; P<sub>m</sub> = ( E − r<sub>f</sub>·P ) / ( r<sub>m</sub> − r<sub>f</sub> )
+        </div>
+        <p>برای ۱۴۰۴ با <span dir="ltr" class="mono">P = 66,148</span>، <span dir="ltr" class="mono">E = 24,822</span>، <span dir="ltr" class="mono">r<sub>m</sub> = 63.8%</span>، <span dir="ltr" class="mono">r<sub>f</sub> = 11.4%</span>: مردان ۳۲٬۹۷۹ و زنان ۳۳٬۱۶۹ هزار نفر؛ شاغلان مرد ۲۱٬۰۴۱ و زن ۳٬۷۸۱ هزار نفر ⟹ سهم زنان از اشتغال <span class="pc">۱۵٫۲%</span>.</p>
+        <p>
+          <b>راستی‌آزمایی مستقل:</b> این تفکیک با <em>نرخ مشارکت</em> و <em>نرخ بیکاری</em> جنسیتی — که در محاسبه استفاده نشده‌اند — بازسازی شد:
+          جمعیت فعال بازسازی‌شده ۲۶٬۸۳۷٫۵ در برابر ۲۶٬۸۳۷ منتشرشده (خطا <span class="pc">۰٫۰۰۲%</span>) و بیکاران بازسازی‌شده ۲٬۰۱۰ در برابر ۲٬۰۱۴ (خطا <span class="pc">۰٫۱۹%</span>).
+          این هم‌خوانی نشان می‌دهد تفکیک برآوردی قابل اتکاست.
+        </p>
+      </div>
+    </details>
+
+    <details><summary>پ) اشتغال بخشی و شوک بهار ۱۴۰۵</summary>
+      <div>
+        <div class="formula">E<sub>s,t</sub> = share<sub>s,t</sub> × E<sub>t</sub></div>
+        <p>بهار ۱۴۰۴: <span dir="ltr" class="mono">33.0% × 25,123 = 8,291</span>؛ بهار ۱۴۰۵: <span dir="ltr" class="mono">31.0% × 24,672 = 7,648</span> ⟹ تغییر <span class="sg">−۶۴۳</span> هزار.</p>
+        <p><b>خطای گردکردن:</b> سهم‌ها با یک رقم اعشار منتشر می‌شوند (<span class="sg">±۰٫۰۵</span> %)، که معادل حدود <span class="sg">±۱۲</span> هزار نفر است. تغییر مشاهده‌شده در صنعت ۵۰ برابر این خطاست، اما تغییرهای کوچک‌تر (کشاورزی <span class="sg">+۵۸</span> هزار) را باید محتاطانه خواند.</p>
+      </div>
+    </details>
+
+    <details><summary>ت) کوهورت ورودی بالقوهٔ دبستان</summary>
+      <div>
+        <div class="formula">C<sub>t</sub> = Σ<sub>i=0..5</sub> B<sub>t+i</sub> &nbsp;&nbsp;<span>← مجموع تولد شش سال متوالی</span></div>
+        <p>مقایسهٔ <span dir="ltr" class="mono">C(1395) = 7,808,954</span> با <span dir="ltr" class="mono">C(1399) = 6,235,729</span> ⟹ <span class="sg">−۲۰٫۱%</span> ظرف چهار سال جابه‌جایی پنجره.</p>
+        <p><b>فرض‌ها:</b> نرخ ثبت‌نام نزدیک صددرصد، مرگ‌ومیر کودکان ناچیز و مهاجرت خالص صفر. این محاسبه <em>سطح</em> ثبت‌نام آینده را پیش‌بینی نمی‌کند — تنها <em>نسبت</em> کوچک‌شدن کوهورت‌ها را می‌سنجد، که به این فرض‌ها بسیار کم‌حساس است.</p>
+      </div>
+    </details>
+
+    <details><summary>ث) سناریوهای جمعیت و نقطهٔ تلاقی تولد و فوت</summary>
+      <div>
+        <div class="formula">
+          B<sub>t+1</sub> = B<sub>t</sub>·(1+g<sub>b</sub>) &nbsp;·&nbsp; D<sub>t+1</sub> = D<sub>t</sub>·(1+g<sub>d</sub>) &nbsp;·&nbsp; P<sub>t+1</sub> = P<sub>t</sub> + B<sub>t+1</sub> − D<sub>t+1</sub><br>
+          t* = ln(B<sub>0</sub>/D<sub>0</sub>) / ln( (1+g<sub>d</sub>) / (1+g<sub>b</sub>) ) &nbsp;&nbsp;<span>← سال تلاقی</span>
+        </div>
+        <p>
+          <span dir="ltr" class="mono">g<sub>b</sub> = −5.80%</span> نرخ رشد مرکب واقعی تولدها در ۱۳۹۵–۱۴۰۴ و
+          <span dir="ltr" class="mono">g<sub>d</sub> = +2.46%</span> همان برای فوت‌هاست؛ رقم فوت با محاسبهٔ دورهٔ پس از کرونا (۱۳۹۸–۱۴۰۴: <span class="pc">۲٫۵۶%</span>) نیز تأیید می‌شود.
+          سناریوی تعدیل‌شده، افت تولد را نصف می‌کند (<span class="sg">−۳٫۵%</span>) تا اثر احتمالی سیاست‌های حمایتی و کف‌گرفتن باروری را بپوشاند.
+          نقطهٔ تلاقی: ۱۴۱۲ (تداوم روند) تا ۱۴۱۵ (تعدیل‌شده). مهاجرت خالص در هر دو سناریو صفر فرض شده است.
+        </p>
+      </div>
+    </details>
+
+    <h3>۴ · آنچه ادعا نمی‌کنیم</h3>
+    <ul>
+      <li>ادعا نمی‌کنیم آمار رسمی نادرست است. تعریف مرکز آمار از بیکاری، استاندارد بین‌المللی سازمان بین‌المللی کار است. نقد ما به <em>کفایت</em> این شاخص برای این اقتصاد است، نه به صحت آن.</li>
+      <li>ادعا نمی‌کنیم همهٔ ۵٫۵ میلیون نفری که غیرفعال ماندند، خواهان کارند. بخشی قطعاً محصل، سالمند یا بازنشسته‌اند.</li>
+      <li>ادعا نمی‌کنیم پیش‌بینی مرکز آمار غلط است. می‌گوییم فرض‌های آن با روند دو سال اخیر فاصله گرفته و بازنگری می‌طلبد.</li>
+      <li>سناریوهای برون‌یابی، پیش‌بینی نیستند؛ آزمون حساسیت‌اند و به فرض «ادامهٔ روند» بسیار حساس‌اند.</li>
+      <li>تحلیل بهار ۱۴۰۵ بر یک فصل استوار است. یافتهٔ محکمی است اما نیازمند تأیید با فصول بعدی.</li>
+      <li>هیچ رابطهٔ علّی ادعا نشده است؛ همبستگی ازدواج و تولد، رابطه‌ای زمان‌مند و نه اثبات علیت است.</li>
+    </ul>
+
+    <h3>۵ · ابزارها و روند کار</h3>
+    <ul>
+      <li><b>استخراج و آزمون داده:</b> اسکریپت پایتون با <span dir="ltr">openpyxl</span> شیت را خواند و یک آزمون خودکار سازگاری روی همهٔ جدول‌های دارای ساختار «کل = اجزا» اجرا شد. ۹ ناسازگاری گزارش‌شده در بخش ۲، خروجی همین آزمون است.</li>
+      <li><b>محاسبات:</b> تمام شاخص‌های ساخته‌شده با کد اجرا و با راستی‌آزمایی متقاطع (بخش ۳-ب) کنترل شدند. هیچ عددی از حافظه نقل نشده؛ همه از خود فایل محاسبه شده‌اند.</li>
+      <li><b>پیاده‌سازی:</b> نمودارها بدون هیچ کتابخانهٔ بیرونی و به‌صورت <span dir="ltr">SVG</span> خام رسم شده‌اند تا فایل بدون اینترنت هم کامل کار کند.</li>
+    </ul>
+    <p>
+      <b>مسئولیت صحت داده‌ها، محاسبات و استنتاج‌ها بر عهدهٔ نگارنده،
+      <a href="https://MiladShabani.ir" target="_blank" rel="noopener noreferrer">میلاد شعبانی</a>، است.</b>
+      برای همین، هر عدد کلیدی در بخش ۳ با فرمول و ورودی‌هایش آمده تا قابل بازبینی باشد.
+    </p>
+
+    <h3>۶ · بازتولیدپذیری</h3>
+    <p>دادهٔ پاک‌سازی‌شده‌ای که این داشبورد با آن کار می‌کند، درون همین فایل جاسازی شده است. می‌توانید آن را استخراج کنید:</p>
+    <p style="display:flex; gap:10px; flex-wrap:wrap">
+      <button class="btn" id="dl-json" type="button">دانلود دادهٔ پاک‌سازی‌شده (JSON)</button>
+      <button class="btn ghost" id="dl-csv" type="button">دانلود سری‌های اصلی (CSV)</button>
+      <button class="btn ghost" id="print-dashboard" type="button">چاپ / ذخیره به‌صورت PDF</button>
+    </p>
+    <p style="font-size:12.5px; color:var(--muted)">
+      این صفحه یک فایل HTML مستقل است: بدون وابستگی به کتابخانهٔ بیرونی برای نمودارها، بدون نیاز به نصب نرم‌افزار، و سازگار با موبایل.
+      تنها منبع بیرونی، قلم وزیرمتن است که در نبود اینترنت به قلم پیش‌فرض سیستم برمی‌گردد و چیزی از کار افتاده نمی‌شود.
+    </p>
+  </div>
+</section>
+
+<footer class="f">
+  <div class="wrap">
+    <div class="byline">
+      <img class="ava" alt="میلاد شعبانی"
+           src="data:image/jpeg;base64,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">
+      <div class="who">
+        <div class="kick">پژوهش، تحلیل و طراحی</div>
+        <div class="nm">میلاد شعبانی</div>
+        <div class="rl">استخراج و پاک‌سازی داده · ساخت شاخص‌های تحلیلی · طراحی و پیاده‌سازی داشبورد</div>
+        <a class="site" href="https://MiladShabani.ir" target="_blank" rel="noopener noreferrer" dir="ltr">MiladShabani.ir</a>
+      </div>
+    </div>
+    <div class="fnote">
+      یک پروژهٔ تحلیل دادهٔ متن‌باز دربارهٔ جمعیت و نیروی انسانی ایران، ۱۳۹۵ تا ۱۴۰۵<br>
+      دادهٔ پایه: شیت «جمعیت و نیروی انسانی»، فایل شاخص‌های کلان اقتصادی و اجتماعی کشور ·
+      <a href="https://www.amar.org.ir/" target="_blank" rel="noopener noreferrer">مرکز آمار ایران</a>
+    </div>
+  </div>
+</footer>
+</main>
+<script>
+
+/* ==========================================================================
+   موتور رسم نمودار — SVG خام، بدون هیچ کتابخانهٔ بیرونی
+   ========================================================================== */
+"use strict";
+const NS = "http://www.w3.org/2000/svg";
+const C = { ink:"#131F33", ink2:"#33455E", muted:"#6B7C93", faint:"#93A2B5",
+            line:"#D8DEE7", line2:"#C3CCDA", lapis:"#1F3D73", lapisL:"#3C63A8",
+            turq:"#0F7F87", turqL:"#5FB3B8", saff:"#C98A0E", saffL:"#E9C877",
+            pom:"#A3242F", pomL:"#D97A82", moss:"#4A7A4E", stone2:"#E3E7EE",
+            gain:"#2E7D4F", gainL:"#7FBF97", loss:"#C4342E" };
+
+const FA = "۰۱۲۳۴۵۶۷۸۹";
+// جداکننده‌های فارسی: ٫ اعشار، ٬ هزارگان
+const fa  = s => String(s).replace(/[0-9]/g, d => FA[+d]).replace(/\./g, "٫");
+const num = (n, dec=0) => fa(Number(n).toLocaleString("en-US",
+              {minimumFractionDigits:dec, maximumFractionDigits:dec})).replace(/,/g,"٬");
+const pct = (n, dec=1) => iso(num(n, dec) + "%");
+// جداسازی دوطرفه: عدد علامت‌دار باید همیشه چپ‌به‌راست خوانده شود
+const LRI = "\u2066", RLI = "\u2067", PDI = "\u2069";
+const iso  = s => LRI + s + PDI;
+const sgnRaw = (n, dec=0, suf="") => (n>0?"+":n<0?"−":"") + num(Math.abs(n), dec) + suf;
+const sgn = (n, dec=0, suf="") => iso(sgnRaw(n, dec, suf));
+const rng = (a, b) => iso(fa(a) + "–" + fa(b));
+const FALETTER = /[\u0621-\u064A\u066E-\u06D5\u06E5-\u06EF\u06FA-\u06FF]/;
+
+/* ==========================================================================
+   وضعیت تعاملی هر نمودار — بین رسم‌های مجدد (تغییر اندازه، تغییر حالت) می‌ماند
+   ========================================================================== */
+const CH = new WeakMap();
+function chState(box){
+  if (!CH.has(box)) CH.set(box, {off:new Set(), mode:0, pin:false, at:null});
+  return CH.get(box);
+}
+
+/* راهنمای تعاملی: کلیک روی هر عنوان، آن سری را خاموش/روشن می‌کند */
+function legendFor(box, series0, note, redraw){
+  const series = series0;
+  let lg = box.nextElementSibling;
+  if (!lg || !lg.classList.contains("legend")){
+    lg = document.createElement("div"); lg.className = "legend";
+    box.parentNode.insertBefore(lg, box.nextSibling);
+  }
+  if (!lg.dataset.gen){
+    // نخستین بار: یادداشت توضیحیِ راهنمای ایستا (بخشی که سویچ رنگ ندارد) نگه داشته می‌شود
+    // فقط فرزندان مستقیم؛ اسپن‌های تودرتو (مثل .sg) یادداشت نیستند
+    const notes = [...lg.children]
+                    .filter(x=>x.tagName==="SPAN" && !x.querySelector("i")
+                               && !x.classList.contains("lghint"))
+                    .map(x=>x.textContent.trim()).filter(Boolean);
+    if (notes.length) lg.dataset.note = notes.join(" · ");
+    lg.dataset.gen = "1";
+  }
+  if (note===undefined && lg.dataset.note) note = lg.dataset.note;
+  const st = chState(box);
+  lg.innerHTML = "";
+  series.forEach((s,i)=>{
+    if (!s.name) return;
+    if (s.static){          // ناحیه‌ها فقط توضیح‌اند، خاموش‌شدنی نیستند
+      const sp = document.createElement("span");
+      sp.innerHTML = `<i class="sq" style="background:${s.color};opacity:${s.opacity||.5}"></i>${s.name}`;
+      lg.appendChild(sp); return;
+    }
+    const b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("aria-pressed", String(!st.off.has(i)));
+    b.title = st.off.has(i) ? "نمایش دوباره" : "پنهان‌کردن این سری";
+    b.innerHTML = `<i class="${s.sq?"sq":""}" style="background:${s.color}${
+        s.dash?";background-image:repeating-linear-gradient(90deg,"+s.color+" 0 4px,transparent 4px 7px)":""
+      }"></i>${s.name}`;
+    b.onclick = ()=>{ st.off.has(i) ? st.off.delete(i) : st.off.add(i);
+                      if (st.off.size >= series.filter(x=>x.name).length) st.off.delete(i);
+                      redraw(); };
+    lg.appendChild(b);
+  });
+  if (note){
+    const sp = document.createElement("span");
+    sp.style.color = "var(--faint)"; sp.textContent = note;
+    lg.dataset.note = note; lg.appendChild(sp);
+  }
+  if (!legendFor.hinted){          // راهنمای تعامل فقط یک‌بار، روی نخستین نمودار
+    legendFor.hinted = true;
+    const k = document.createElement("span");
+    k.className = "lghint";
+    k.textContent = "روی نام هر سری بزنید تا پنهان شود · کلیک روی نمودار، مقدار را سنجاق می‌کند";
+    lg.appendChild(k);
+    lg.dataset.hint = "1";
+  } else if (lg.dataset.hint){
+    const k = document.createElement("span");
+    k.className = "lghint";
+    k.textContent = "روی نام هر سری بزنید تا پنهان شود · کلیک روی نمودار، مقدار را سنجاق می‌کند";
+    lg.appendChild(k);
+  }
+}
+
+/* نوار حالت‌های تحلیلی بالای نمودار + دکمهٔ خروجی تصویر */
+function chartHead(box, modes, redraw, title){
+  let hd = box.previousElementSibling;
+  if (!hd || !hd.classList.contains("chead")){
+    hd = document.createElement("div"); hd.className = "chead";
+    box.parentNode.insertBefore(hd, box);
+  }
+  const st = chState(box);
+  hd.innerHTML = "";
+  if (modes && modes.length > 1){
+    const g = document.createElement("div"); g.className = "modes";
+    modes.forEach((m,i)=>{
+      const b = document.createElement("button");
+      b.type="button"; b.textContent = m.label;
+      b.setAttribute("aria-pressed", String(st.mode===i));
+      b.onclick = ()=>{ st.mode = i; st.pin=false; st.at=null; redraw(); };
+      g.appendChild(b);
+    });
+    hd.appendChild(g);
+  }
+  const sp = document.createElement("div"); sp.className="spacer"; hd.appendChild(sp);
+  const dl = document.createElement("button");
+  dl.type="button"; dl.className="iconbtn"; dl.textContent="خروجی تصویر";
+  dl.onclick = ()=>svgToPng(box, title || (box.id||"chart"));
+  hd.appendChild(dl);
+}
+
+/* ذخیرهٔ نمودار به PNG — بدون هیچ کتابخانه‌ای */
+function svgToPng(box, name){
+  const svg = box.querySelector("svg");
+  if (!svg) return;
+  const clone = svg.cloneNode(true);
+  const vb = svg.viewBox.baseVal;
+  const w = vb.width || svg.clientWidth, h = vb.height || svg.clientHeight;
+  const cs = getComputedStyle(document.body);
+  clone.setAttribute("width", w); clone.setAttribute("height", h);
+  clone.setAttribute("xmlns", NS);
+  // تعریف‌های مشترک (هاشور و…) بیرون از این svg زندگی می‌کنند؛ برای خروجی باید همراه بیایند
+  const shared = document.querySelector("svg[aria-hidden='true'] defs");
+  if (shared) clone.insertBefore(shared.cloneNode(true), clone.firstChild);
+  clone.insertBefore(
+    E("style", {}, `text{font-family:${cs.fontFamily.replace(/"/g,"'")}}`), clone.firstChild);
+  clone.insertBefore(E("rect",{x:vb.x||0, y:0, width:w, height:h, fill:"#FFFFFF"}),
+                     clone.firstChild.nextSibling);
+  const s = new XMLSerializer().serializeToString(clone);
+  const img = new Image();
+  img.onload = ()=>{
+    const sc = 2, cv = document.createElement("canvas");
+    cv.width = w*sc; cv.height = h*sc;
+    const ctx = cv.getContext("2d");
+    ctx.fillStyle = "#fff"; ctx.fillRect(0,0,cv.width,cv.height);
+    ctx.drawImage(img, 0, 0, cv.width, cv.height);
+    cv.toBlob(bl=>{
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(bl); a.download = name + ".png";
+      a.click(); URL.revokeObjectURL(a.href);
+    });
+  };
+  img.onerror = ()=>alert("خروجی تصویر در این مرورگر پشتیبانی نمی‌شود.");
+  img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(s);
+}
+
+function E(tag, attrs, txt){
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (txt !== undefined) e.textContent = txt;
+  return e;
+}
+function T(x, y, txt, o={}){
+  txt = String(txt);
+  if (FALETTER.test(txt)) txt = RLI + txt + PDI;   // متن فارسی، یک واحد راست‌به‌چپ
+  return E("text", Object.assign({
+    x, y, "font-size": o.size||11, "font-weight": o.w||600,
+    fill: o.fill||C.muted, "text-anchor": o.anchor||"middle",
+    "font-family":"inherit", "dominant-baseline": o.base||"auto"
+  }, o.extra||{}), txt);
+}
+function niceTicks(min, max, n){
+  const span = max-min || 1, raw = span/n, mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  const norm = raw/mag, step = (norm<1.5?1: norm<3?2: norm<7?5:10)*mag;
+  const lo = Math.floor(min/step)*step, out = [];
+  for (let v=lo; v<=max+step*0.001; v+=step) if (v>=min-step*0.001) out.push(+v.toFixed(10));
+  return out;
+}
+
+/* ---------- اسکلت مشترک نمودارها ---------- */
+function frame(box, o={}){
+  box.innerHTML = "";
+  const W = Math.max(300, box.clientWidth || 700);
+  const narrow = W < 520;
+  const m = Object.assign({t:18, r:16, b:34, l:44}, o.m||{});
+  if (narrow && o.mNarrow) Object.assign(m, o.mNarrow);
+  const H = o.h || Math.round(Math.min(400, Math.max(230, W*(o.ratio||0.46))));
+  const svg = E("svg", {viewBox:`0 0 ${W} ${H}`, width:"100%", height:H,
+                        style:"direction:ltr", role:"img", "aria-label":o.label||""});
+  box.appendChild(svg);
+  const g = E("g"); svg.appendChild(g);
+  return {svg, g, W, H, m, iw:W-m.l-m.r, ih:H-m.t-m.b, narrow};
+}
+/* پهنای تقریبی متن و حاشیهٔ لازم برای محور عمودی */
+function estW(t, size){
+  let w=0;
+  for (const ch of String(t)) w += /[\u06F0-\u06F9\u066B\u066C]/.test(ch) ? size*0.55
+                                : /[\u2066-\u2069\u200E\u200F]/.test(ch) ? 0
+                                : size*0.50;
+  return w;
+}
+function needLeft(min, max, fmt, n, base){
+  const w = Math.max(...niceTicks(min, max, n).map(v=>estW(fmt(v), 10.5)));
+  return Math.max(base||44, Math.ceil(w) + 13);
+}
+function yAxis(f, min, max, fmt, o={}){
+  const ticks = niceTicks(min, max, o.n||5);
+  const Y = v => f.m.t + f.ih - (v-min)/(max-min)*f.ih;
+  ticks.forEach(v=>{
+    f.g.appendChild(E("line",{x1:f.m.l, x2:f.m.l+f.iw, y1:Y(v), y2:Y(v),
+      stroke: v===0 && min<0 ? C.line2 : C.line, "stroke-width": v===0&&min<0?1.4:1}));
+    f.g.appendChild(T(f.m.l-7, Y(v)+3.5, fmt(v), {anchor:"end", size:10.5, fill:C.faint}));
+  });
+  return Y;
+}
+function xCat(f, labels, o={}){
+  const n = labels.length;
+  const step = f.iw/(n - (o.band?0:1) || 1);
+  const X = i => o.band ? f.m.l + step*(i+0.5) : f.m.l + step*i;
+  const size = o.size||10.5;
+  // پهنای تقریبی برچسب برای جلوگیری از هم‌پوشانی در نمایشگرهای باریک
+  const wMax = Math.max(...labels.map(L=>String(L).length)) * size * 0.60 + 8;
+  let every = o.every || 1;
+  while (step*every < wMax && every < n) every++;
+  const drawn = [];
+  const fits = x => drawn.every(d => Math.abs(x-d) >= wMax);
+  const put = i => {
+    const x = X(i);
+    if (!fits(x)) return;
+    drawn.push(x);
+    const half = estW(labels[i], size)/2 + 2;
+    const xc = Math.max(half, Math.min(f.W - half, x));   // نچسبیدن به لبه
+    f.g.appendChild(T(xc, f.m.t+f.ih+16, labels[i], {size, fill:C.muted, w:600}));
+  };
+  put(n-1);                      // سال پایانی همیشه نمایش داده می‌شود
+  put(0);
+  for (let i=n-1; i>=0; i-=every) put(i);
+  f.g.appendChild(E("line",{x1:f.m.l, x2:f.m.l+f.iw, y1:f.m.t+f.ih, y2:f.m.t+f.ih,
+                            stroke:C.line2, "stroke-width":1.2}));
+  return {X, step};
+}
+function path(pts, o={}){
+  const d = pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(2)+" "+p[1].toFixed(2)).join(" ");
+  return E("path", Object.assign({d, fill:"none", "stroke-width":o.w||2.4,
+    stroke:o.c||C.ink, "stroke-linejoin":"round", "stroke-linecap":"round"},
+    o.dash?{"stroke-dasharray":o.dash}:{}));
+}
+
+/* ---------- تولتیپ ---------- */
+function tipFor(box){
+  let t = box.querySelector(".tip");
+  if (!t){ t = document.createElement("div"); t.className="tip"; box.appendChild(t); }
+  return t;
+}
+function hoverLayer(f, box, n, xOf, build){
+  const tip = tipFor(box);
+  const st  = chState(box);
+  const line = E("line",{y1:f.m.t, y2:f.m.t+f.ih, stroke:C.ink, "stroke-width":1,
+                         "stroke-dasharray":"3 3", opacity:0});
+  f.g.appendChild(line);
+  const hit = E("rect",{x:f.m.l, y:f.m.t, width:f.iw, height:f.ih, fill:"transparent"});
+  f.g.appendChild(hit);
+
+  const show = i=>{
+    st.at = i;
+    line.setAttribute("x1",xOf(i)); line.setAttribute("x2",xOf(i));
+    line.setAttribute("opacity",.45);
+    tip.innerHTML = build(i);
+    tip.style.opacity = 1;
+    const r = f.svg.getBoundingClientRect();
+    const px = xOf(i)/f.W * r.width;
+    const tw = tip.offsetWidth;
+    tip.style.left = Math.max(4, Math.min(r.width-tw-4, px - tw/2)) + "px";
+    tip.style.top  = "6px";
+  };
+  const hide = ()=>{ st.at=null; tip.style.opacity=0; line.setAttribute("opacity",0); };
+  const nearest = ev=>{
+    const r = f.svg.getBoundingClientRect();
+    const cx = (ev.touches?ev.touches[0].clientX:ev.clientX) - r.left;
+    const sx = cx * (f.W / r.width);
+    let best=0, bd=1e9;
+    for(let i=0;i<n;i++){ const d=Math.abs(xOf(i)-sx); if(d<bd){bd=d;best=i;} }
+    return best;
+  };
+  const move = ev=>{ if(!st.pin) show(nearest(ev)); };
+  hit.addEventListener("mousemove", move);
+  hit.addEventListener("touchmove", e=>{ st.pin=false; show(nearest(e)); }, {passive:true});
+  hit.addEventListener("mouseleave", ()=>{ if(!st.pin) hide(); });
+
+  /* سنجاق‌کردن با کلیک: مقایسهٔ دو نقطه بدون نگه‌داشتن ماوس */
+  hit.style.cursor = "crosshair";
+  hit.addEventListener("click", ev=>{
+    const i = nearest(ev);
+    if (st.pin && st.at===i){ st.pin=false; box.classList.remove("pinned"); hide(); }
+    else { st.pin=true; box.classList.add("pinned"); show(i); }
+  });
+
+  /* پیمایش با صفحه‌کلید */
+  box.tabIndex = 0;
+  box.setAttribute("role","application");
+  if (!box.getAttribute("aria-label"))
+    box.setAttribute("aria-label","نمودار تعاملی؛ با کلیدهای جهت‌نما بین نقطه‌ها حرکت کنید");
+  if (!box._kb){
+    box._kb = true;
+    box.addEventListener("keydown", e=>{
+      const S = chState(box);
+      const N = S.n || n;
+      if (e.key==="ArrowRight" || e.key==="ArrowLeft"){
+        const d = e.key==="ArrowLeft" ? 1 : -1;      // چیدمان راست‌به‌چپ
+        S.pin = true; box.classList.add("pinned");
+        S.at = Math.max(0, Math.min(N-1, (S.at==null ? N-1 : S.at) + d));
+        (S.show||show)(S.at); e.preventDefault();
+      } else if (e.key==="Home"){ S.pin=true; S.at=0; (S.show||show)(0); e.preventDefault(); }
+      else if (e.key==="End"){ S.pin=true; S.at=N-1; (S.show||show)(N-1); e.preventDefault(); }
+      else if (e.key==="Escape"){ S.pin=false; box.classList.remove("pinned"); (S.hide||hide)(); }
+    });
+  }
+  st.show = show; st.hide = hide; st.n = n;
+  if (st.pin && st.at!=null && st.at < n) show(st.at);   // بازگرداندن حالت پس از رسم مجدد
+}
+function tipRow(color, label, val){
+  return `<div class="r"><span><i style="background:${color}"></i>${label}</span><b>${val}</b></div>`;
+}
+
+/* ---------- نمودار خطی ---------- */
+function lineChart(box, cfg0){
+  const st = chState(box);
+  const redraw = () => lineChart(box, cfg0);
+  let cfg = cfg0;
+
+  // حالت‌های تحلیلی: مقدار خام، شاخص پایه=۱۰۰، تغییر سالانه
+  const modes = cfg0.modes;
+  if (modes && modes.length){
+    const m = modes[Math.min(st.mode, modes.length-1)];
+    cfg = Object.assign({}, cfg0, m.apply ? m.apply(cfg0) : {});
+    chartHead(box, modes, redraw, cfg0.file || box.id);
+  } else if (cfg0.png !== false){
+    chartHead(box, null, redraw, cfg0.file || box.id);
+  }
+
+  // سری‌های خاموش‌شده از محاسبهٔ دامنه و رسم کنار می‌روند
+  const live = cfg.series.map((s,i)=>({s, i, on: !st.off.has(i)}));
+  const onSeries = live.filter(o=>o.on).map(o=>o.s);
+  if (cfg0.legend !== false)
+    legendFor(box, cfg.series.concat(cfg.legendStatic||[]), cfg.legendNote, redraw);
+
+  const all = onSeries.flatMap(s=>s.data.filter(v=>v!=null));
+  const auto = st.off.size > 0 || cfg.autoY;   // با خاموش‌شدن سری، مقیاس تنگ‌تر می‌شود
+  const min = (!auto && cfg.yMin!=null) ? cfg.yMin : Math.min(...all)*0.92;
+  const max = (!auto && cfg.yMax!=null) ? cfg.yMax : Math.max(...all)*1.06;
+  const yfmt = cfg.yFmt||(v=>num(v,cfg.yDec||0));
+  const nT = cfg.yTicks||5;
+  cfg = Object.assign({}, cfg, {
+    m:       Object.assign({}, cfg.m||{},       {l: needLeft(min,max,yfmt,nT,(cfg.m||{}).l)}),
+    mNarrow: cfg.mNarrow ? Object.assign({}, cfg.mNarrow,
+               {l: needLeft(min,max,yfmt,nT,cfg.mNarrow.l)}) : undefined
+  });
+  const f = frame(box, cfg);
+  const Y = yAxis(f, min, max, yfmt, {n:nT});
+  const ax = xCat(f, cfg.x, {every: cfg.every || (f.narrow?2:1), size:cfg.xSize});
+
+  // نوارهای بین دو سری
+  if (cfg.bands) cfg.bands.forEach(b=>{
+    if (st.off.has(b.a) || st.off.has(b.b)) return;
+    const A = cfg.series[b.a].data, B = cfg.series[b.b].data;
+    for(let i=0;i<A.length-1;i++){
+      const x0=ax.X(i), x1=ax.X(i+1);
+      const a0=A[i], a1=A[i+1], b0=B[i], b1=B[i+1];
+      const s0 = a0-b0, s1 = a1-b1;
+      const seg = (xs,xe,as,ae,bs,be)=>{
+        const up = (as-bs) >= 0;
+        f.g.appendChild(E("path",{
+          d:`M${xs} ${Y(as)} L${xe} ${Y(ae)} L${xe} ${Y(be)} L${xs} ${Y(bs)} Z`,
+          fill: up ? (b.up||"url(#hatch)") : (b.down||"rgba(15,127,135,.14)"), stroke:"none"}));
+      };
+      if (s0===0 || s1===0 || (s0>0)===(s1>0)) seg(x0,x1,a0,a1,b0,b1);
+      else { const t = s0/(s0-s1), xm = x0+(x1-x0)*t,
+             am = a0+(a1-a0)*t, bm = b0+(b1-b0)*t;
+             seg(x0,xm,a0,am,b0,bm); seg(xm,x1,am,a1,bm,b1); }
+    }
+  });
+
+  const endLabs = [];
+  onSeries.forEach(s=>{
+    const pts = s.data.map((v,i)=>v==null?null:[ax.X(i),Y(v)]).filter(Boolean);
+    f.g.appendChild(path(pts,{c:s.color,w:s.w||2.6,dash:s.dash}));
+    if (s.dots!==false) pts.forEach((p,i)=>{
+      if (!f.narrow || i===pts.length-1 || i===0)
+        f.g.appendChild(E("circle",{cx:p[0],cy:p[1],r:i===pts.length-1?4:2.8,
+          fill:"#fff",stroke:s.color,"stroke-width":i===pts.length-1?3:2}));
+    });
+    if (s.endLabel){
+      const last = pts[pts.length-1];
+      endLabs.push({x:last[0]-2, y:last[1]-11, t:s.endLabel, c:s.color});
+    }
+  });
+
+  // جداسازی عمودی برچسب‌های انتهایی تا روی هم نیفتند
+  endLabs.sort((a,b)=>a.y-b.y);
+  const MIN = 14;
+  for (let i=1;i<endLabs.length;i++)
+    if (endLabs[i].y - endLabs[i-1].y < MIN) endLabs[i].y = endLabs[i-1].y + MIN;
+  const overflow = endLabs.length ? endLabs[endLabs.length-1].y - (f.m.t+f.ih-2) : 0;
+  if (overflow > 0) endLabs.forEach(l=>l.y -= overflow);
+  endLabs.forEach(l=> f.g.appendChild(T(l.x, l.y, l.t,
+    {anchor:"end", size:11.5, w:800, fill:l.c})));
+
+  (cfg.marks||[]).forEach(mk=>{
+    const x = ax.X(mk.i);
+    f.g.appendChild(E("line",{x1:x,x2:x,y1:f.m.t,y2:f.m.t+f.ih,
+      stroke:mk.color||C.faint,"stroke-width":1,"stroke-dasharray":"4 4",opacity:.7}));
+    if(mk.label) f.g.appendChild(T(x, f.m.t-5, mk.label,
+      {size:10.5, w:700, fill:mk.color||C.muted}));
+  });
+
+  hoverLayer(f, box, cfg.x.length, ax.X, i=>{
+    let h = `<b>${cfg.xLong?cfg.xLong[i]:cfg.x[i]}</b>`;
+    onSeries.forEach(s=>{ if(s.data[i]!=null)
+      h += tipRow(s.color, s.name, (cfg.tipFmt||cfg.yFmt||(v=>num(v,cfg.yDec||0)))(s.data[i])); });
+    return h;
+  });
+  return f;
+}
+
+/* ---------- نمودار میله‌ای (گروهی) با خط ثانویه اختیاری ---------- */
+function barChart(box, cfg0){
+  const st = chState(box);
+  const redraw = () => barChart(box, cfg0);
+  let cfg = cfg0;
+  const modes = cfg0.modes;
+  if (modes && modes.length){
+    const m = modes[Math.min(st.mode, modes.length-1)];
+    cfg = Object.assign({}, cfg0, m.apply ? m.apply(cfg0) : {});
+    chartHead(box, modes, redraw, cfg0.file || box.id);
+  } else if (cfg0.png !== false){
+    chartHead(box, null, redraw, cfg0.file || box.id);
+  }
+  const groups = cfg.series.filter((s,i)=>!st.off.has(i));
+  if (cfg0.legend !== false){
+    const items = cfg.series.slice();
+    if (cfg.line) items.push(Object.assign({}, cfg.line, {dash:cfg.line.dash||"5 4"}));
+    legendFor(box, items, cfg.legendNote, redraw);
+  }
+  if (!groups.length) groups.push(cfg.series[0]);
+  const all = groups.flatMap(s=>s.data);
+  const min = cfg.yMin!=null?cfg.yMin:Math.min(0,...all);
+  const max = cfg.yMax!=null?cfg.yMax:Math.max(...all)*1.1;
+  const yfmt = cfg.yFmt||(v=>num(v));
+  const nT = cfg.yTicks||5;
+  let rNeed = (cfg.m||{}).r;
+  if (cfg.line){   // جا برای برچسب‌های محور راست
+    const l2 = cfg.line, ok2 = l2.data.filter(v=>v!=null);
+    const lmin = l2.min!=null?l2.min:Math.min(...ok2)*0.8;
+    const lmax = l2.max!=null?l2.max:Math.max(...ok2)*1.15;
+    const w2 = Math.max(...niceTicks(lmin,lmax,4).map(v=>estW((l2.fmt||(x=>num(x)))(v),10.5)));
+    rNeed = Math.max(rNeed||16, Math.ceil(w2)+12);
+  }
+  cfg = Object.assign({}, cfg, {
+    m: Object.assign({}, cfg.m||{},
+         {l: needLeft(min,max,yfmt,nT,(cfg.m||{}).l), r: rNeed}),
+    mNarrow: cfg.mNarrow ? Object.assign({}, cfg.mNarrow,
+         {l: needLeft(min,max,yfmt,nT,cfg.mNarrow.l),
+          r: Math.max(cfg.mNarrow.r||16, rNeed||16)}) : undefined
+  });
+  const f = frame(box, cfg);
+  const Y = yAxis(f, min, max, yfmt, {n:nT});
+  const ax = xCat(f, cfg.x, {band:true, every:cfg.every||(f.narrow?2:1), size:cfg.xSize});
+  const bw = Math.min(cfg.maxBar||30, ax.step*0.74/groups.length);
+  groups.forEach((s,gi)=>{
+    s.data.forEach((v,i)=>{
+      const x = ax.X(i) - (groups.length*bw)/2 + gi*bw;
+      const y0 = Y(0), y1 = Y(v);
+      f.g.appendChild(E("rect",{x:x+1, y:Math.min(y0,y1), width:bw-2,
+        height:Math.max(1,Math.abs(y1-y0)), fill:s.color, opacity:s.opacity||1}));
+    });
+  });
+  let Y2 = null;
+  if (cfg.line && !st.off.has(cfg.series.length)){
+    const l = cfg.line;
+    const ok = l.data.filter(v=>v!=null);
+    const lmin = l.min!=null?l.min:Math.min(...ok)*0.8;
+    const lmax = l.max!=null?l.max:Math.max(...ok)*1.15;
+    Y2 = v => f.m.t + f.ih - (v-lmin)/(lmax-lmin)*f.ih;
+    const lpts = l.data.map((v,i)=>v==null?null:[ax.X(i),Y2(v)]).filter(Boolean);
+    f.g.appendChild(path(lpts, {c:l.color||C.saff, w:2.4, dash:l.dash||"5 4"}));
+    lpts.forEach(p=>f.g.appendChild(E("circle",{cx:p[0],cy:p[1],r:3,
+      fill:"#fff",stroke:l.color||C.saff,"stroke-width":2})));
+    niceTicks(lmin,lmax,4).forEach(v=>f.g.appendChild(
+      T(f.m.l+f.iw+7, Y2(v)+3.5, (l.fmt||(x=>num(x)))(v),
+        {anchor:"start", size:10.5, fill:l.color||C.saff})));
+  }
+  hoverLayer(f, box, cfg.x.length, ax.X, i=>{
+    let h = `<b>${cfg.xLong?cfg.xLong[i]:cfg.x[i]}</b>`;
+    groups.forEach(s=>h += tipRow(s.color, s.name, (cfg.yFmt||(v=>num(v)))(s.data[i])));
+    if (cfg.line && !st.off.has(cfg.series.length) && cfg.line.data[i]!=null)
+      h += tipRow(cfg.line.color||C.saff, cfg.line.name,
+                  (cfg.line.fmt||(v=>num(v)))(cfg.line.data[i]));
+    return h;
+  });
+  return f;
+}
+
+/* ---------- میله‌های واگرا (مثبت/منفی) ---------- */
+function divBars(box, cfg){
+  const f = frame(box, Object.assign({m:{t:26,r:16,b:44,l:52}}, cfg));
+  const vals = cfg.data.map(d=>d.v);
+  const mx = Math.max(...vals.map(Math.abs))*1.22;
+  const Y = yAxis(f, -mx, mx, cfg.yFmt||(v=>num(v)), {n:5});
+  const ax = xCat(f, cfg.data.map(d=>d.k), {band:true, size:cfg.xSize||10.5});
+  const bw = Math.min(cfg.maxBar||46, ax.step*0.6);
+  cfg.data.forEach((d,i)=>{
+    const y0=Y(0), y1=Y(d.v);
+    f.g.appendChild(E("rect",{x:ax.X(i)-bw/2, y:Math.min(y0,y1), width:bw,
+      height:Math.max(1.5,Math.abs(y1-y0)), fill:d.c||(d.v>=0?C.pom:C.turq)}));
+    f.g.appendChild(T(ax.X(i), d.v>=0?Math.min(y0,y1)-7:Math.max(y0,y1)+15,
+      (cfg.lblFmt||(v=>sgn(v)))(d.v), {size:11.5, w:800, fill:d.c||(d.v>=0?C.pom:C.turq)}));
+  });
+  return f;
+}
+
+/* ---------- خط روند کوچک (اسپارک‌لاین) داخل کارت‌های شاخص ---------- */
+function spark(box, data, color, o={}){
+  const pts = data.filter(v=>v!=null);
+  if (pts.length < 2) return;
+  const W = 150, H = 30, pad = 3;
+  const mn = Math.min(...pts), mx = Math.max(...pts), rg = (mx-mn)||1;
+  const X = i => pad + i*(W-pad*2)/(pts.length-1);
+  const Y = v => H-pad - (v-mn)/rg*(H-pad*2-4);
+  const svg = E("svg",{viewBox:`0 0 ${W} ${H}`, preserveAspectRatio:"none",
+                       style:"direction:ltr", "aria-hidden":"true", focusable:"false"});
+  const d  = pts.map((v,i)=>(i?"L":"M")+X(i).toFixed(1)+" "+Y(v).toFixed(1)).join(" ");
+  // ناحیهٔ کم‌رنگ زیر خط
+  svg.appendChild(E("path",{d: d+` L ${X(pts.length-1).toFixed(1)} ${H} L ${X(0)} ${H} Z`,
+    fill:color, opacity:.10, stroke:"none"}));
+  svg.appendChild(E("path",{d, fill:"none", stroke:color, "stroke-width":1.8,
+    "stroke-linejoin":"round", "stroke-linecap":"round",
+    "vector-effect":"non-scaling-stroke"}));
+  // نقطهٔ آغاز کم‌رنگ، نقطهٔ پایان پررنگ
+  svg.appendChild(E("circle",{cx:X(0), cy:Y(pts[0]), r:2, fill:"#fff",
+    stroke:color, "stroke-width":1.4, opacity:.55, "vector-effect":"non-scaling-stroke"}));
+  svg.appendChild(E("circle",{cx:X(pts.length-1), cy:Y(pts[pts.length-1]), r:3, fill:color}));
+  box.innerHTML = "";
+  box.appendChild(svg);
+  if (o.title) box.setAttribute("title", o.title);
+}
+
+/* ---------- شبکهٔ نقطه‌ای ---------- */
+function dotGrid(box, cfg){
+  box.innerHTML="";
+  const W = Math.max(280, box.clientWidth||700);
+  const cols = W<480?10:20, rows = 100/cols;
+  const gap = 4, size = Math.min(24, (W - gap*(cols-1) - 4)/cols);
+  const H = rows*size + (rows-1)*gap + 4;
+  const svg = E("svg",{viewBox:`0 0 ${W} ${H}`, width:"100%", height:H,
+                       style:"direction:ltr", role:"img","aria-label":cfg.label||""});
+  const left = (W - (cols*size + (cols-1)*gap))/2;
+  for(let i=0;i<100;i++){
+    const r=Math.floor(i/cols), c=(cols-1)-(i%cols);   // راست‌به‌چپ
+    const on = i < cfg.on;
+    const rect = E("rect",{x:left+c*(size+gap), y:2+r*(size+gap), width:size, height:size,
+      rx:2, fill:on?(cfg.onColor||C.turq):C.stone2,
+      stroke:on?"none":C.line2, "stroke-width":1});
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+      rect.setAttribute("opacity","0");
+      rect.appendChild(E("animate",{attributeName:"opacity", from:"0", to:"1",
+        dur:"0.35s", begin:(i*0.008)+"s", fill:"freeze"}));
+    }
+    svg.appendChild(rect);
+  }
+  box.appendChild(svg);
+}
+
+/* ---------- نمودار دمبلی (شکاف جنسیتی) ---------- */
+function dumbbell(box, cfg){
+  const f = frame(box, Object.assign({m:{t:26,r:22,b:26,l:140},
+    mNarrow:{l:104,r:14}, h: 60+cfg.rows.length*62}, cfg));
+  const max = Math.max(...cfg.rows.flatMap(r=>[r.a,r.b]))*1.12;
+  const X = v => f.m.l + v/max*f.iw;
+  niceTicks(0,max,5).forEach(v=>{
+    f.g.appendChild(E("line",{x1:X(v),x2:X(v),y1:f.m.t-6,y2:f.m.t+f.ih,
+      stroke:C.line,"stroke-width":1}));
+    f.g.appendChild(T(X(v), f.m.t+f.ih+16, pct(v,0), {size:10.5, fill:C.faint}));
+  });
+  const step = f.ih/cfg.rows.length;
+  cfg.rows.forEach((r,i)=>{
+    const y = f.m.t + step*(i+0.5) - 6;
+    f.g.appendChild(T(f.m.l-12, y+4, r.k, {anchor:"end", size:f.narrow?10:13,
+      w:700, fill:C.ink}));
+    f.g.appendChild(E("line",{x1:X(Math.min(r.a,r.b)), x2:X(Math.max(r.a,r.b)),
+      y1:y, y2:y, stroke:C.line2, "stroke-width":5, "stroke-linecap":"round"}));
+    [[r.b, C.pom],[r.a, C.lapis]].forEach(([v,col])=>{
+      f.g.appendChild(E("circle",{cx:X(v), cy:y, r:8, fill:col}));
+      f.g.appendChild(T(X(v), y+22, pct(v), {size:11, w:800, fill:col}));
+    });
+    const gap = Math.abs(r.a-r.b);
+    f.g.appendChild(T((X(r.a)+X(r.b))/2, y-14, "شکاف "+num(gap,1)+" %",
+      {size:10.5, w:700, fill:C.muted}));
+  });
+}
+
+/* ---------- میله‌های افقی سهم جنسیتی ---------- */
+function hSplit(box, cfg){
+  box.innerHTML="";
+  const W = Math.max(300, box.clientWidth||700);
+  const narrow = W<520;
+  const labW = narrow?112:184;         // ستون نام گروه، سمت راست
+  const totW = narrow?56:82;           // ستون تعداد کل، سمت چپ
+  const rowH = 42, barH = 22;
+  const H = cfg.rows.length*rowH + 10;
+  const svg = E("svg",{viewBox:`0 0 ${W} ${H}`, width:"100%", height:H,
+                       style:"direction:ltr", role:"img"});
+  const bx = totW + 10, bw = W - labW - totW - 20;
+  cfg.rows.forEach((r,i)=>{
+    const y = 6 + i*rowH, fs = r.f/r.t;
+    svg.appendChild(T(W-6, y+barH-6, r.k,
+      {anchor:"end", size:narrow?11.5:13, w:700, fill:C.ink}));
+    // مرد = کل میله، زن = بخش سمت راست (شروع RTL)
+    svg.appendChild(E("rect",{x:bx, y, width:bw, height:barH, rx:2, fill:C.lapis}));
+    svg.appendChild(E("rect",{x:bx+bw*(1-fs), y, width:bw*fs, height:barH, rx:2, fill:C.pom}));
+    if (fs>0.13) svg.appendChild(T(bx+bw-8, y+barH-6, pct(fs*100,1),
+      {anchor:"end", size:11, w:800, fill:"#fff"}));
+    if (1-fs>0.13) svg.appendChild(T(bx+8, y+barH-6, pct((1-fs)*100,1),
+      {anchor:"start", size:11, w:800, fill:"#fff"}));
+    svg.appendChild(T(totW, y+barH-6, num(r.t),
+      {anchor:"end", size:narrow?10:11, w:700, fill:C.muted}));
+  });
+  box.appendChild(svg);
+  const lg = document.createElement("div");
+  lg.className = "legend";
+  lg.innerHTML = `<span><i class="sq" style="background:var(--pom)"></i>زن</span>
+                  <span><i class="sq" style="background:var(--lapis)"></i>مرد</span>
+                  <span style="color:var(--faint)">عدد سمت چپِ هر میله: کل دانشجویان آن گروه</span>`;
+  box.appendChild(lg);
+}
+
+/* ---------- ستون‌های انباشته + خط ثانویه ---------- */
+function stackCol(box, cfg){
+  const tot0 = cfg.a.map((v,i)=>v+cfg.b[i]);
+  const max0 = Math.max(...tot0)*1.08;
+  const yf = v=>num(Math.round(v/1000))+" میلیون";
+  const f = frame(box, Object.assign({}, cfg,
+    {m: Object.assign({t:20, r:46, b:34, l:needLeft(0, max0, yf, 5, 48)}, cfg.m||{})}));
+  const tot = tot0, max = max0;
+  const Y = yAxis(f, 0, max, yf, {n:5});
+  const ax = xCat(f, cfg.x, {band:true, every: f.narrow?4:2});
+  const bw = Math.min(26, ax.step*0.72);
+  cfg.a.forEach((v,i)=>{
+    const x = ax.X(i)-bw/2;
+    f.g.appendChild(E("rect",{x, y:Y(v), width:bw, height:f.m.t+f.ih-Y(v), fill:C.lapis}));
+    f.g.appendChild(E("rect",{x, y:Y(v+cfg.b[i]), width:bw, height:Y(v)-Y(v+cfg.b[i]),
+      fill:C.moss}));
+  });
+  const sh = cfg.a.map((v,i)=>v/tot[i]*100);
+  const lmin = Math.min(...sh)-1.5, lmax = Math.max(...sh)+1.5;
+  const Y2 = v => f.m.t + f.ih - (v-lmin)/(lmax-lmin)*f.ih;
+  f.g.appendChild(path(sh.map((v,i)=>[ax.X(i),Y2(v)]), {c:C.saff, w:2.6}));
+  niceTicks(lmin,lmax,4).forEach(v=>f.g.appendChild(
+    T(f.m.l+f.iw+7, Y2(v)+3.5, pct(v,0), {anchor:"start", size:10.5, fill:C.saff})));
+  hoverLayer(f, box, cfg.x.length, ax.X, i=>
+    `<b>${cfg.xLong?cfg.xLong[i]:cfg.x[i]}</b>` +
+    tipRow(C.lapis,"شهری", num(cfg.a[i])+" هزار") +
+    tipRow(C.moss,"روستایی", num(cfg.b[i])+" هزار") +
+    tipRow(C.saff,"شهرنشینی", pct(sh[i])));
+  return f;
+}
+
+</script>
+<script>
+
+/* ==========================================================================
+   دادهٔ پاک‌سازی‌شده — استخراج‌شده از شیت «جمعیت و نیروی انسانی»
+   اصلاحات مستند در بخش پیوست، پیش از جاسازی اعمال شده‌اند.
+   ========================================================================== */
+const D = {"vital":{"years":[1395,1396,1397,1398,1399,1400,1401,1402,1403,1404],"births":[1528053,1487923,1366519,1196132,1114115,1116212,1075231,1057964,979929,892278],"deaths":[369751,376731,376953,395319,511881,544517,418781,442142,458858,459984],"natural":[1158302,1111192,989566,800813,602234,571695,656450,615822,521071,432294],"births_u":[1176032,1143558,1047925,907694,837630,844940,813040,800704,753496,693493],"births_r":[352021,344365,318594,288438,276485,271272,262191,257260,226433,198785],"deaths_u":[274870,278448,279225,295596,387273,420099,318237,337175,352631,362207],"deaths_r":[94788,98230,97658,99647,124559,124402,100532,104967,106227,97777],"sexratio":[106.0,106.1,106.3,106.4,106.7,106.6,107.0,107.4,106.5,107.4],"marr":[704716,612237,556315,536636,563567,573789,527871,484861,472590,431664],"div":[181049,182913,179700,179217,188187,205284,208385,206477,197172,181327]},"vital_q":{"labels":["زمستان ۱۴۰۳","بهار ۱۴۰۴","تابستان ۱۴۰۴","پاییز ۱۴۰۴","زمستان ۱۴۰۴"],"births":[245684,214228,245987,224485,207578],"deaths":[133938,117925,114672,113716,113671]},"pop":{"years":[1396,1397,1398,1399,1400,1401,1402,1403,1404,1405,1406,1407,1408,1409,1410,1411,1412,1413,1414,1415],"total":[81053,81962,82710,83409,84055,84700,85329,85961,86562,87134,87676,88190,88678,89141,89580,89996,90391,90765,91116,91446],"urban":[60304,61311,62201,63056,63876,64655,65427,66207,66968,67708,68361,68994,69608,70203,70782,71307,71816,72309,72784,73243],"rural":[20749,20652,20509,20353,20179,20045,19902,19754,19595,19426,19315,19196,19071,18938,18799,18689,18575,18456,18332,18203],"male":[41040,41476,41831,42162,42467,42773,43072,43372,43658,43929,44185,44427,44656,44872,45075,45267,45449,45619,45779,45928],"female":[40013,40487,40880,41247,41588,41927,42258,42589,42904,43205,43491,43763,44022,44269,44505,44729,44943,45145,45337,45518]},"lab":{"years":[1395,1396,1397,1398,1399,1400,1401,1402,1403,1404],"pop15":[59528,59954,60632,61666,62376,63066,63794,64552,65338,66148],"act":[25723,26504,26986,27168,25737,25822,26065,26638,26818,26837],"emp":[22525,23297,23731,24274,23263,23447,23716,24490,24788,24822],"unemp":[3198,3207,3255,2894,2474,2375,2349,2148,2030,2014],"inact":[33805,33450,33646,34498,36639,37244,37729,37914,38520,39311],"part":[43.2,44.2,44.5,44.1,41.3,40.9,40.9,41.3,41,40.6],"part_m":[70.4,70.9,71.6,71.1,68.7,68.7,68.2,68.4,68.1,67.9],"part_f":[16.3,17.4,17.6,17,13.9,13.3,13.6,14.2,14.1,13.4],"part_u":[42.4,43.2,43.6,43,40.4,40.3,40.3,40.8,40.7,40.2],"part_r":[45.7,47.4,47.5,47.3,44.2,43.2,42.7,42.9,42.3,41.9],"ur":[12.4,12.1,12.1,10.7,9.6,9.2,9,8.1,7.6,7.5],"ur_m":[10.5,10.2,10.4,9,8.4,7.9,7.7,6.6,6.2,6],"ur_f":[20.7,19.9,18.9,17.5,15.6,16,15.8,15,14.3,15],"ur_u":[13.7,13.4,13.5,11.8,10.4,9.9,9.7,8.7,8.1,8.1],"ur_r":[8.9,8.3,8,7.3,7.2,6.9,6.7,5.8,5.7,5.6],"u24":[29.2,28.2,27.7,26,23.7,23.7,22.6,21.2,20.1,20.3],"u24_m":[25.4,24.2,24.3,22.7,21.2,20.9,19.9,18.6,17.7,17.5],"u24_f":[44.2,43.3,40.1,38.8,36,37,36.1,31.8,30.4,33.2],"u35":[26.8,19.7,19.6,17.9,16.7,16.5,16.3,15.2,14.7,15],"er":[37.8,38.9,39.1,39.4,37.3,37.2,37.2,37.9,37.9,37.5],"er_m":[63,63.7,64.2,64.7,62.9,63.3,63,63.9,63.9,63.8],"er_f":[12.9,14,14.2,14,11.7,11.1,11.4,12.1,12.1,11.4],"agri":[17.9,17.5,17.7,17.7,17.4,16.3,14.8,14.4,13.9,13.9],"ind":[31.9,32,32,32,33.3,33.8,33.6,33.7,33.3,32.8],"serv":[50.2,50.5,50.3,50.3,49.3,49.8,51.6,51.9,52.7,53.2]},"lab_q":{"labels":["بهار ۱۴۰۴","تابستان ۱۴۰۴","پاییز ۱۴۰۴","زمستان ۱۴۰۴","بهار ۱۴۰۵"],"pop15":[65843,66046,66250,66454,66671],"act":[27104,26938,26950,26357,27136],"emp":[25123,24958,24857,24352,24672],"unemp":[1981,1980,2093,2004,2464],"ur":[7.3,7.4,7.8,7.6,9.1],"u24":[19.7,19,21.5,21.2,23.4],"u24_f":[30.9,31.5,35.2,34.9,35.1],"u35":[14.5,14.4,15.9,15.1,17.5],"part":[41.2,40.8,40.7,39.7,40.7],"er":[38.2,37.8,37.5,36.6,37],"agri":[14.6,14.2,13.6,13.2,15.1],"ind":[33,32.6,33.2,32.5,31],"serv":[52.4,53.1,53.2,54.2,53.8],"ur_f":[13.7,15.2,16,15,16.7],"ur_m":[6,5.8,6.1,6.2,7.5]},"hh":{"years":["1335","1345","1355","1365","1370","1375","1385","1390","1395","1400"],"kol":[4.8,5,5,5.1,5.2,4.8,4,3.5,3.3,3.19],"urban":[4.7,4.9,4.8,4.8,4.9,4.6,3.9,3.5,3.3,3.13],"rural":[4.8,5,5.2,5.4,5.6,5.1,4.4,3.7,3.4,3.36]},"school":{"labels":["1380-1381","1385-1386","1390-1391","1391-1392","1392-1393","1393-1394","1394-1395","1395-1396","1396-1397","1397-1398","1398-1399","1399-1400","1400-1401","1401-1402","1402-1403","1403-1404"],"total":[17882515,14984301,13351254,13226473,13406458,13615311,13861901,14220342,14700309,15462046,15774075,15666587,16371865,16967478,16506493,16862048],"m":[9359952,7741044,6932408,6861311,6964461,7064602,7174229,7349326,7599675,8001045,8137984,8073596,8424777,8713472,8452612,8639835],"f":[8522563,7243257,6418846,6365162,6441997,6550709,6687672,6871016,7100634,7461001,7636091,7592991,7947088,8524006,8053881,8222213]},"school_lvl":[["آموزش استثنایی",81972,51223,30749],["پیش دبستانی","000","000","000"],["ابتدایی",9283694,4778920,4504774],["دوره اول متوسطه ",3932181,2011182,1920999],["دوره دوم متوسطه ",3125218,1545982,1579236],["دوره اول متوسطه(بزرگسالان) ",21835,13789,8046],["دوره دوم متوسطه(بزرگسالان) ",417148,238739,178409]],"uni":{"labels":["1394-1395","1395-1396","1396-1397","1397-1398","1398-1399","1399-1400","1400-1401","1401-1402","1402-1403","1403-1404"],"total":[4348383,4073827,3616114,3373388,3182989,3070748,3342220,3249601,3351877,3503179],"m":[2345824,2202231,1930954,1768931,1638746,1556792,1700794,1618505,1651073,1684930],"f":[2002559,1871596,1685160,1604457,1544243,1513956,1641426,1631096,1700804,1818249]},"uni_field":[["پزشکی",316615,130314,186301],["علوم انسانی",1836773,775928,1060845],["علوم پایه",215535,67519,148016],["فنی و مهندسی",774434,582615,191819],["کشاورزی و دامپزشکی",110628,52658,57970],["هنر",249194,75896,173298]],"grad":{"labels":["1394-1395","1395-1396","1396-1397","1397-1398","1398-1399","1399-1400","1400-1401","1401-1402","1402-1403"],"total":[798736,779646,695055,640262,675724,516416,526520,496172,455335],"m":[466223,457164,393815,366054,378321,275388,272508,254563,233156],"f":[332513,322482,301240,274208,297403,241028,254012,241609,222179]},"grad_field":[["پزشکی",38450,15530,22920],["علوم انسانی",241740,113497,128243],["علوم پایه",24505,8519,15986],["فنی و مهندسی",104401,79745,24656],["کشاورزی و دامپزشکی",13696,6979,6717],["هنر",32543,8886,23657]],"deaths95_raw":[161774,207884],"deaths95_corr":[207884,161774],"deaths_sexratio":{"years":[1395,1396,1397,1398,1399,1400,1401,1402,1403,1404],"raw":[0.778,1.269,1.276,1.308,1.298,1.26,1.305,1.241,1.216,1.257],"corr":[1.285,1.269,1.276,1.308,1.298,1.26,1.305,1.241,1.216,1.257]}};
+
+/* ---------- شاخص‌های مشتق ---------- */
+const YRS   = D.lab.years;                       // ۱۳۹۵ تا ۱۴۰۴
+const YRFA  = YRS.map(y=>fa(y));
+const LAST  = YRS.length-1;
+
+// نرخ بیکاری تعدیل‌شده با مشارکت سال مبنا
+function adjSeries(baseYear){
+  const bi = YRS.indexOf(baseYear), r = D.lab.part[bi]/100;
+  return YRS.map((y,i)=>{
+    const A = D.lab.pop15[i]*r;
+    return +(100*(1 - D.lab.emp[i]/A)).toFixed(2);
+  });
+}
+function hiddenAt(baseYear, i){
+  const bi = YRS.indexOf(baseYear), r = D.lab.part[bi]/100;
+  return Math.round(D.lab.pop15[i]*r - D.lab.act[i]);
+}
+
+// تفکیک جنسیتی جمعیت ۱۵+ و اشتغال (روش بخش ۳-ب)
+function genderSplit(i){
+  const P = D.lab.pop15[i], Ee = D.lab.emp[i];
+  const rm = D.lab.er_m[i]/100, rf = D.lab.er_f[i]/100;
+  const Pm = (Ee - rf*P)/(rm - rf), Pf = P - Pm;
+  return {Pm, Pf, Em: rm*Pm, Ef: rf*Pf,
+          Am: D.lab.part_m[i]/100*Pm, Af: D.lab.part_f[i]/100*Pf};
+}
+
+// سناریوهای جمعیت
+function scenario(gb, gd, migK){
+  const yrs=[], vals=[]; let cross = null;
+  const mig = (migK||0)*1000;
+  let B = D.vital.births[LAST], De = D.vital.deaths[LAST];
+  let P = D.pop.total[D.pop.years.indexOf(1404)]*1000;
+  yrs.push(1404); vals.push(Math.round(P/1000));
+  for (let y=1405; y<=1415; y++){
+    B *= (1+gb); De *= (1+gd); P += (B - De + mig);
+    if (cross===null && De >= B) cross = y;
+    yrs.push(y); vals.push(Math.round(P/1000));
+  }
+  return {yrs, vals, cross};
+}
+
+/* پارامترهای مدل زنده — با اهرم‌های زیر نمودار تغییر می‌کنند */
+const MP = {gb:-0.058, gd:0.0246, mig:0};
+
+/* ==========================================================================
+   رسم نمودارها
+   ========================================================================== */
+/* حالت‌های تحلیلی مشترک: مقدار خام، شاخص پایه=۱۰۰، درصد تغییر سالانه */
+const MODE_VAL = {label:"مقدار"};
+const idxMode = (baseLab) => ({
+  label: "شاخص " + baseLab + "=۱۰۰",
+  apply: c => ({
+    series: c.series.map(s=>{
+      const b = s.data.find(v=>v!=null);
+      return Object.assign({}, s, {
+        data: s.data.map(v=>v==null?null:+(v/b*100).toFixed(1)),
+        endLabel: s.endLabel==null ? undefined
+          : num(+(s.data.filter(v=>v!=null).slice(-1)[0]/b*100).toFixed(0))
+      });
+    }),
+    yMin:null, yMax:null, autoY:true,
+    yFmt: v=>num(Math.round(v)), tipFmt: v=>num(v,1),
+    bands:null
+  })
+});
+const yoyMode = {
+  label:"تغییر سالانه",
+  apply: c => ({
+    series: c.series.map(s=>Object.assign({}, s, {
+      data: s.data.map((v,i)=> (i===0||v==null||s.data[i-1]==null) ? null
+                              : +((v/s.data[i-1]-1)*100).toFixed(2)),
+      endLabel: undefined
+    })),
+    yMin:null, yMax:null, autoY:true,
+    yFmt: v=>iso(sgn0(v,0)), tipFmt: v=>iso(sgn0(v,1)), bands:null
+  })
+};
+const sgn0 = (v,d=1)=> sgnRaw(v, d, "%");
+
+const R = {};   // فهرست رسّام‌ها، برای رسم مجدد هنگام تغییر اندازهٔ صفحه
+
+/* ---- پردهٔ ۱ ---- */
+let BASE = 1395;
+R["c-hero"] = box => {
+  const adj = adjSeries(BASE);
+  lineChart(box, {
+    file:"bikari-tadil-shode",
+    x: YRFA, ratio:0.44, yMin:5, yMax:16, yFmt:v=>pct(v,0), yDec:1,
+    tipFmt: v=>pct(v,1),
+    series:[
+      {name:"نرخ تعدیل‌شده", data:adj, color:C.saff, endLabel:pct(adj[LAST],1)},
+      {name:"نرخ رسمی", data:D.lab.ur, color:C.turq, endLabel:pct(D.lab.ur[LAST],1)}
+    ],
+    bands:[{a:0, b:1, up:"url(#hatch)", down:"rgba(15,127,135,.16)"}],
+    legendStatic:[
+      {name:"بیکاری پنهان (تعدیل‌شده بالاتر)", color:"var(--saff-l)", opacity:.55, static:true},
+      {name:"بهبود واقعی (تعدیل‌شده پایین‌تر)", color:"var(--turq-l)", opacity:.45, static:true}],
+    marks:[{i:4, label:"کرونا", color:C.faint}]
+  });
+};
+R["c-dots"] = box => dotGrid(box, {on:17, onColor:C.turq,
+  label:"از هر ۱۰۰ نفر افزودهٔ جمعیت در سن کار، ۱۷ نفر وارد بازار کار شدند"});
+R["c-three"] = box => lineChart(box, {
+  modes:[MODE_VAL, idxMode("۱۳۹۵")], file:"se-nerkh",
+  x: YRFA, ratio:0.44, yMin:0, yMax:50, yFmt:v=>pct(v,0), tipFmt:v=>pct(v,1),
+  series:[
+    {name:"نرخ مشارکت", data:D.lab.part, color:C.lapis, endLabel:pct(D.lab.part[LAST],1)},
+    {name:"نسبت اشتغال", data:D.lab.er,   color:C.moss,  endLabel:pct(D.lab.er[LAST],1)},
+    {name:"نرخ بیکاری",  data:D.lab.ur,   color:C.pom,   endLabel:pct(D.lab.ur[LAST],1)}
+  ]});
+
+/* ---- پردهٔ ۲ ---- */
+R["c-scissors"] = box => {
+  const uniF = D.uni.f.map((v,i)=>+(v/D.uni.total[i]*100).toFixed(1));
+  lineChart(box, {
+    x: YRFA, ratio:0.44, yMin:0, yMax:60, yFmt:v=>pct(v,0), tipFmt:v=>pct(v,1),
+    xLong: YRS.map((y,i)=>fa(y)+" · سال تحصیلی "+rng(...D.uni.labels[i].split("-"))),
+    series:[
+      {name:"سهم زنان از دانشجویان", data:uniF, color:C.lapis, endLabel:pct(uniF[LAST],1)},
+      {name:"نرخ مشارکت زنان", data:D.lab.part_f, color:C.pom, endLabel:pct(D.lab.part_f[LAST],1)},
+      {name:"نسبت اشتغال زنان", data:D.lab.er_f, color:C.turq, endLabel:pct(D.lab.er_f[LAST],1)}
+    ]});
+};
+R["c-gendergap"] = box => dumbbell(box, {rows:[
+  {k:"نرخ مشارکت اقتصادی", a:D.lab.part_m[LAST], b:D.lab.part_f[LAST]},
+  {k:"نسبت اشتغال",        a:D.lab.er_m[LAST],   b:D.lab.er_f[LAST]},
+  {k:"نرخ بیکاری",         a:D.lab.ur_m[LAST],   b:D.lab.ur_f[LAST]}
+]});
+R["c-fields"] = box => hSplit(box, {rows:
+  D.uni_field.map(r=>({k:r[0], t:r[1], m:r[2], f:r[3]}))
+             .sort((x,y)=>y.t-x.t)});
+
+/* ---- پردهٔ ۳ ---- */
+R["c-q"] = box => lineChart(box, {
+  x: D.lab_q.labels, ratio:0.44, yMin:0, yMax:40, yFmt:v=>pct(v,0),
+  tipFmt:v=>pct(v,1), xSize:10.5, every:1,
+  series:[
+    {name:"۱۵ تا ۲۴ ساله", data:D.lab_q.u24, color:C.saff},
+    {name:"۱۸ تا ۳۵ ساله", data:D.lab_q.u35, color:C.lapis},
+    {name:"زنان ۱۵+",      data:D.lab_q.ur_f, color:C.turq},
+    {name:"کل ۱۵+",        data:D.lab_q.ur,  color:C.pom, w:3.2}
+  ]});
+R["c-sectorshock"] = box => {
+  const i0=0, i1=4;                       // بهار ۱۴۰۴ ← بهار ۱۴۰۵
+  const e0=D.lab_q.emp[i0], e1=D.lab_q.emp[i1];
+  const dd = k => Math.round(D.lab_q[k][i1]/100*e1 - D.lab_q[k][i0]/100*e0);
+  divBars(box, {ratio:0.4, yFmt:v=>num(v), lblFmt:v=>sgn(v)+" هزار", data:[
+    {k:"صنعت",     v:dd("ind"),  c:C.pom},
+    {k:"خدمات",    v:dd("serv"), c:C.turq},
+    {k:"کشاورزی",  v:dd("agri"), c:C.saff},
+    {k:"خالص واقعی", v:e1-e0,    c:C.ink}
+  ]});
+};
+
+/* ---- پردهٔ ۴ ---- */
+R["c-vital"] = box => lineChart(box, {
+  modes:[MODE_VAL, idxMode("۱۳۹۵"), yoyMode], file:"tavallod-va-fowt",
+  legendStatic:[{name:"رشد طبیعی جمعیت", color:"var(--saff-l)", opacity:.5, static:true}],
+  x: YRFA, ratio:0.44, yMin:0, yMax:1700000, yTicks:5,
+  yFmt:v=>num(Math.round(v/1000))+" هزار", tipFmt:v=>num(v),
+  series:[
+    {name:"تولد", data:D.vital.births, color:C.turq, endLabel:num(D.vital.births[LAST])},
+    {name:"فوت",  data:D.vital.deaths, color:C.pom,  endLabel:num(D.vital.deaths[LAST])}
+  ],
+  bands:[{a:0,b:1,up:"url(#hatch)"}],
+  marks:[{i:4, label:"کرونا", color:C.faint}]
+});
+R["c-marr"] = box => barChart(box, {
+  x: YRFA, ratio:0.44, yMax:820000, yFmt:v=>num(Math.round(v/1000))+" هزار",
+  series:[
+    {name:"ازدواج", data:D.vital.marr, color:C.lapis},
+    {name:"طلاق",   data:D.vital.div,  color:C.pom}
+  ],
+  legendNote:"خط نقطه‌چین روی محور راست خوانده می‌شود",
+  line:{name:"طلاق به ازای ۱۰۰ ازدواج",
+        data:D.vital.marr.map((m,i)=>+(D.vital.div[i]/m*100).toFixed(1)),
+        color:C.saff, min:20, max:48, fmt:v=>num(v,0)}
+});
+R["c-hh"] = box => {
+  const yrs = D.hh.years.map(Number);
+  const f = frame(box, {ratio:0.4, m:{t:20,r:16,b:34,l:40}});
+  const Y = yAxis(f, 2.8, 5.9, v=>num(v,1), {n:5});
+  const X = y => f.m.l + (y-1330)/(1405-1330)*f.iw;
+  [1335,1355,1375,1395,1405].forEach(y=>f.g.appendChild(
+    T(X(y), f.m.t+f.ih+16, fa(y), {size:10.5, fill:C.muted})));
+  f.g.appendChild(E("line",{x1:f.m.l,x2:f.m.l+f.iw,y1:f.m.t+f.ih,y2:f.m.t+f.ih,
+    stroke:C.line2,"stroke-width":1.2}));
+  [["rural",C.moss,"روستایی"],["urban",C.lapis,"شهری"],["kol",C.ink,"کل"]].forEach(([k,col,nm])=>{
+    const pts = D.hh[k].map((v,i)=>[X(yrs[i]),Y(v)]);
+    f.g.appendChild(path(pts,{c:col,w:2.6}));
+    pts.forEach(p=>f.g.appendChild(E("circle",{cx:p[0],cy:p[1],r:3,fill:"#fff",
+      stroke:col,"stroke-width":2})));
+    const last = pts[pts.length-1];
+    f.g.appendChild(T(last[0]+2, last[1]+4, num(D.hh[k][D.hh[k].length-1],2),
+      {anchor:"start", size:11, w:800, fill:col}));
+  });
+};
+
+/* ---- پردهٔ ۵ ---- */
+R["c-school"] = box => lineChart(box, {
+  modes:[MODE_VAL, idxMode("۱۳۸۰"), yoyMode], file:"danesh-amoozan",
+  x: D.school.labels.map(s=>fa(s.split("-")[0])), ratio:0.42,
+  xLong: D.school.labels.map(s=>"سال تحصیلی "+rng(...s.split("-"))),
+  yMin:12000000, yMax:18600000, yFmt:v=>num(+(v/1e6).toFixed(1),1)+" میلیون",
+  tipFmt:v=>num(v), every:2,
+  series:[{name:"کل دانش‌آموزان", data:D.school.total, color:C.lapis,
+           endLabel:num(+(D.school.total[D.school.total.length-1]/1e6).toFixed(2),2)+" میلیون"}],
+  marks:[{i:3, label:"کف: ۱۳٫۲۳ م", color:C.faint},
+         {i:D.school.total.indexOf(Math.max(...D.school.total)), label:"اوج: ۱۶٫۹۷ م", color:C.pom}]
+});
+R["c-cohort"] = box => {
+  const B = D.vital.births, ys = D.vital.years;
+  const rows=[];
+  for (let s=0; s+6<=B.length; s++){
+    rows.push({k: rng(ys[s], ys[s+5]),
+               v: B.slice(s,s+6).reduce((a,b)=>a+b,0)});
+  }
+  const max = Math.max(...rows.map(r=>r.v))*1.14;
+  const yf = v=>num(+(v/1e6).toFixed(1),1)+" میلیون";
+  const f = frame(box, {ratio:0.36, m:{t:24,r:16,b:38,l:needLeft(0,max,yf,4,52)}});
+  const Y = yAxis(f, 0, max, yf, {n:4});
+  const ax = xCat(f, rows.map(r=>r.k), {band:true, size:10.5});
+  const bw = Math.min(64, ax.step*0.6);
+  const base = rows[0].v;
+  rows.forEach((r,i)=>{
+    f.g.appendChild(E("rect",{x:ax.X(i)-bw/2, y:Y(r.v), width:bw,
+      height:f.m.t+f.ih-Y(r.v), fill: i===0?C.lapis:C.saff, opacity: i===0?1:0.55+0.11*i}));
+    f.g.appendChild(T(ax.X(i), Y(r.v)-19, num(+(r.v/1e6).toFixed(2),2)+" میلیون",
+      {size:11.5, w:800, fill:C.ink}));
+    if (i) f.g.appendChild(T(ax.X(i), Y(r.v)-6,
+      iso(sgn(+((r.v/base-1)*100).toFixed(1),1)+"%"), {size:10.5, w:700, fill:C.pom}));
+  });
+};
+R["c-uni"] = box => barChart(box, {
+  x: D.uni.labels.map(s=>fa(s.split("-")[0])), ratio:0.42,
+  xLong: D.uni.labels.map(s=>"سال تحصیلی "+rng(...s.split("-"))),
+  yMax:4900000, yFmt:v=>num(+(v/1e6).toFixed(1),1)+" میلیون", maxBar:34,
+  series:[{name:"دانشجویان", data:D.uni.total, color:C.lapis, opacity:.88}],
+  line:{name:"دانش‌آموختگان",
+        data:D.uni.labels.map(L=>{const j=D.grad.labels.indexOf(L);
+              return j<0?null:D.grad.total[j];}),
+        color:C.pom, min:0, max:900000, dash:"0",
+        fmt:v=>num(Math.round(v/1000))+" هزار"}
+});
+
+/* ---- پردهٔ ۶ ---- */
+const GAPY = [1397,1398,1399,1400,1401,1402,1403,1404];
+function gapRows(){
+  return GAPY.map(y=>{
+    const pi = D.pop.years.indexOf(y), vi = D.vital.years.indexOf(y);
+    const dpop = D.pop.total[pi] - D.pop.total[pi-1];
+    const nat  = (D.vital.births[vi] - D.vital.deaths[vi])/1000;
+    return {y, dpop, nat:+nat.toFixed(1), gap:+(nat-dpop).toFixed(1)};
+  });
+}
+R["c-gap"] = box => divBars(box, {ratio:0.38, yFmt:v=>num(v),
+  lblFmt:v=>sgn(Math.round(v)), maxBar:44,
+  // سبز: رشد واقعی از پیش‌بینی جلوتر بوده · قرمز: از آن عقب مانده
+  data: gapRows().map(r=>({k:fa(r.y), v:r.gap,
+    c: r.gap >= 0 ? C.gain : C.loss}))});
+const GRP = [
+  {name:"مردان",   ur:"ur_m", part:"part_m", color:C.lapis},
+  {name:"زنان",    ur:"ur_f", part:"part_f", color:C.pom},
+  {name:"شهری",    ur:"ur_u", part:"part_u", color:C.turq},
+  {name:"روستایی", ur:"ur_r", part:"part_r", color:C.saff}
+];
+const groupChart = key => box => lineChart(box, {
+  x: D.lab.years.map(fa), ratio:0.62, every:3, yTicks:4,
+  yFmt: v=>pct(v,0), tipFmt: v=>pct(v,1),
+  file: key==="ur" ? "gorooh-bikari" : "gorooh-mosharekat",
+  series: GRP.map(g=>({name:g.name, data:D.lab[g[key]], color:g.color, w:2.2,
+                       endLabel:pct(D.lab[g[key]][D.lab[g[key]].length-1],1)}))
+});
+R["c-groups-ur"]   = groupChart("ur");
+R["c-groups-part"] = groupChart("part");
+
+R["c-sector9"] = box => {
+  const L = D.lab, yrs = L.years.map(fa);
+  const cnt = k => L[k].map((p,i)=>Math.round(p/100*L.emp[i]));
+  const S = [
+    {key:"serv", name:"خدمات",   color:C.turq},
+    {key:"ind",  name:"صنعت",    color:C.lapis},
+    {key:"agri", name:"کشاورزی", color:C.pom}
+  ];
+  lineChart(box, {
+    x: yrs, ratio:0.44, file:"eshteghal-bakhshi",
+    modes:[
+      {label:"سهم از اشتغال", apply: c=>({
+        series: S.map(g=>({name:g.name, data:L[g.key], color:g.color, w:2.6,
+                           endLabel:pct(L[g.key][L[g.key].length-1],1)})),
+        yFmt:v=>pct(v,0), tipFmt:v=>pct(v,1), autoY:true })},
+      {label:"تعداد شاغلان", apply: c=>({
+        series: S.map(g=>{ const d = cnt(g.key);
+          return {name:g.name, data:d, color:g.color, w:2.6,
+                  endLabel:num(+(d[d.length-1]/1000).toFixed(1),1)+" میلیون"}; }),
+        yFmt:v=>num(+(v/1000).toFixed(0))+" میلیون", tipFmt:v=>num(v)+" هزار",
+        autoY:true })}
+    ],
+    series: S.map(g=>({name:g.name, data:L[g.key], color:g.color, w:2.6,
+                       endLabel:pct(L[g.key][L[g.key].length-1],1)})),
+    yFmt:v=>pct(v,0), tipFmt:v=>pct(v,1)
+  });
+};
+
+R["c-proj"] = box => {
+  const s1 = scenario(MP.gb, MP.gd, MP.mig), s2 = scenario(-0.035, 0.0246, 0);
+  const yrs = D.pop.years;
+  const at = (sc,y)=>{ const i = sc.yrs.indexOf(y); return i<0?null:sc.vals[i]; };
+  const pad  = yrs.map(y=>at(s1,y));
+  const pad2 = yrs.map(y=>at(s2,y));
+  lineChart(box, {
+    x: yrs.map(fa), ratio:0.44, yMin:80000, yMax:93000, file:"model-jamiat",
+    yFmt:v=>num(+(v/1000).toFixed(0))+" میلیون", tipFmt:v=>num(v)+" هزار", every:2,
+    series:[
+      {name:"پیش‌بینی رسمی", data:D.pop.total, color:C.turq,
+       endLabel:num(+(D.pop.total[D.pop.total.length-1]/1000).toFixed(1),1)+" میلیون"},
+      {name:"سناریوی تعدیل‌شده", data:pad2, color:C.saff, dash:"6 4",
+       endLabel:num(+(pad2[pad2.length-1]/1000).toFixed(1),1)+" میلیون"},
+      {name:"مدل شما", data:pad, color:C.pom, dash:"6 4", w:3,
+       endLabel:num(+(pad[pad.length-1]/1000).toFixed(1),1)+" میلیون"}
+    ],
+    marks:[{i:yrs.indexOf(1404), label:"آخرین دادهٔ واقعی", color:C.faint}]
+  });
+
+  // نمایشگرهای عددی بالای نمودار
+  const off = D.pop.total[D.pop.total.length-1], mine = s1.vals[s1.vals.length-1];
+  const set = (id,t,cls)=>{ const e=document.getElementById(id); if(!e) return;
+    e.textContent = t; if (cls) e.className = "rv "+cls; };
+  set("p-off", num(off));
+  set("p-mod", num(mine));
+  const d = mine - off;
+  set("p-dif", sgn(Math.round(d)), d<0 ? "pom" : "turq");
+  set("p-cross", s1.cross ? fa(s1.cross) : "پس از ۱۴۱۵");
+};
+
+R["c-urban"] = box => stackCol(box, {ratio:0.44,
+  x: D.pop.years.map(fa), a: D.pop.urban, b: D.pop.rural});
+
+/* ==========================================================================
+   تعامل
+   ========================================================================== */
+function refreshBase(){
+  const i = YRS.indexOf(BASE);
+  const adj = adjSeries(BASE);
+  const off = D.lab.ur[LAST], a = adj[LAST];
+  document.getElementById("lbl-baseyear").textContent =
+    fa(BASE) + " — مشارکت " + pct(D.lab.part[i],1);
+  document.getElementById("r-off").textContent = pct(off,1);
+  document.getElementById("r-adj").textContent = pct(a,1);
+  document.getElementById("r-hid").textContent = num(hiddenAt(BASE, LAST));
+  const g = +(a-off).toFixed(1);
+  const el = document.getElementById("r-gap");
+  el.textContent = sgn(g,1);
+  el.className = "rv " + (g>=0 ? "saff" : "turq");
+  R["c-hero"](document.getElementById("c-hero"));
+}
+
+function fillGapTable(){
+  const tb = document.getElementById("gaptable");
+  if (!tb) return;
+  const why = {1397:"واقعیت جلوتر از پیش‌بینی", 1398:"واقعیت جلوتر از پیش‌بینی",
+               1399:"فوت مازاد کرونا", 1400:"فوت مازاد کرونا",
+               1401:"هم‌خوان", 1402:"هم‌خوان",
+               1403:"افت شتابان تولد", 1404:"افت شتابان تولد"};
+  let total = 0;
+  tb.innerHTML = gapRows().map(r=>{
+    total += r.gap;
+    const cls = r.gap < -60 ? "warn" : r.gap > 0 ? "fix" : "note";
+    return `<tr><td class="num">${fa(r.y)}</td><td class="num">${num(r.dpop)}</td>
+      <td class="num">${num(r.nat,1)}</td>
+      <td class="num" style="color:${r.gap>=0?"#2E7D4F":"#C4342E"}"><b>${sgn(r.gap,1)}</b></td>
+      <td><span class="chip ${cls}">${why[r.y]}</span></td></tr>`;
+  }).join("") +
+  `<tr style="background:var(--stone-2)"><td><b>جمع</b></td><td></td><td></td>
+    <td class="num"><b>${sgn(+total.toFixed(1),1)}</b></td>
+    <td style="font-size:12px;color:var(--muted)">هزار نفر انباشته</td></tr>`;
+}
+
+/* ---- رسم همه ---- */
+let raf = null;
+/* نام فایل خروجی تصویر برای نمودارهایی که نوار حالت ندارند */
+const FILE = {"c-dots":"vorood-be-bazar-kar", "c-gendergap":"shekaf-jensiyati",
+  "c-fields":"gorooh-haye-tahsili", "c-sectorshock":"shock-bakhshi",
+  "c-sector9":"eshteghal-bakhshi", "c-groups-ur":"gorooh-bikari", "c-groups-part":"gorooh-mosharekat", "c-cohort":"nasl-ha", "c-gap":"shekaf-pishbini", "c-urban":"shahrneshini"};
+
+/* خط روند کوچک هر کارت شاخص — روند ۱۳۹۵ تا ۱۴۰۴ در یک نگاه */
+function renderSparks(){
+  const L = D.lab, V = D.vital;
+  const src = {
+    ur:      [L.ur,              "#2F7D4A", "نرخ بیکاری رسمی، ۱۳۹۵ تا ۱۴۰۴", "good"],
+    part:    [L.part,            "#B33A3A", "نرخ مشارکت اقتصادی، ۱۳۹۵ تا ۱۴۰۴", "bad"],
+    er:      [L.er,              "#7A8491", "نسبت اشتغال، تقریباً باثبات", "neutral"],
+    adj:     [adjSeries(1395),   "#B33A3A", "نرخ بیکاری تعدیل‌شده با مبنای ۱۳۹۵", "bad"],
+    inact:   [L.inact,           "#B33A3A", "جمعیت غیرفعال ۱۵ سال و بیشتر", "bad"],
+    u24:     [D.lab_q.u24,       "#B33A3A", "نرخ بیکاری ۱۵ تا ۲۴ ساله، بهار ۱۴۰۴ تا بهار ۱۴۰۵", "bad"],
+    births:  [V.births,          "#B33A3A", "تولدهای ثبت‌شده", "bad"],
+    erf:     [L.er_f,            "#B33A3A", "نسبت اشتغال زنان", "bad"]
+  };
+  document.querySelectorAll(".kpi[data-spark]").forEach(card=>{
+    const k = card.dataset.spark, box = card.querySelector(".k-spark");
+    if (!box || !src[k]) return;
+    card.classList.remove("semantic-good","semantic-bad","semantic-neutral");
+    card.classList.add("semantic-" + src[k][3]);
+    spark(box, src[k][0], src[k][1], {title: src[k][2]});
+  });
+}
+
+function renderAll(){
+  renderSparks();
+  for (const id in R){
+    const box = document.getElementById(id);
+    if (box) { try { R[id](box); } catch(e){ console.error(id, e); } }
+  }
+  // نمودارهایی که خودشان نوار بالا نساخته‌اند، دست‌کم دکمهٔ خروجی تصویر بگیرند
+  for (const id in R){
+    const box = document.getElementById(id);
+    if (!box || !box.querySelector("svg")) continue;
+    const prev = box.previousElementSibling;
+    if (prev && prev.classList.contains("chead")) continue;
+    chartHead(box, null, ()=>R[id](box), FILE[id] || id);
+  }
+}
+function scheduleRender(){
+  if (raf) cancelAnimationFrame(raf);
+  raf = requestAnimationFrame(()=>{ renderAll(); refreshBase(); });
+}
+
+/* ---- راه‌اندازی ---- */
+document.addEventListener("DOMContentLoaded", ()=>{
+  fillGapTable();
+  renderAll();
+  refreshBase();
+
+  const sl = document.getElementById("baseyear");
+  sl.addEventListener("input", e=>{ BASE = +e.target.value; refreshBase(); });
+
+  /* ---- اهرم‌های مدل زندهٔ جمعیت ---- */
+  const pb = document.getElementById("p-birth"),
+        pd = document.getElementById("p-death"),
+        pm = document.getElementById("p-mig");
+  if (pb && pd && pm){
+    const syncProj = ()=>{
+      MP.gb  = (+pb.value)/1000;      // اهرم بر حسب دهمِ درصد
+      MP.gd  = (+pd.value)/1000;
+      MP.mig = +pm.value;
+      document.getElementById("o-birth").textContent = sgn(+pb.value/10, 1, "%");
+      document.getElementById("o-death").textContent = sgn(+pd.value/10, 1, "%");
+      document.getElementById("o-mig").textContent   = sgn(+pm.value);
+      R["c-proj"](document.getElementById("c-proj"));
+    };
+    [pb,pd,pm].forEach(el=>el.addEventListener("input", syncProj));
+    document.getElementById("p-reset").onclick = ()=>{
+      pb.value=-58; pd.value=25; pm.value=0; syncProj();
+    };
+    syncProj();
+  }
+
+  let t=null;
+  window.addEventListener("resize", ()=>{ clearTimeout(t); t=setTimeout(scheduleRender, 180); });
+
+  // نوار پیشرفت
+  const bar = document.querySelector("#progress > i");
+  const chips = [...document.querySelectorAll("#navchips a")];
+  const secs  = chips.map(a=>document.querySelector(a.getAttribute("href"))).filter(Boolean);
+  const onScroll = ()=>{
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h>0 ? (window.scrollY/h*100) : 0) + "%";
+    let cur = 0;
+    secs.forEach((s,i)=>{ if (s.getBoundingClientRect().top <= 120) cur = i; });
+    chips.forEach((a,i)=>a.classList.toggle("on", i===cur));
+    const active = chips[cur];
+    if (active && active.offsetLeft !== undefined){
+      const nav = document.getElementById("navchips");
+      const l = active.offsetLeft, r = l + active.offsetWidth;
+      if (l < nav.scrollLeft || r > nav.scrollLeft + nav.clientWidth)
+        nav.scrollTo({left: l - nav.clientWidth/2 + active.offsetWidth/2, behavior:"smooth"});
+    }
+  };
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+
+  /* ---- لغزاندن نوار پرده‌ها: دکمه، چرخ ماوس، کشیدن، و سایهٔ لبه ---- */
+  (function(){
+    const nav = document.getElementById("navchips");
+    const wrap = nav.closest(".navwrap");
+    if (!nav || !wrap) return;
+    const maxL = () => nav.scrollWidth - nav.clientWidth;
+    const edges = ()=>{
+      // در چیدمان راست‌به‌چپ، scrollLeft منفی یا صفر است؛ با قدر مطلق کار می‌کنیم
+      const x = Math.abs(nav.scrollLeft), m = maxL();
+      wrap.classList.toggle("can-start", x > 2);
+      wrap.classList.toggle("can-end",   x < m - 2);
+    };
+    const by = d => nav.scrollBy({left: d * nav.clientWidth * 0.7, behavior:"smooth"});
+    wrap.querySelector(".nb-start").onclick = ()=>by(1);
+    wrap.querySelector(".nb-end").onclick   = ()=>by(-1);
+    nav.addEventListener("scroll", edges, {passive:true});
+    window.addEventListener("resize", edges);
+    // چرخ عمودی ماوس، نوار را افقی می‌لغزاند
+    nav.addEventListener("wheel", e=>{
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      nav.scrollLeft -= e.deltaY; e.preventDefault(); edges();
+    }, {passive:false});
+    // کشیدن با ماوس یا انگشت
+    let down=false, sx=0, sl=0;
+    nav.addEventListener("pointerdown", e=>{
+      down=true; sx=e.clientX; sl=nav.scrollLeft; nav.style.scrollBehavior="auto";
+    });
+    nav.addEventListener("pointermove", e=>{
+      if(!down) return;
+      const d = e.clientX - sx;
+      if (Math.abs(d) > 3) nav.scrollLeft = sl + d;
+      edges();
+    });
+    const up = ()=>{ down=false; nav.style.scrollBehavior="smooth"; };
+    nav.addEventListener("pointerup", up);
+    nav.addEventListener("pointercancel", up);
+    nav.addEventListener("pointerleave", up);
+    edges(); setTimeout(edges, 400);
+  })();
+
+  // ظاهرشدن تدریجی بخش‌ها
+  const revealables = document.querySelectorAll(
+    ".panel, .blocks, .statstrip, .callout, .pull, .tblwrap");
+  const showAll = ()=> revealables.forEach(el=>el.classList.add("in"));
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window){
+    const io = new IntersectionObserver(es=>es.forEach(en=>{
+      if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
+    }), {threshold:0.02, rootMargin:"200px 0px"});
+    revealables.forEach(el=>{ el.classList.add("reveal"); io.observe(el); });
+    // تور ایمنی: اگر به هر دلیل انیمیشن اجرا نشد، محتوا پنهان نماند
+    window.addEventListener("beforeprint", showAll);
+    setTimeout(showAll, 12000);
+  }
+
+  // چاپ: همیشه DOM و نمودارهای نسخهٔ فعلی پیش از Print دوباره رسم می‌شوند.
+  const preparePrint = ()=>{
+    document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));
+    document.body.classList.add("printing");
+    try { renderAll(); refreshBase(); } catch(e) { console.error("print render", e); }
+    void document.body.offsetHeight;
+  };
+  window.addEventListener("beforeprint", preparePrint);
+  window.addEventListener("afterprint", ()=>document.body.classList.remove("printing"));
+  const printBtn = document.getElementById("print-dashboard");
+  if (printBtn){
+    printBtn.addEventListener("click", ()=>{
+      preparePrint();
+      requestAnimationFrame(()=>requestAnimationFrame(()=>window.print()));
+    });
+  }
+
+  // دانلود
+  const dl = (name, text, type, bom)=>{
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([(bom?"\uFEFF":"")+text], {type}));
+    a.download = name; a.click(); URL.revokeObjectURL(a.href);
+  };
+  document.getElementById("dl-json").onclick = ()=>
+    dl("iran-population-labour-clean.json", JSON.stringify(D, null, 1), "application/json");
+  document.getElementById("dl-csv").onclick = ()=>{
+    const adj = adjSeries(1395);
+    const head = ["سال","جمعیت ۱۵+ (هزار)","فعال","شاغل","بیکار","نرخ مشارکت",
+                  "نرخ بیکاری رسمی","نرخ بیکاری تعدیل‌شده","نسبت اشتغال",
+                  "تولد","فوت","رشد طبیعی","ازدواج","طلاق"];
+    const rows = YRS.map((y,i)=>[y, D.lab.pop15[i], D.lab.act[i], D.lab.emp[i],
+      D.lab.unemp[i], D.lab.part[i], D.lab.ur[i], adj[i], D.lab.er[i],
+      D.vital.births[i], D.vital.deaths[i], D.vital.natural[i],
+      D.vital.marr[i], D.vital.div[i]]);
+    dl("iran-key-series.csv", [head, ...rows].map(r=>r.join(",")).join("\n"), "text/csv;charset=utf-8", true);
+  };
+});
+
+</script>
+</body>
+</html>
