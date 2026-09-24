@@ -186,7 +186,6 @@ Flagged but **not** altered: the 1395 male/female death columns appear transpose
 │   ├── iran-population-labour-clean.json   cleaned dataset the dashboards run on
 │   └── iran-key-series.csv                 tidy key series, UTF-8 BOM for Excel
 ├── assets/                                 chart screenshots used above
-├── publish.bat                             one-shot GitHub publish + Pages script
 └── LICENSE                                 MIT
 ```
 
