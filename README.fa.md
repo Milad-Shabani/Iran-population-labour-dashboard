@@ -87,7 +87,6 @@ data/raw/iran-macro-indicators.xlsx     فایل اکسل خام و دست‌ن�
 data/iran-population-labour-clean.json  دادهٔ پاک‌سازی‌شده
 data/iran-key-series.csv                سری‌های اصلی، با BOM برای اکسل
 assets/                                 تصویر نمودارها
-publish.bat                             اسکریپت انتشار و فعال‌سازی GitHub Pages
 LICENSE                                 MIT
 ```
 
